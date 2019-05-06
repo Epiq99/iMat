@@ -1,0 +1,4 @@
+Vad är en backend?
+    Det är den del av programmet som tar hand om all "logik". Hanterar alla resurser osv
+    Frontenden presenterar bara det backenden gör, lite finare
+
