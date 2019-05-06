@@ -1,0 +1,24 @@
+.mainPane
+{
+    -fx-pref-width: 200px;
+    -fx-pref-height: 220px;
+}
+
+.itemNameLable
+{
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+}
+
+.pricePane
+{
+    -fx-background-color: red;
+    -fx-background-radius: 10px;
+}
+
+.priceLable
+{
+    -fx-text-fill: yellow;
+    -fx-font-size: 17px;
+    -fx-font-weight: bolder;
+}
