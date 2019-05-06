@@ -1,4 +1,3 @@
-package sample;
 import se.chalmers.cse.dat216.project.*;
 
 public class iMatController {
