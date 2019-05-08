@@ -2,15 +2,163 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/browseListItem/BrowseListItem.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/browseListItem/browselistitem.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMat.iml" beforeDir="false" afterPath="$PROJECT_DIR$/iMat.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/producteditor/README.TXT" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_10.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_100.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_101.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_102.bmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_102.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_103.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_104.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_105.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_106.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_107.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_108.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_109.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_11.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_110.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_111.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_112.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_113.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_114.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_115.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_116.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_117.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_118.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_119.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_12.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_120.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_121.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_122.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_123.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_124.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_125.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_126.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_127.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_128.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_129.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_13.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_130.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_131.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_132.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_133.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_134.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_135.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_136.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_137.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_138.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_139.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_14.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_140.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_141.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_142.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_143.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_144.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_145.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_146.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_147.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_148.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_149.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_15.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_150.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_151.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_152.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_153.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_154.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_16.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_17.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_18.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_19.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_20.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_21.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_22.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_23.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_24.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_25.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_26.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_27.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_28.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_29.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_30.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_31.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_32.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_33.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_34.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_35.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_36.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_37.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_38.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_39.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_40.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_41.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_42.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_43.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_44.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_45.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_46.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_47.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_48.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_49.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_5.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_50.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_51.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_52.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_53.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_54.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_55.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_56.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_57.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_58.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_59.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_6.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_60.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_61.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_62.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_63.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_64.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_65.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_66.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_67.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_68.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_69.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_7.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_70.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_71.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_72.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_73.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_74.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_75.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_76.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_77.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_78.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_79.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_8.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_80.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_81.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_82.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_83.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_84.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_85.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_86.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_87.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_88.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_89.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_9.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_90.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_91.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_92.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_93.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_94.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_95.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_96.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_97.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_98.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/product_99.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/browseListItem/BrowseListItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/browseListItem/BrowseListItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/browseListItem/browseListItem.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/iMatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/iMatController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/iMatScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/iMatScene.fxml" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -70,8 +218,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/iMatController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="241">
-              <caret line="13" column="30" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="30" />
+            <state relative-caret-position="220">
+              <caret line="11" column="60" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="60" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -81,29 +229,29 @@
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/browseListItem/browselistitem.fxml">
-          <provider editor-type-id="JavaFX-Scene-Builder" />
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="200">
               <caret line="10" column="82" selection-start-line="10" selection-start-column="82" selection-end-line="10" selection-end-column="82" />
             </state>
           </provider>
+          <provider editor-type-id="JavaFX-Scene-Builder" />
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/iMatScene.fxml">
-          <provider editor-type-id="JavaFX-Scene-Builder" />
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="220">
               <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
             </state>
           </provider>
+          <provider editor-type-id="JavaFX-Scene-Builder" />
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/browseListItem/BrowseListItem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="401">
-              <caret line="37" column="42" selection-start-line="37" selection-start-column="42" selection-end-line="37" selection-end-column="42" />
+            <state relative-caret-position="269">
+              <caret line="16" column="60" selection-start-line="16" selection-start-column="60" selection-end-line="16" selection-end-column="60" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -112,22 +260,25 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/lib/projectbackend.jar!/se/chalmers/cse/dat216/project/Product.class">
+        <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+            <state relative-caret-position="240">
+              <caret line="12" column="36" selection-start-line="12" selection-start-column="36" selection-end-line="12" selection-end-column="36" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/out/production/iMat/browseListItem/browselistitem.fxml">
-          <provider editor-type-id="JavaFX-Scene-Builder" />
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="280">
               <caret line="14" column="24" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
             </state>
           </provider>
+          <provider editor-type-id="JavaFX-Scene-Builder" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -138,7 +289,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="jar://$PROJECT_DIR$/lib/projectbackend.jar!/se/chalmers/cse/dat216/project/IMatDataHandler.class">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="124">
+            <state relative-caret-position="1140">
               <caret line="79" selection-start-line="79" selection-end-line="79" />
             </state>
           </provider>
@@ -147,7 +298,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="jar:///usr/lib/jvm/java-8-jdk/javafx-src.zip!/javafx/fxml/FXMLLoader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
+            <state relative-caret-position="47780">
               <caret line="2547" selection-start-line="2547" selection-end-line="2547" />
             </state>
           </provider>
@@ -200,17 +351,16 @@
         <option value="$PROJECT_DIR$/src/browseListItem/browseListItem.fxml" />
         <option value="$PROJECT_DIR$/src/browseListItem/BrowseListItem.css" />
         <option value="$PROJECT_DIR$/out/production/iMat/browseListItem/browselistitem.fxml" />
-        <option value="$PROJECT_DIR$/src/browseListItem/BrowseListItem.java" />
         <option value="$PROJECT_DIR$/src/iMatController.java" />
         <option value="$PROJECT_DIR$/src/browseListItem/browselistitem.fxml" />
+        <option value="$PROJECT_DIR$/src/browseListItem/BrowseListItem.java" />
       </list>
     </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="y" value="-19" />
     <option name="width" value="1920" />
-    <option name="height" value="1078" />
+    <option name="height" value="1059" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectReloadState">
@@ -221,41 +371,13 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="iMat" type="b2602c69:ProjectViewProjectNode" />
-              <item name="iMat" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="iMat" type="b2602c69:ProjectViewProjectNode" />
-              <item name="iMat" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="iMat" type="b2602c69:ProjectViewProjectNode" />
-              <item name="iMat" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-              <item name="projectbackend.jar" type="ab9368bb:PsiFileNode" />
-            </path>
-            <path>
-              <item name="iMat" type="b2602c69:ProjectViewProjectNode" />
-              <item name="iMat" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="iMat" type="b2602c69:ProjectViewProjectNode" />
-              <item name="iMat" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="production" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="iMat" type="b2602c69:ProjectViewProjectNode" />
-              <item name="iMat" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="production" type="462c0819:PsiDirectoryNode" />
               <item name="iMat" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -282,7 +404,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -411,8 +532,8 @@
     </configuration>
     <list>
       <item itemvalue="Application.Main" />
-      <item itemvalue="JAR Application.projectbackend.jar" />
       <item itemvalue="Application.Main (1)" />
+      <item itemvalue="JAR Application.projectbackend.jar" />
     </list>
     <recent_temporary>
       <list>
@@ -435,20 +556,22 @@
       <workItem from="1555408666138" duration="775000" />
       <workItem from="1555414175247" duration="28000" />
       <workItem from="1556869885966" duration="866000" />
-      <workItem from="1557141309023" duration="8639000" />
+      <workItem from="1557141309023" duration="8795000" />
+      <workItem from="1557304379393" duration="45000" />
+      <workItem from="1557305067978" duration="351000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17639000" />
+    <option name="totallyTimeSpent" value="18191000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="-19" width="1920" height="1078" extended-state="0" />
+    <frame x="0" y="0" width="1920" height="1059" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="UI Designer" order="0" />
       <window_info id="Designer" order="1" />
-      <window_info content_ui="combo" id="Project" order="2" sideWeight="0.6703755" visible="true" weight="0.16577825" />
+      <window_info content_ui="combo" id="Project" order="2" sideWeight="0.6703755" visible="true" weight="0.15511727" />
       <window_info id="Structure" order="3" weight="0.25" />
       <window_info id="Favorites" order="4" weight="0.32996634" />
       <window_info anchor="bottom" id="Database Changes" order="0" />
@@ -456,7 +579,7 @@
       <window_info anchor="bottom" id="Docker" order="2" show_stripe_button="false" />
       <window_info anchor="bottom" id="Message" order="3" />
       <window_info anchor="bottom" id="Find" order="4" />
-      <window_info active="true" anchor="bottom" id="Run" order="5" visible="true" weight="0.32919255" />
+      <window_info active="true" anchor="bottom" id="Run" order="5" visible="true" weight="0.3284055" />
       <window_info anchor="bottom" id="Debug" order="6" weight="0.35961124" />
       <window_info anchor="bottom" id="Cvs" order="7" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="8" weight="0.4" />
@@ -487,16 +610,6 @@
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/browseListItem/BrowseListItem.java</url>
-          <line>38</line>
-          <properties />
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
         <watch expression="this.productsFile()" language="JAVA" />
@@ -557,9 +670,7 @@
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/producteditor/README.TXT">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/producteditor/README.TXT" />
     <entry file="file://$PROJECT_DIR$/om_backenden.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="80">
@@ -593,6 +704,38 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/projectbackend.jar!/se/chalmers/cse/dat216/project/Product.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/out/production/iMat/browseListItem/browselistitem.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="14" column="24" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/out/production/iMat/browseListItem/BrowseListItem.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/projectbackend.jar!/se/chalmers/cse/dat216/project/IMatDataHandler.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1140">
+          <caret line="79" selection-start-line="79" selection-end-line="79" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/java-8-jdk/javafx-src.zip!/javafx/fxml/FXMLLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="47780">
+          <caret line="2547" selection-start-line="2547" selection-end-line="2547" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -603,65 +746,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/projectbackend.jar!/se/chalmers/cse/dat216/project/IMatDataHandler.class">
+    <entry file="file://$PROJECT_DIR$/src/iMatScene.fxml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
-          <caret line="79" selection-start-line="79" selection-end-line="79" />
+        <state relative-caret-position="220">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/out/production/iMat/browseListItem/BrowseListItem.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/out/production/iMat/browseListItem/browselistitem.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="14" column="24" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/projectbackend.jar!/se/chalmers/cse/dat216/project/Product.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///usr/lib/jvm/java-8-jdk/javafx-src.zip!/javafx/fxml/FXMLLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="2547" selection-start-line="2547" selection-end-line="2547" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/browseListItem/BrowseListItem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="401">
-          <caret line="37" column="42" selection-start-line="37" selection-start-column="42" selection-end-line="37" selection-end-column="42" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/browseListItem/browselistitem.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
           <caret line="10" column="82" selection-start-line="10" selection-start-column="82" selection-end-line="10" selection-end-column="82" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/iMatController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
-          <caret line="13" column="30" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/browseListItem/BrowseListItem.css">
       <provider selected="true" editor-type-id="text-editor">
@@ -670,11 +769,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/iMatScene.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
+    <entry file="file://$PROJECT_DIR$/src/iMatController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <caret line="11" column="60" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="60" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/browseListItem/BrowseListItem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="269">
+          <caret line="16" column="60" selection-start-line="16" selection-start-column="60" selection-end-line="16" selection-end-column="60" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

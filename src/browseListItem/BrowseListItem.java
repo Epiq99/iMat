@@ -14,7 +14,7 @@ import java.io.IOException;
 
 public class BrowseListItem extends AnchorPane {
 
-    private final String imageFolderPath = "images/";
+    IMatDataHandler handler = IMatDataHandler.getInstance();
 
     @FXML Label itemNameLable;
     @FXML Label priceLable;
@@ -36,6 +36,7 @@ public class BrowseListItem extends AnchorPane {
         itemNameLable.setText(prod.getName());
         priceLable.setText(String.valueOf(prod.getPrice()));
         unitLable.setText(prod.getUnit());
-        itemImage.setImage(new Image(imageFolderPath + prod.getImageName()));
+        //itemImage.setImage(new Image(imageFolderPath + prod.getImageName()));
+        itemImage.setImage(handler.getFXImage(prod));
     }
 }
