@@ -15,6 +15,9 @@ public class iMatController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        browserPane.setVgap(30);
+        browserPane.setHgap(30);
+
         for(Product p: handler.getProducts())
             browserPane.getChildren().add(new BrowseListItem(p));
     }

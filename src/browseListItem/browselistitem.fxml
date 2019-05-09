@@ -10,27 +10,38 @@
 
 <fx:root prefHeight="207.0" prefWidth="200.0" styleClass="mainPane" stylesheets="@BrowseListItem.css" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ImageView fx:id="itemImage" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <image>
-            <Image url="@../../resources/images/product_1.jpg" />
-         </image></ImageView>
-      <Label fx:id="itemNameLable" layoutX="14.0" layoutY="158.0" prefHeight="16.0" prefWidth="168.0" styleClass="itemNameLable" text="Label" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="158.0" />
-      <AnchorPane layoutX="99.0" layoutY="14.0" prefHeight="60.0" prefWidth="83.0" styleClass="pricePane">
+      <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <columnConstraints>
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="151.0" minHeight="10.0" prefHeight="149.0" valignment="CENTER" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="103.0" minHeight="10.0" prefHeight="69.0" vgrow="SOMETIMES" />
+        </rowConstraints>
          <children>
-            <GridPane layoutX="7.0" layoutY="15.0" prefHeight="30.0" prefWidth="53.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <ImageView fx:id="itemImage" fitHeight="180.0" fitWidth="180.0" pickOnBounds="true" preserveRatio="true" styleClass="itemImage">
+               <image>
+                  <Image url="@../../../../../.dat215/imat/images/product_1.jpg" />
+               </image>
+            </ImageView>
+            <GridPane GridPane.rowIndex="1">
               <columnConstraints>
-                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="80.0" minWidth="10.0" prefWidth="61.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="87.0" minWidth="7.0" prefWidth="15.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="191.0" minWidth="10.0" prefWidth="183.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="191.0" minWidth="10.0" prefWidth="183.0" />
               </columnConstraints>
               <rowConstraints>
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label fx:id="unitLable" styleClass="priceLable" text="kr" GridPane.rowIndex="1" />
-                  <Label fx:id="priceLable" alignment="CENTER" contentDisplay="CENTER" prefHeight="21.0" prefWidth="56.0" styleClass="priceLable" text="99.99" />
+                  <Label fx:id="itemNameLable" prefHeight="16.0" prefWidth="162.0" styleClass="itemNameLable" text="Label" GridPane.columnIndex="1" />
+                  <Label fx:id="priceLable" alignment="CENTER" contentDisplay="CENTER" prefHeight="21.0" prefWidth="56.0" styleClass="priceLable" text="99.99" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label fx:id="unitLable" styleClass="priceLable" text="kr" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                </children>
             </GridPane>
          </children>
-      </AnchorPane>
+      </GridPane>
    </children>
 </fx:root>
