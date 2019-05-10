@@ -2,7 +2,6 @@ package browseListItem;
 
 
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -10,7 +9,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
-import javafx.util.converter.DoubleStringConverter;
 import javafx.util.converter.IntegerStringConverter;
 import se.chalmers.cse.dat216.project.*;
 
@@ -23,6 +21,11 @@ import java.io.IOException;
 public class BrowseListItem extends AnchorPane {
 
     IMatDataHandler handler = IMatDataHandler.getInstance();
+
+    private static final Image addImage = new Image("images/add.png");
+    private static final Image minusImageRes = new Image("images/minus.png");
+    private static final Image favoriteFullImage = new Image("images/favorite_full.png");
+    private static final Image getFavoriteEmptyImage = new Image("images/favorite_empty.png");
 
     private Product product;
 
@@ -55,13 +58,13 @@ public class BrowseListItem extends AnchorPane {
         unitLable.setText(prod.getUnit());
         itemImage.setImage(handler.getFXImage(prod));
 
-        plusImage.setImage(new Image("images/add.png"));
-        minusImage.setImage(new Image("images/minus.png"));
+        plusImage.setImage(addImage);
+        minusImage.setImage(minusImageRes);
 
         if(handler.isFavorite(product))
-            favoriteImage.setImage(new Image("images/favorite_full.png"));
+            favoriteImage.setImage(favoriteFullImage);
         else
-            favoriteImage.setImage(new Image("images/favorite_empty.png"));
+            favoriteImage.setImage(getFavoriteEmptyImage);
 
         favoriteImage.setVisible(false);
 
