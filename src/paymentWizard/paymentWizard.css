@@ -1,0 +1,17 @@
+.dark-panel {
+    -fx-background-color: rgba(0, 0, 0, 0.75);
+}
+
+.light-panel {
+    -fx-background-color: -fx-background;
+}
+
+.text-Title{
+       -fx-font-size: 30px;
+       -fx-font-family: "PRIMETIME";
+}
+
+.text-Other{
+       -fx-font-size: 14px;
+       -fx-font-family: "Arial";
+}
