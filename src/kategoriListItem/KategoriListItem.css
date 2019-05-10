@@ -1,0 +1,17 @@
+/*#54C95D #A5D057 #E0D565*/
+
+.mainPane
+{
+    -fx-pref-height: 50px;
+    -fx-background-color: #A5D057;
+}
+
+.mainPane:hover
+{
+    -fx-background-color: #E0D565;
+    cursor: pointer;
+}
+
+.kategoriLable{
+    -fx-font-size: 18px;
+}

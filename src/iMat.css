@@ -1,0 +1,9 @@
+/*#54C95D #A5D057 #E0D565*/
+
+.kategorierLista{
+    -fx-pref-height: 500px;
+}
+
+.kategoriRubrikLable{
+    -fx-font-size: 25px;
+}
