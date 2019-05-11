@@ -1,25 +1,37 @@
+import browseListItem.IBrowseListItemListener;
 import browseListItem.ListItemPool;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.TilePane;
 import kategoriListItem.IKategoriListner;
 import kategoriListItem.KategoriListItem;
 import se.chalmers.cse.dat216.project.*;
 import browseListItem.BrowseListItem;
 
+import javax.xml.soap.Text;
 import java.net.URL;
 import java.util.*;
 
-public class iMatController implements Initializable, IKategoriListner {
+public class iMatController implements Initializable, IKategoriListner, IBrowseListItemListener {
     IMatDataHandler handler = IMatDataHandler.getInstance();
+    private Image shoppingCartImage = new Image("images/shoppingcart.png");
 
     @FXML TilePane browserPane;
     @FXML ListView<KategoriListItem> kategoriListView;
     @FXML Label browseTitleLable;
     @FXML Button favoriteButton;
+    @FXML TextField searchBar;
+    @FXML Button searchButton;
+    @FXML Label cartImdicatorLabel;
+    @FXML AnchorPane cartImdicatorPnane;
+    @FXML ImageView cartImage;
 
     private ListItemPool itemPool;
 
@@ -31,6 +43,11 @@ public class iMatController implements Initializable, IKategoriListner {
         browserPane.setVgap(30);
         browserPane.setHgap(30);
 
+        BrowseListItem.addListener(this);
+
+
+        cartImage.setImage(shoppingCartImage);
+
         browseTitleLable.setText("Alla produkter");
 
         for(Product p: handler.getProducts())
@@ -40,6 +57,7 @@ public class iMatController implements Initializable, IKategoriListner {
         setCategories();
 
         favoriteButton.setOnAction(event->favoriteClicked());
+        cartImdicatorPnane.setVisible(false);
     }
 
     void favoriteClicked(){
@@ -47,7 +65,7 @@ public class iMatController implements Initializable, IKategoriListner {
 
         browserPane.getChildren().clear();
         for(Product p: handler.favorites())
-            browserPane.getChildren().add(new BrowseListItem(p));
+            browserPane.getChildren().add(itemPool.getBrowserListItem(p));
     }
 
     void setCategories(){
@@ -88,6 +106,12 @@ public class iMatController implements Initializable, IKategoriListner {
                         ProductCategory.POTATO_RICE},"Torrvaror"));
     }
 
+    public void search(){
+        browserPane.getChildren().clear();
+        browseTitleLable.setText("Sök: \"" + searchBar.getText() + "\"");
+        for(Product p : handler.findProducts(searchBar.getText()))
+            browserPane.getChildren().add(itemPool.getBrowserListItem(p));
+    }
 
     @Override
     public void notify(KategoriListItem item) {
@@ -97,5 +121,13 @@ public class iMatController implements Initializable, IKategoriListner {
         for(Product p: handler.getProducts())
             if(Arrays.asList(item.getCategories()).contains(p.getCategory()))
                 browserPane.getChildren().add(itemPool.getBrowserListItem(p));
+    }
+
+    @Override
+    public void notify(BrowseListItem item) {
+        int temp = handler.getShoppingCart().getItems().size();
+        if(temp>0)
+            cartImdicatorPnane.setVisible(true);
+        cartImdicatorLabel.setText(String.valueOf(temp));
     }
 }

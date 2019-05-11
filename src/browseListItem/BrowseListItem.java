@@ -17,6 +17,8 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class BrowseListItem extends AnchorPane {
 
@@ -26,6 +28,8 @@ public class BrowseListItem extends AnchorPane {
     private static final Image minusImageRes = new Image("images/minus.png");
     private static final Image favoriteFullImage = new Image("images/favorite_full.png");
     private static final Image getFavoriteEmptyImage = new Image("images/favorite_empty.png");
+
+    public static final List<IBrowseListItemListener> listeners = new ArrayList<>();
 
     private Product product;
 
@@ -72,7 +76,7 @@ public class BrowseListItem extends AnchorPane {
         amountField.setTextFormatter(new TextFormatter<>(new IntegerStringConverter(), 1));
 
         addButton.addEventHandler(ActionEvent.ACTION, (event)->
-                handler.getShoppingCart().addProduct(product, Double.parseDouble(amountField.getText()))
+                addToCart()
         );
 
         //handler.getShoppingCart().addProduct(product, Double.parseDouble(amountField.getText()));
@@ -105,5 +109,19 @@ public class BrowseListItem extends AnchorPane {
             handler.addFavorite(product);
             favoriteImage.setImage(new Image("images/favorite_full.png"));
         }
+    }
+
+    private void addToCart(){
+        handler.getShoppingCart().addProduct(product, Double.parseDouble(amountField.getText()));
+        notifyListeners();
+    }
+
+    private void notifyListeners(){
+        for(IBrowseListItemListener l: listeners)
+            l.notify(this);
+    }
+
+    public static void addListener(IBrowseListItemListener listener){
+        listeners.add(listener);
     }
 }
