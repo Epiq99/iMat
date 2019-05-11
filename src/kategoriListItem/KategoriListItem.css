@@ -9,9 +9,10 @@
 .mainPane:hover
 {
     -fx-background-color: #E0D565;
-    cursor: pointer;
+    -fx-cursor: hand;
 }
 
 .kategoriLable{
     -fx-font-size: 18px;
+    -fx-text-fill: black;
 }

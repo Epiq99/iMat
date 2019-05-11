@@ -45,10 +45,14 @@ public class KategoriListItem extends AnchorPane {
     
     private void onClick(){
         for(IKategoriListner l: listeners)
-            l.notify(kategorier);
+            l.notify(this);
     }
     
     static public void addListener(IKategoriListner listner){
         listeners.add(listner);
     }
+
+    public ProductCategory[] getCategories() {return kategorier;}
+
+    public String getCategoryName(){return katName;}
 }
