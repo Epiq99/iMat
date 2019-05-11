@@ -40,7 +40,7 @@
                   <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #54C95D;" GridPane.rowIndex="1" />
                   <Button fx:id="favoriteButton" maxHeight="50.0" minHeight="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="260.0" styleClass="favoriteButton" text="Favoriter" />
                   <Label styleClass="kategoriRubrikLable" text="Kategorier" GridPane.rowIndex="1" />
-                  <ListView fx:id="kategoriListView" maxHeight="507.0" prefHeight="500.0" prefWidth="260.0" styleClass="kategorierLista" GridPane.rowIndex="2" />
+                  <TilePane fx:id="kategoriTilePane" maxHeight="507.0" prefHeight="500.0" prefWidth="260.0" styleClass="kategorierLista" GridPane.rowIndex="2" />
                </children>
             </GridPane>
             <GridPane GridPane.columnIndex="1" GridPane.rowIndex="1">
@@ -135,7 +135,7 @@
                            <children>
                               <AnchorPane fx:id="cartImdicatorPnane" prefHeight="200.0" prefWidth="200.0" styleClass="cartIndicatorPane" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                  <children>
-                                    <Label fx:id="cartImdicatorLabel" alignment="CENTER" layoutX="8.0" layoutY="7.0" prefHeight="17.0" prefWidth="16.0" text="0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="7.0">
+                                    <Label fx:id="cartImdicatorLabel" alignment="CENTER" layoutX="8.0" layoutY="7.0" prefHeight="30.0" prefWidth="30.0" text="0" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="6.0">
                                        <font>
                                           <Font size="13.0" />
                                        </font>
