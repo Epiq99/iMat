@@ -1,0 +1,19 @@
+/*#54C95D #A5D057 #E0D565*/
+
+.kategorierLista{
+    -fx-pref-height: 500px;
+    -fx-background-color: #A5D057;
+}
+
+.kategoriRubrikLable{
+    -fx-font-size: 25px;
+}
+
+.favoriteButton{
+    -fx-background-color: #54C95D;
+}
+
+.favoriteButton:hover{
+    -fx-background-color: #A5D057;
+    -fx-cursor: hand;
+}
