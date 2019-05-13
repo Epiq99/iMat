@@ -1,25 +1,39 @@
+import browseListItem.IBrowseListItemListener;
 import browseListItem.ListItemPool;
+import browserTitle.BrowseTitle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.TilePane;
 import kategoriListItem.IKategoriListner;
 import kategoriListItem.KategoriListItem;
 import se.chalmers.cse.dat216.project.*;
 import browseListItem.BrowseListItem;
+import javafx.scene.input.MouseEvent;
 
 import java.net.URL;
 import java.util.*;
 
-public class iMatController implements Initializable, IKategoriListner {
+public class iMatController implements Initializable, IKategoriListner, IBrowseListItemListener {
     IMatDataHandler handler = IMatDataHandler.getInstance();
+    private Image shoppingCartImage = new Image("images/shoppingcart.png");
 
-    @FXML TilePane browserPane;
-    @FXML ListView<KategoriListItem> kategoriListView;
-    @FXML Label browseTitleLable;
-    @FXML Button favoriteButton;
+    @FXML FlowPane browserPane;
+    @FXML TilePane kategoriTilePane;
+    //@FXML Label browseTitleLable;
+    //@FXML Button favoriteButton;
+    @FXML TextField searchBar;
+    @FXML Button searchButton;
+    @FXML Label cartImdicatorLabel;
+    @FXML AnchorPane cartImdicatorPnane;
+    @FXML ImageView cartImage;
+    @FXML AnchorPane handlaMenuPane;
 
     private ListItemPool itemPool;
 
@@ -31,71 +45,109 @@ public class iMatController implements Initializable, IKategoriListner {
         browserPane.setVgap(30);
         browserPane.setHgap(30);
 
-        browseTitleLable.setText("Alla produkter");
+        BrowseListItem.addListener(this);
+        cartImage.setImage(shoppingCartImage);
+        cartImdicatorPnane.setVisible(false);
+
+        handlaMenuPane.addEventHandler(MouseEvent.MOUSE_CLICKED, event->
+                setUpStartPage()
+                );
+
+        setCategories();
+        setUpStartPage();
+
+        //favoriteButton.setOnAction(event->favoriteClicked());
+    }
+
+    void setUpStartPage(){
+        browserPane.getChildren().clear();
+        if(handler.favorites().size()>0) {
+            browserPane.getChildren().add(new BrowseTitle("Favoriter"));
+            for(Product p: handler.favorites())
+                browserPane.getChildren().add(new BrowseListItem(p));
+        }
+
+        browserPane.getChildren().add(new BrowseTitle("Alla produkter"));
 
         for(Product p: handler.getProducts())
             browserPane.getChildren().add(itemPool.getBrowserListItem(p));
+    }
 
-        kategoriListView.setFixedCellSize(50);
-        setCategories();
+    void setUpOfferPage(){
 
-        favoriteButton.setOnAction(event->favoriteClicked());
     }
 
     void favoriteClicked(){
-        browseTitleLable.setText("Favoriter");
+        browserPane.getChildren().clear();
+        browserPane.getChildren().add(new BrowseTitle("Favoriter"));
 
         browserPane.getChildren().clear();
         for(Product p: handler.favorites())
-            browserPane.getChildren().add(new BrowseListItem(p));
+            browserPane.getChildren().add(itemPool.getBrowserListItem(p));
     }
 
     void setCategories(){
         KategoriListItem.addListener(this);
-        kategoriListView.getItems().add(new KategoriListItem(new ProductCategory[]
+        kategoriTilePane.getChildren().add(new KategoriListItem(new ProductCategory[]
                 {ProductCategory.MEAT},"Kött"));
 
-        kategoriListView.getItems().add(new KategoriListItem(new ProductCategory[]
+        kategoriTilePane.getChildren().add(new KategoriListItem(new ProductCategory[]
                 {ProductCategory.POD, ProductCategory.CABBAGE,
                         ProductCategory.HERB, ProductCategory.ROOT_VEGETABLE,
                         ProductCategory.POTATO_RICE},"Grönsaker"));
 
-        kategoriListView.getItems().add(new KategoriListItem(new ProductCategory[]
+        kategoriTilePane.getChildren().add(new KategoriListItem(new ProductCategory[]
                 {ProductCategory.BERRY, ProductCategory.NUTS_AND_SEEDS},"Bär"));
 
-        kategoriListView.getItems().add(new KategoriListItem(new ProductCategory[]
+        kategoriTilePane.getChildren().add(new KategoriListItem(new ProductCategory[]
                 {ProductCategory.FISH},"Fisk"));
 
-        kategoriListView.getItems().add(new KategoriListItem(new ProductCategory[]
+        kategoriTilePane.getChildren().add(new KategoriListItem(new ProductCategory[]
                 {ProductCategory.FRUIT, ProductCategory.CITRUS_FRUIT,
                         ProductCategory.EXOTIC_FRUIT, ProductCategory.VEGETABLE_FRUIT,
                         ProductCategory.MELONS},"Frukt"));
 
-        kategoriListView.getItems().add(new KategoriListItem(new ProductCategory[]
+        kategoriTilePane.getChildren().add(new KategoriListItem(new ProductCategory[]
                 {ProductCategory.DAIRIES},"Mjölkprodukter"));
 
-        kategoriListView.getItems().add(new KategoriListItem(new ProductCategory[]
+        kategoriTilePane.getChildren().add(new KategoriListItem(new ProductCategory[]
                 {ProductCategory.COLD_DRINKS, ProductCategory.HOT_DRINKS},"Drickor"));
 
-        kategoriListView.getItems().add(new KategoriListItem(new ProductCategory[]
+        kategoriTilePane.getChildren().add(new KategoriListItem(new ProductCategory[]
                 {ProductCategory.SWEET},"Godis"));
 
-        kategoriListView.getItems().add(new KategoriListItem(new ProductCategory[]
+        kategoriTilePane.getChildren().add(new KategoriListItem(new ProductCategory[]
                 {ProductCategory.BREAD},"Bröd"));
 
-        kategoriListView.getItems().add(new KategoriListItem(new ProductCategory[]
+        kategoriTilePane.getChildren().add(new KategoriListItem(new ProductCategory[]
                 {ProductCategory.FLOUR_SUGAR_SALT, ProductCategory.PASTA,
                         ProductCategory.POTATO_RICE},"Torrvaror"));
     }
 
+    public void search(){
+        browserPane.getChildren().clear();
+        browserPane.getChildren().add(new BrowseTitle("Sök: \"" + searchBar.getText() + "\""));
+        for(Product p : handler.findProducts(searchBar.getText()))
+            browserPane.getChildren().add(itemPool.getBrowserListItem(p));
+    }
 
     @Override
     public void notify(KategoriListItem item) {
-        browseTitleLable.setText(item.getCategoryName());
+        browserPane.getChildren().clear();
+        browserPane.getChildren().add(new BrowseTitle(item.getCategoryName()));
+
 
         browserPane.getChildren().clear();
         for(Product p: handler.getProducts())
             if(Arrays.asList(item.getCategories()).contains(p.getCategory()))
                 browserPane.getChildren().add(itemPool.getBrowserListItem(p));
+    }
+
+    @Override
+    public void notify(BrowseListItem item) {
+        int temp = handler.getShoppingCart().getItems().size();
+        if(temp>0)
+            cartImdicatorPnane.setVisible(true);
+        cartImdicatorLabel.setText(String.valueOf(temp));
     }
 }
