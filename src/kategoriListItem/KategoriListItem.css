@@ -4,6 +4,7 @@
 {
     -fx-pref-height: 50px;
     -fx-background-color: #A5D057;
+    -fx-border-color: black;
 }
 
 .mainPane:hover

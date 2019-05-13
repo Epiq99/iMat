@@ -97,6 +97,8 @@ public class BrowseListItem extends AnchorPane {
                 favoriteImage.setVisible(false)
                 );
 
+        itemNameLable.addEventHandler(MouseEvent.MOUSE_CLICKED, event->notifyOnDetailedView());
+
         favoriteImage.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> favoriteImage_click(event));
     }
 
@@ -113,15 +115,22 @@ public class BrowseListItem extends AnchorPane {
 
     private void addToCart(){
         handler.getShoppingCart().addProduct(product, Double.parseDouble(amountField.getText()));
-        notifyListeners();
+        notifyOnCartChange();
     }
 
-    private void notifyListeners(){
+    private void notifyOnCartChange(){
         for(IBrowseListItemListener l: listeners)
-            l.notify(this);
+            l.addToCartNotify(this);
+    }
+
+    private void notifyOnDetailedView(){
+        for(IBrowseListItemListener l: listeners)
+            l.detailedViewNotify(this);
     }
 
     public static void addListener(IBrowseListItemListener listener){
         listeners.add(listener);
     }
+
+    public Product getProduct(){return product;}
 }

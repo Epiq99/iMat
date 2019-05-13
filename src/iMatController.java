@@ -1,6 +1,7 @@
 import browseListItem.IBrowseListItemListener;
 import browseListItem.ListItemPool;
 import browserTitle.BrowseTitle;
+import detailedview.DetailedView;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -144,10 +145,16 @@ public class iMatController implements Initializable, IKategoriListner, IBrowseL
     }
 
     @Override
-    public void notify(BrowseListItem item) {
+    public void addToCartNotify(BrowseListItem item) {
         int temp = handler.getShoppingCart().getItems().size();
         if(temp>0)
             cartImdicatorPnane.setVisible(true);
         cartImdicatorLabel.setText(String.valueOf(temp));
+    }
+
+    @Override
+    public void detailedViewNotify(BrowseListItem item){
+        browserPane.getChildren().clear();
+        browserPane.getChildren().add(new DetailedView(item.getProduct()));
     }
 }
