@@ -2,17 +2,22 @@ package paymentWizard;
 
 import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.ToggleGroup;
+import javafx.fxml.Initializable;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
 import se.chalmers.cse.dat216.project.*;
+import se.chalmers.cse.dat216.project.IMatDataHandler;
+import se.chalmers.cse.dat216.project.ShoppingCart;
+import se.chalmers.cse.dat216.project.Product;
 
-public class paymentWizard {
+import java.net.URL;
+import java.util.List;
+import java.util.ResourceBundle;
+
+public class paymentWizard implements Initializable {
 
     @FXML private AnchorPane wizardPane;
 
@@ -29,25 +34,41 @@ public class paymentWizard {
     @FXML private Label payTitle;
     @FXML private RadioButton payCard;
     @FXML private RadioButton payInvoice;
+    @FXML private ImageView infoButton;
     @FXML private ImageView PTPay;
     @FXML private ImageView PTPrevious;
     @FXML private Label priceLabel;
+    @FXML private Label cardLabel;
+    @FXML private PasswordField cvcField;
 
     // Tredje sidan
     @FXML private AnchorPane pageThree;
     @FXML private Label titleConfirm;
     @FXML private ImageView backToFront;
+    @FXML private ImageView recipeButton;
+
+    // Info CVC pop-up
+    @FXML private AnchorPane infoPage;
+
+    // Recipe pop-up
+    @FXML private AnchorPane recipePage;
+    @FXML private TextArea recipeList;
 
 
-    // Sätter priset på label. TODO Fixa.
+    private IMatDataHandler iMatDataHandler = IMatDataHandler.getInstance();
+    private ShoppingCart shoppingCart = iMatDataHandler.getShoppingCart();
 
-    /*
-    int price = (int) priceLabel.getPrice();
-            this.priceLabel.setText(price + " kr");
 
-    */
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
 
-    // Metoder för feedback
+        updateTotalCost();
+        updateCardInfo();
+
+    }
+
+
+        // Metoder för feedback
 
     @FXML
     public void cancelEnter(){
@@ -78,6 +99,19 @@ public class paymentWizard {
         backToFront.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
                 "paymentWizard/wizardPictures/BTFClick_00000.png")));
     }
+
+    @FXML
+    public void recipeEnter(){
+        recipeButton.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
+                "paymentWizard/wizardPictures/KvittoClick_00000.png")));
+    }
+
+    @FXML
+    public void infoEnter(){
+        infoButton.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
+                "paymentWizard/wizardPictures/InfoClick_00000.png")));
+    }
+
 
 
     //// ---------------------- ////
@@ -112,6 +146,18 @@ public class paymentWizard {
                 "paymentWizard/wizardPictures/BTFNormal_00000.png")));
     }
 
+    @FXML
+    public void recipeExited(){
+        recipeButton.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
+                "paymentWizard/wizardPictures/KvittoNormal_00000.png")));
+    }
+
+    @FXML
+    public void infoExited(){
+        infoButton.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
+                "paymentWizard/wizardPictures/InfoNormal_00000.png")));
+    }
+
     // Metoder för knapptryck
 
     @FXML
@@ -143,34 +189,44 @@ public class paymentWizard {
 
     }
 
-/*
-    // Metoder för frakt
+    @FXML
+    public void infoClick(){
+        infoPage.toFront();
+    }
 
-         private ToggleGroup deliveryToggleGroup;
+    @FXML
+    public void recipeClick(ShoppingCart shoppingCart){
+        updateRecipe(shoppingCart);
+        recipePage.toFront();
+    }
 
-        deliveryToggleGroup = new ToggleGroup();
-        deliveryNormal.setToggleGroup(deliveryToggleGroup);
-        deliveryExpress.setToggleGroup(deliveryToggleGroup);
-        deliveryNormal.setSelected(true);
-        deliveryToggleGroup.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
-        if (deliveryToggleGroup.getSelectedToggle() != null) {
-            RadioButton selected = (RadioButton) deliveryToggleGroup.getSelectedToggle();
+
+    // Hjälpmetoder
+
+    private void updateTotalCost () {
+
+        priceLabel.setText(String.format("%.2f",shoppingCart.getTotal()) + " kr");
+
+    }
+
+    private  void updateCardInfo () {
+
+        cardLabel.setText(iMatDataHandler.getCreditCard().getCardNumber());
+
+    }
+
+    private void updateRecipe(ShoppingCart shoppingCart){
+
+        StringBuilder sb = new StringBuilder();
+        List<ShoppingItem> itemsList = shoppingCart.getItems();
+
+        for ( ShoppingItem product : itemsList) {
+            sb.append(product).append(" - ").append(product.getProduct().getPrice()).append("\n");
         }
+        sb.append("\n").append("Totalpris: ").append(shoppingCart.getTotal());
+        recipeList.setText(sb.toString());
 
-
-    // Metoder för betalningsmetod
-
-        ToggleGroup paymentToggleGroup;
-
-        paymentToggleGroup = new ToggleGroup();
-        payCard.setToggleGroup(paymentToggleGroup);
-        payInvoice.setToggleGroup(paymentToggleGroup);
-        payCard.setSelected(true);
-        paymentToggleGroup.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
-            if (paymentToggleGroup.getSelectedToggle() != null) {
-                RadioButton selected = (RadioButton) paymentToggleGroup.getSelectedToggle();
-            }
-
+    }
 
 
      //
@@ -180,5 +236,4 @@ public class paymentWizard {
         event.consume();
     }
 
-*/
 }
