@@ -1,0 +1,18 @@
+.arrow{
+    -fx-font-size: 30px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #54C95D;
+
+}
+
+.questionText{
+    -fx-font-size: 18px;
+}
+
+.mainPane{
+
+}
+
+.answerLable{
+    -fx-font-size: 15px;
+}

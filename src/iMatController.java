@@ -3,6 +3,7 @@ import browseListItem.ListItemPool;
 import browserTitle.BrowseTitle;
 import detailedview.DetailedView;
 import detailedview.IDetailedViewListener;
+import helppage.HelpPage;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -36,6 +37,7 @@ public class iMatController implements Initializable, IKategoriListner, IBrowseL
     @FXML AnchorPane cartImdicatorPnane;
     @FXML ImageView cartImage;
     @FXML AnchorPane handlaMenuPane;
+    @FXML AnchorPane helpMenuPane;
 
     private ListItemPool itemPool;
 
@@ -55,6 +57,9 @@ public class iMatController implements Initializable, IKategoriListner, IBrowseL
         handlaMenuPane.addEventHandler(MouseEvent.MOUSE_CLICKED, event->
                 setUpStartPage()
                 );
+        helpMenuPane.addEventHandler(MouseEvent.MOUSE_CLICKED, event ->
+                setUpHelpPage()
+        );
 
         setCategories();
         setUpStartPage();
@@ -62,7 +67,12 @@ public class iMatController implements Initializable, IKategoriListner, IBrowseL
         //favoriteButton.setOnAction(event->favoriteClicked());
     }
 
-    void setUpStartPage(){
+    private void setUpHelpPage(){
+        browserPane.getChildren().clear();
+        browserPane.getChildren().add(new HelpPage());
+    }
+
+    private void setUpStartPage(){
         browserPane.getChildren().clear();
         if(handler.favorites().size()>0) {
             browserPane.getChildren().add(new BrowseTitle("Favoriter"));
