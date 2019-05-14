@@ -2,6 +2,7 @@ import browseListItem.IBrowseListItemListener;
 import browseListItem.ListItemPool;
 import browserTitle.BrowseTitle;
 import detailedview.DetailedView;
+import detailedview.IDetailedViewListener;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -21,7 +22,7 @@ import javafx.scene.input.MouseEvent;
 import java.net.URL;
 import java.util.*;
 
-public class iMatController implements Initializable, IKategoriListner, IBrowseListItemListener {
+public class iMatController implements Initializable, IKategoriListner, IBrowseListItemListener, IDetailedViewListener {
     IMatDataHandler handler = IMatDataHandler.getInstance();
     private Image shoppingCartImage = new Image("images/shoppingcart.png");
 
@@ -47,6 +48,7 @@ public class iMatController implements Initializable, IKategoriListner, IBrowseL
         browserPane.setHgap(30);
 
         BrowseListItem.addListener(this);
+        DetailedView.addListener(this);
         cartImage.setImage(shoppingCartImage);
         cartImdicatorPnane.setVisible(false);
 
@@ -156,5 +158,13 @@ public class iMatController implements Initializable, IKategoriListner, IBrowseL
     public void detailedViewNotify(BrowseListItem item){
         browserPane.getChildren().clear();
         browserPane.getChildren().add(new DetailedView(item.getProduct()));
+    }
+
+    @Override
+    public void addToCartNotification(DetailedView item) {
+        int temp = handler.getShoppingCart().getItems().size();
+        if(temp>0)
+            cartImdicatorPnane.setVisible(true);
+        cartImdicatorLabel.setText(String.valueOf(temp));
     }
 }

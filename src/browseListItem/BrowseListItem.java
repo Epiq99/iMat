@@ -27,7 +27,7 @@ public class BrowseListItem extends AnchorPane {
     private static final Image addImage = new Image("images/add.png");
     private static final Image minusImageRes = new Image("images/minus.png");
     private static final Image favoriteFullImage = new Image("images/favorite_full.png");
-    private static final Image getFavoriteEmptyImage = new Image("images/favorite_empty.png");
+    private static final Image favoriteEmptyImage = new Image("images/favorite_empty.png");
 
     public static final List<IBrowseListItemListener> listeners = new ArrayList<>();
 
@@ -68,7 +68,7 @@ public class BrowseListItem extends AnchorPane {
         if(handler.isFavorite(product))
             favoriteImage.setImage(favoriteFullImage);
         else
-            favoriteImage.setImage(getFavoriteEmptyImage);
+            favoriteImage.setImage(favoriteEmptyImage);
 
         favoriteImage.setVisible(false);
 
@@ -105,11 +105,11 @@ public class BrowseListItem extends AnchorPane {
     private void favoriteImage_click(MouseEvent event){
         if(handler.isFavorite(product)){
             handler.removeFavorite(product);
-            favoriteImage.setImage(new Image("images/favorite_empty.png"));
+            favoriteImage.setImage(favoriteEmptyImage);
         }
         else{
             handler.addFavorite(product);
-            favoriteImage.setImage(new Image("images/favorite_full.png"));
+            favoriteImage.setImage(favoriteFullImage);
         }
     }
 
