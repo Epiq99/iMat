@@ -2,6 +2,7 @@ package paymentWizard;
 
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
@@ -13,6 +14,7 @@ import se.chalmers.cse.dat216.project.IMatDataHandler;
 import se.chalmers.cse.dat216.project.ShoppingCart;
 import se.chalmers.cse.dat216.project.Product;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -57,6 +59,20 @@ public class paymentWizard implements Initializable {
 
     private IMatDataHandler iMatDataHandler = IMatDataHandler.getInstance();
     private ShoppingCart shoppingCart = iMatDataHandler.getShoppingCart();
+
+public paymentWizard () {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("paymentWizard.fxml"));
+        fxmlLoader.setRoot(this);
+        fxmlLoader.setController(this);
+
+        try {
+        fxmlLoader.load();
+         } catch (
+                 IOException exception) {
+            throw new RuntimeException(exception);
+        }
+
+}
 
 
     @Override

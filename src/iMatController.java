@@ -1,9 +1,13 @@
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.TilePane;
 import se.chalmers.cse.dat216.project.*;
 import browseListItem.BrowseListItem;
+import paymentWizard.paymentWizard;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -20,6 +24,8 @@ public class iMatController implements Initializable {
     }
 
     public void test() {
+
+
 
     }
 }
