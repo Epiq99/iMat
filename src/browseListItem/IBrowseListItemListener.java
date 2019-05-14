@@ -1,5 +1,6 @@
 package browseListItem;
 
 public interface IBrowseListItemListener {
-    void notify(BrowseListItem item);
+    void addToCartNotify(BrowseListItem item);
+    void detailedViewNotify(BrowseListItem item);
 }

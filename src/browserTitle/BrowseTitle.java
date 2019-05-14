@@ -23,17 +23,6 @@ import java.util.List;
 
 public class BrowseTitle extends AnchorPane {
 
-    IMatDataHandler handler = IMatDataHandler.getInstance();
-
-    private static final Image addImage = new Image("images/add.png");
-    private static final Image minusImageRes = new Image("images/minus.png");
-    private static final Image favoriteFullImage = new Image("images/favorite_full.png");
-    private static final Image getFavoriteEmptyImage = new Image("images/favorite_empty.png");
-
-    public static final List<IBrowseListItemListener> listeners = new ArrayList<>();
-
-    private Product product;
-
     @FXML Label titleLable;
 
     public BrowseTitle(String title) {

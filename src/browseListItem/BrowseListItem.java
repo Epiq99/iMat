@@ -27,7 +27,7 @@ public class BrowseListItem extends AnchorPane {
     private static final Image addImage = new Image("images/add.png");
     private static final Image minusImageRes = new Image("images/minus.png");
     private static final Image favoriteFullImage = new Image("images/favorite_full.png");
-    private static final Image getFavoriteEmptyImage = new Image("images/favorite_empty.png");
+    private static final Image favoriteEmptyImage = new Image("images/favorite_empty.png");
 
     public static final List<IBrowseListItemListener> listeners = new ArrayList<>();
 
@@ -68,7 +68,7 @@ public class BrowseListItem extends AnchorPane {
         if(handler.isFavorite(product))
             favoriteImage.setImage(favoriteFullImage);
         else
-            favoriteImage.setImage(getFavoriteEmptyImage);
+            favoriteImage.setImage(favoriteEmptyImage);
 
         favoriteImage.setVisible(false);
 
@@ -97,31 +97,40 @@ public class BrowseListItem extends AnchorPane {
                 favoriteImage.setVisible(false)
                 );
 
+        itemNameLable.addEventHandler(MouseEvent.MOUSE_CLICKED, event->notifyOnDetailedView());
+
         favoriteImage.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> favoriteImage_click(event));
     }
 
     private void favoriteImage_click(MouseEvent event){
         if(handler.isFavorite(product)){
             handler.removeFavorite(product);
-            favoriteImage.setImage(new Image("images/favorite_empty.png"));
+            favoriteImage.setImage(favoriteEmptyImage);
         }
         else{
             handler.addFavorite(product);
-            favoriteImage.setImage(new Image("images/favorite_full.png"));
+            favoriteImage.setImage(favoriteFullImage);
         }
     }
 
     private void addToCart(){
         handler.getShoppingCart().addProduct(product, Double.parseDouble(amountField.getText()));
-        notifyListeners();
+        notifyOnCartChange();
     }
 
-    private void notifyListeners(){
+    private void notifyOnCartChange(){
         for(IBrowseListItemListener l: listeners)
-            l.notify(this);
+            l.addToCartNotify(this);
+    }
+
+    private void notifyOnDetailedView(){
+        for(IBrowseListItemListener l: listeners)
+            l.detailedViewNotify(this);
     }
 
     public static void addListener(IBrowseListItemListener listener){
         listeners.add(listener);
     }
+
+    public Product getProduct(){return product;}
 }
