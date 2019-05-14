@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -38,7 +39,7 @@ public class iMatController implements Initializable, IKategoriListner, IBrowseL
     @FXML ImageView cartImage;
     @FXML AnchorPane handlaMenuPane;
     @FXML AnchorPane helpMenuPane;
-
+    @FXML ScrollPane mainScrollPane;
     private ListItemPool itemPool;
 
     @Override
@@ -84,6 +85,8 @@ public class iMatController implements Initializable, IKategoriListner, IBrowseL
 
         for(Product p: handler.getProducts())
             browserPane.getChildren().add(itemPool.getBrowserListItem(p));
+
+        mainScrollPane.setHvalue(0);
     }
 
     void setUpOfferPage(){
@@ -154,6 +157,8 @@ public class iMatController implements Initializable, IKategoriListner, IBrowseL
         for(Product p: handler.getProducts())
             if(Arrays.asList(item.getCategories()).contains(p.getCategory()))
                 browserPane.getChildren().add(itemPool.getBrowserListItem(p));
+
+        mainScrollPane.setHvalue(0);
     }
 
     @Override
