@@ -13,22 +13,19 @@ import se.chalmers.cse.dat216.project.ProductCategory;
 
 import java.io.IOException;
 
-public class KategoriListItem extends AnchorPane {
+public abstract class KategoriListItem extends AnchorPane {
 
     IMatDataHandler handler = IMatDataHandler.getInstance();
 
     @FXML Label kategoriLable;
 
-    private ProductCategory[] kategorier;
     private String katName;
-    static private final List<IKategoriListner> listeners = new ArrayList<>();
 
-    public KategoriListItem(ProductCategory[] kat, String kategoriNamn) {
+    public KategoriListItem(String kategoriNamn) {
 
         katName = kategoriNamn;
-        kategorier = kat;
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("kategorilistitem.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../kategoriListItem/kategorilistitem.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 
@@ -43,16 +40,7 @@ public class KategoriListItem extends AnchorPane {
         this.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> onClick());
     }
     
-    private void onClick(){
-        for(IKategoriListner l: listeners)
-            l.notify(this);
-    }
-    
-    static public void addListener(IKategoriListner listner){
-        listeners.add(listner);
-    }
-
-    public ProductCategory[] getCategories() {return kategorier;}
+    abstract public void onClick();
 
     public String getCategoryName(){return katName;}
 }
