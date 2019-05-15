@@ -3,10 +3,12 @@ import browseListItem.ListItemPool;
 import browserTitle.BrowseTitle;
 import detailedview.DetailedView;
 import detailedview.IDetailedViewListener;
+import helppage.HelpPage;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -36,7 +38,8 @@ public class iMatController implements Initializable, IKategoriListner, IBrowseL
     @FXML AnchorPane cartImdicatorPnane;
     @FXML ImageView cartImage;
     @FXML AnchorPane handlaMenuPane;
-
+    @FXML AnchorPane helpMenuPane;
+    @FXML ScrollPane mainScrollPane;
     private ListItemPool itemPool;
 
     @Override
@@ -55,6 +58,9 @@ public class iMatController implements Initializable, IKategoriListner, IBrowseL
         handlaMenuPane.addEventHandler(MouseEvent.MOUSE_CLICKED, event->
                 setUpStartPage()
                 );
+        helpMenuPane.addEventHandler(MouseEvent.MOUSE_CLICKED, event ->
+                setUpHelpPage()
+        );
 
         setCategories();
         setUpStartPage();
@@ -62,7 +68,12 @@ public class iMatController implements Initializable, IKategoriListner, IBrowseL
         //favoriteButton.setOnAction(event->favoriteClicked());
     }
 
-    void setUpStartPage(){
+    private void setUpHelpPage(){
+        browserPane.getChildren().clear();
+        browserPane.getChildren().add(new HelpPage());
+    }
+
+    private void setUpStartPage(){
         browserPane.getChildren().clear();
         if(handler.favorites().size()>0) {
             browserPane.getChildren().add(new BrowseTitle("Favoriter"));
@@ -74,6 +85,8 @@ public class iMatController implements Initializable, IKategoriListner, IBrowseL
 
         for(Product p: handler.getProducts())
             browserPane.getChildren().add(itemPool.getBrowserListItem(p));
+
+        mainScrollPane.setHvalue(0);
     }
 
     void setUpOfferPage(){
@@ -144,6 +157,8 @@ public class iMatController implements Initializable, IKategoriListner, IBrowseL
         for(Product p: handler.getProducts())
             if(Arrays.asList(item.getCategories()).contains(p.getCategory()))
                 browserPane.getChildren().add(itemPool.getBrowserListItem(p));
+
+        mainScrollPane.setHvalue(0);
     }
 
     @Override
