@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<fx:root prefHeight="356.0" prefWidth="1120.0" styleClass="mainPane" stylesheets="@DetailedView.css" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <GridPane layoutX="157.0" layoutY="183.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <columnConstraints>
+          <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="659.0" minWidth="10.0" prefWidth="388.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="765.0" minWidth="10.0" prefWidth="732.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="326.0" minHeight="10.0" prefHeight="300.0" valignment="BOTTOM" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="381.0" minHeight="10.0" prefHeight="56.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <ImageView fx:id="productImageView" fitHeight="252.0" fitWidth="328.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../.dat215/imat/images/product_1.jpg" />
+               </image>
+            </ImageView>
+            <GridPane GridPane.columnIndex="1">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <GridPane GridPane.columnIndex="1">
+                    <columnConstraints>
+                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints maxHeight="104.0" minHeight="10.0" prefHeight="93.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="69.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="110.0" minHeight="10.0" prefHeight="47.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="118.0" minHeight="10.0" prefHeight="109.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <GridPane>
+                          <columnConstraints>
+                            <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="184.0" minWidth="10.0" prefWidth="184.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="113.0" minWidth="5.0" prefWidth="5.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="189.0" minWidth="10.0" prefWidth="177.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                              <RowConstraints maxHeight="63.0" minHeight="10.0" prefHeight="63.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="43.0" minHeight="10.0" prefHeight="31.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Label fx:id="priceLabel" styleClass="priceLable" text="10000" GridPane.rowIndex="1" />
+                              <Label fx:id="unitLabel" styleClass="priceLable" text="kr/g" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                           </children>
+                        </GridPane>
+                        <GridPane prefHeight="31.0" prefWidth="366.0" GridPane.rowIndex="1">
+                          <columnConstraints>
+                            <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="178.0" minWidth="10.0" prefWidth="161.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="244.0" minWidth="10.0" prefWidth="205.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Label fx:id="favoriteLable" text="  Favorit" GridPane.columnIndex="1">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fx:id="favoriteImage" fitHeight="28.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../resources/images/favorite_empty.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </GridPane>
+                        <GridPane prefHeight="45.0" prefWidth="196.0" GridPane.rowIndex="2">
+                           <columnConstraints>
+                              <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="89.0" minWidth="10.0" prefWidth="71.0" />
+                              <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="89.0" minWidth="10.0" prefWidth="64.0" />
+                              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="42.0" minWidth="6.0" prefWidth="15.0" />
+                              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="86.0" minWidth="10.0" prefWidth="64.0" />
+                              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="48.0" minWidth="10.0" prefWidth="17.0" />
+                              <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="69.0" minWidth="10.0" prefWidth="51.0" />
+                              <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="84.0" minWidth="10.0" prefWidth="84.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <ImageView fx:id="minusImage" fitHeight="35.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
+                                 <image>
+                                    <Image url="@../../resources/images/minus.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fx:id="plusImage" fitHeight="33.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5">
+                                 <image>
+                                    <Image url="@../../resources/images/add.png" />
+                                 </image>
+                              </ImageView>
+                              <TextField fx:id="amountField" alignment="BOTTOM_CENTER" text="1" GridPane.columnIndex="3" />
+                           </children>
+                        </GridPane>
+                        <Button fx:id="addButton" mnemonicParsing="false" prefHeight="38.0" prefWidth="198.0" text="Lägg till" GridPane.rowIndex="3" />
+                     </children>
+                  </GridPane>
+                  <GridPane>
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="174.0" minWidth="10.0" prefWidth="19.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="349.0" minWidth="10.0" prefWidth="347.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints maxHeight="133.0" minHeight="10.0" prefHeight="57.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="133.0" minHeight="10.0" prefHeight="55.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="239.0" minHeight="10.0" prefHeight="95.0" valignment="TOP" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="239.0" minHeight="10.0" prefHeight="107.0" valignment="TOP" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label fx:id="titleLabel" styleClass="titleLabel" text="Title of item" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Text fx:id="descriptionText" strokeType="OUTSIDE" strokeWidth="0.0" text="Detta är en mycket bra produkt som du borde köpa. Den kommer garanterat hålla sig till dina krav och göra dig nöjd. Priset är som vanligt bäst på marknaden då vi köper våra varor direkt från producenten, utan mellanhänder." wrappingWidth="325.306640625" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <ImageView fx:id="ecoImage" fitHeight="63.0" fitWidth="82.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                           <image>
+                              <Image url="@../../resources/images/ekologosk.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </GridPane>
+               </children>
+            </GridPane>
+         </children>
+      </GridPane>
+   </children>
+</fx:root>

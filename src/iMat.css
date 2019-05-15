@@ -1,0 +1,44 @@
+/*#54C95D #A5D057 #E0D565*/
+
+.kategorierLista{
+    -fx-pref-height: 500px;
+    -fx-background-color: #A5D057;
+}
+
+.kategoriRubrikLable{
+    -fx-font-size: 25px;
+}
+
+.favoriteButton{
+    -fx-background-color: #54C95D;
+}
+
+.favoriteButton:hover{
+    -fx-background-color: #A5D057;
+    -fx-cursor: hand;
+}
+
+.topBarLable{
+    -fx-font-size: 30px;
+}
+
+.topBarPane{
+    -fx-background-color: #54C95D;
+}
+
+.topBarPane:hover{
+    -fx-cursor: hand;
+    -fx-background-color: #A5D057;
+}
+
+.iMatLogoLable{
+    -fx-font-size: 40px;
+    -webkit-fx-font-family: "Blackadder ITC";
+}
+
+.cartIndicatorPane{
+    -fx-background-color: red;
+    -fx-background-radius: 15px;
+    -fx-pref-height: 30px;
+    -fx-pref-width: 30px;
+}

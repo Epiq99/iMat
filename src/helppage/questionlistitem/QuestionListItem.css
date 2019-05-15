@@ -1,0 +1,25 @@
+.arrow{
+    -fx-font-size: 30px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #54C95D;
+}
+
+.arrow:hover{
+    -fx-cursor: hand;
+}
+
+.questionText{
+    -fx-font-size: 18px;
+}
+
+.questionText:hover{
+    -fx-cursor: hand;
+}
+
+.mainPane{
+
+}
+
+.answerLable{
+    -fx-font-size: 15px;
+}
