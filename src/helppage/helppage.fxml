@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<fx:root fx:id="mainPane" prefHeight="568.0" prefWidth="1120.0" styleClass="mainPane" stylesheets="@HelpPage.css" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root fx:id="mainPane" prefHeight="568.0" prefWidth="1120.0" styleClass="mainPane" stylesheets="@HelpPage.css" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <GridPane layoutX="345.0" layoutY="217.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columnConstraints>
@@ -42,7 +42,7 @@
                   <RowConstraints maxHeight="268.0" minHeight="10.0" prefHeight="77.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label text="Tidigare frågot" GridPane.columnIndex="1">
+                  <Label text="Tidigare frågor" GridPane.columnIndex="1">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -55,11 +55,11 @@
                   <GridPane GridPane.columnIndex="1" GridPane.rowIndex="3">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="384.0" minWidth="4.0" prefWidth="4.0" />
-                        <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="743.0" minWidth="0.0" prefWidth="72.0" />
-                        <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="743.0" minWidth="10.0" prefWidth="20.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="743.0" minWidth="10.0" prefWidth="175.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="743.0" minWidth="10.0" prefWidth="44.0" />
-                        <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="743.0" minWidth="10.0" prefWidth="519.0" />
+                        <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="743.0" minWidth="0.0" prefWidth="91.0" />
+                        <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="743.0" minWidth="10.0" prefWidth="22.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="743.0" minWidth="10.0" prefWidth="215.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="743.0" minWidth="10.0" prefWidth="31.0" />
+                        <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="743.0" minWidth="10.0" prefWidth="438.0" />
                     </columnConstraints>
                     <rowConstraints>
                       <RowConstraints maxHeight="64.0" minHeight="1.0" prefHeight="2.0" vgrow="SOMETIMES" />
