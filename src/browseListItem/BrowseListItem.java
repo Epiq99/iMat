@@ -1,10 +1,8 @@
 package browseListItem;
 
 
-import javafx.event.ActionEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
 import javafx.scene.image.Image;
@@ -31,7 +29,9 @@ public class BrowseListItem extends AnchorPane {
 
     public static final List<IBrowseListItemListener> listeners = new ArrayList<>();
 
-    private Product product;
+    private final ShoppingItem shoppingItem;
+    private final Product product;
+    private int amount = 0;
 
     @FXML Label itemNameLable;
     @FXML Label priceLable;
@@ -39,13 +39,14 @@ public class BrowseListItem extends AnchorPane {
     @FXML ImageView itemImage;
     @FXML ImageView plusImage;
     @FXML ImageView minusImage;
-    @FXML Button addButton;
     @FXML TextField amountField;
     @FXML ImageView favoriteImage;
+    @FXML AnchorPane mainPane;
 
     public BrowseListItem(Product prod) {
 
         product = prod;
+        shoppingItem = new ShoppingItem(product, 0);
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("browselistitem.fxml"));
         fxmlLoader.setRoot(this);
@@ -73,20 +74,16 @@ public class BrowseListItem extends AnchorPane {
         favoriteImage.setVisible(false);
 
         //amountField.setTextFormatter(new TextFormatter<>(new DoubleStringConverter(), 1.0));
-        amountField.setTextFormatter(new TextFormatter<>(new IntegerStringConverter(), 1));
-
-        addButton.addEventHandler(ActionEvent.ACTION, (event)->
-                addToCart()
-        );
+        amountField.setTextFormatter(new TextFormatter<>(new IntegerStringConverter(), 0));
 
         //handler.getShoppingCart().addProduct(product, Double.parseDouble(amountField.getText()));
 
         plusImage.addEventHandler(MouseEvent.MOUSE_CLICKED, event->
-                amountField.setText(String.valueOf(Integer.parseInt(amountField.getText()) + 1))
+                plusImageClicked()
         );
 
         minusImage.addEventHandler(MouseEvent.MOUSE_CLICKED, event->
-                amountField.setText(String.valueOf(Integer.parseInt(amountField.getText()) - 1))
+                minusImageClicked()
         );
 
         this.addEventHandler(MouseEvent.MOUSE_ENTERED, event->
@@ -113,14 +110,33 @@ public class BrowseListItem extends AnchorPane {
         }
     }
 
-    private void addToCart(){
-        handler.getShoppingCart().addProduct(product, Double.parseDouble(amountField.getText()));
+    private void minusImageClicked(){
+        if(shoppingItem.getAmount()==0)
+            return;
+
+        shoppingItem.setAmount(shoppingItem.getAmount()-1);
+        amountField.setText(String.valueOf((int)shoppingItem.getAmount()));
+
+        if(shoppingItem.getAmount()==0) {
+            handler.getShoppingCart().removeItem(shoppingItem);
+            mainPane.setStyle("-fx-background-color: white");
+        }
+        notifyOnCartChange();
+    }
+
+    private void plusImageClicked(){
+        if(!handler.getShoppingCart().getItems().contains(shoppingItem))
+            handler.getShoppingCart().addItem(shoppingItem);
+
+        shoppingItem.setAmount(shoppingItem.getAmount() + 1);
+        amountField.setText(String.valueOf((int)shoppingItem.getAmount()));
+        mainPane.setStyle("-fx-background-color: #E0D565");
         notifyOnCartChange();
     }
 
     private void notifyOnCartChange(){
         for(IBrowseListItemListener l: listeners)
-            l.addToCartNotify(this);
+            l.cartChange(this);
     }
 
     private void notifyOnDetailedView(){
