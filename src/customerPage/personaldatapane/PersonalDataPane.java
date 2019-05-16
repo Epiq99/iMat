@@ -73,4 +73,5 @@ public class PersonalDataPane extends AnchorPane {
         return self;
     }
 
+    public TextField[] getEtries(){return entries;}
 }

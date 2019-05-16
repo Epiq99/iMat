@@ -42,22 +42,22 @@
               </rowConstraints>
                <children>
                   <Label styleClass="inputLable" text="Användarnamn:" GridPane.rowIndex="1" />
-                  <TextField fx:id="userNameEntry" styleClass="inputText" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <TextField fx:id="userNameEntry" styleClass="inputText" text="user123" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                   <Button fx:id="changeButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="211.0" text="Ändra" GridPane.columnIndex="2" />
                   <Label styleClass="inputLable" text="Gatuadress:" GridPane.rowIndex="6" />
-                  <TextField fx:id="entry5" styleClass="inputText" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+                  <TextField fx:id="entry5" styleClass="inputText" text="Användargatan 3" GridPane.columnIndex="2" GridPane.rowIndex="6" />
                   <Label styleClass="inputLable" text="Förnamn:" GridPane.rowIndex="2" />
-                  <TextField fx:id="entry1" styleClass="inputText" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                  <TextField fx:id="entry1" styleClass="inputText" text="Användare" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                   <Label styleClass="inputLable" text="Efternamn:" GridPane.rowIndex="3" />
                   <Label styleClass="inputLable" text="Telefon:" GridPane.rowIndex="4" />
                   <Label styleClass="inputLable" text="Postnummer:" GridPane.rowIndex="7" />
                   <Label styleClass="inputLable" text="Email:" GridPane.rowIndex="5" />
                   <Label styleClass="inputLable" text="Stad:" GridPane.rowIndex="8" />
-                  <TextField fx:id="entry2" styleClass="inputText" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-                  <TextField fx:id="entry3" styleClass="inputText" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-                  <TextField fx:id="entry4" styleClass="inputText" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-                  <TextField fx:id="entry6" styleClass="inputText" GridPane.columnIndex="2" GridPane.rowIndex="7" />
-                  <TextField fx:id="entry7" styleClass="inputText" GridPane.columnIndex="2" GridPane.rowIndex="8" />
+                  <TextField fx:id="entry2" styleClass="inputText" text="Användaresson" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                  <TextField fx:id="entry3" styleClass="inputText" text="123 456 789" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                  <TextField fx:id="entry4" styleClass="inputText" text="användare@gmail.com" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+                  <TextField fx:id="entry6" styleClass="inputText" text="123 45" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+                  <TextField fx:id="entry7" styleClass="inputText" text="Göteborg" GridPane.columnIndex="2" GridPane.rowIndex="8" />
                </children>
             </GridPane>
          </children>

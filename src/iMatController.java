@@ -4,6 +4,7 @@ import browserTitle.BrowseTitle;
 import customerPage.ISettingCategoryListener;
 import customerPage.SettingCategoryListItem;
 import customerPage.passwordsettings.PasswordSettingsPage;
+import customerPage.paymentsettings.PaymentSettingPane;
 import customerPage.personaldatapane.PersonalDataPane;
 import detailedview.DetailedView;
 import detailedview.IDetailedViewListener;
@@ -100,6 +101,7 @@ public class iMatController implements Initializable, IFoodCategoryListner,
         kategoriTilePane.getChildren().clear();
         kategoriTilePane.getChildren().add(new SettingCategoryListItem("Personuppgifter",PersonalDataPane.getInstance()));
         kategoriTilePane.getChildren().add(new SettingCategoryListItem("Lösenord", PasswordSettingsPage.getInstance()));
+        kategoriTilePane.getChildren().add(new SettingCategoryListItem("Betalningssätt", PaymentSettingPane.getInstance()));
 
         settingCategoryPressed(PersonalDataPane.getInstance());
         foodCategoriesUp = false;
