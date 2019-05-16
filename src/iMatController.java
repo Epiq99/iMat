@@ -2,6 +2,9 @@ import browseListItem.IBrowseListItemListener;
 import browseListItem.ListItemPool;
 import browserTitle.BrowseTitle;
 import customerPage.ISettingCategoryListener;
+import customerPage.SettingCategoryListItem;
+import customerPage.passwordsettings.PasswordSettingsPage;
+import customerPage.personaldatapane.PersonalDataPane;
 import detailedview.DetailedView;
 import detailedview.IDetailedViewListener;
 import foodcategorylistitem.FoodCategoryListItem;
@@ -18,7 +21,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.TilePane;
-import kategoriListItem.KategoriListItem;
 import se.chalmers.cse.dat216.project.*;
 import browseListItem.BrowseListItem;
 import javafx.scene.input.MouseEvent;
@@ -43,8 +45,11 @@ public class iMatController implements Initializable, IFoodCategoryListner,
     @FXML ImageView cartImage;
     @FXML AnchorPane handlaMenuPane;
     @FXML AnchorPane helpMenuPane;
+    @FXML AnchorPane myPagesPane;
     @FXML ScrollPane mainScrollPane;
     private ListItemPool itemPool;
+
+    private boolean foodCategoriesUp = false;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -56,6 +61,9 @@ public class iMatController implements Initializable, IFoodCategoryListner,
 
         BrowseListItem.addListener(this);
         DetailedView.addListener(this);
+        SettingCategoryListItem.addListener(this);
+        FoodCategoryListItem.addListener(this);
+
         cartImage.setImage(shoppingCartImage);
         cartImdicatorPnane.setVisible(false);
 
@@ -65,19 +73,32 @@ public class iMatController implements Initializable, IFoodCategoryListner,
         helpMenuPane.addEventHandler(MouseEvent.MOUSE_CLICKED, event ->
                 setUpHelpPage()
         );
+        myPagesPane.addEventHandler(MouseEvent.MOUSE_CLICKED, event->
+                setUpMyPages()
+                );
 
-        setCategories();
         setUpStartPage();
 
         //favoriteButton.setOnAction(event->favoriteClicked());
     }
 
+    private void setUpMyPages(){
+        kategoriTilePane.getChildren().clear();
+        kategoriTilePane.getChildren().add(new SettingCategoryListItem("Personuppgifter",PersonalDataPane.getInstance()));
+        kategoriTilePane.getChildren().add(new SettingCategoryListItem("Lösenord", PasswordSettingsPage.getInstance()));
+
+        settingCategoryPressed(PersonalDataPane.getInstance());
+        foodCategoriesUp = false;
+    }
+
     private void setUpHelpPage(){
+        setFoodCategories();
         browserPane.getChildren().clear();
         browserPane.getChildren().add(new HelpPage());
     }
 
     private void setUpStartPage(){
+        setFoodCategories();
         browserPane.getChildren().clear();
         if(handler.favorites().size()>0) {
             browserPane.getChildren().add(new BrowseTitle("Favoriter"));
@@ -106,8 +127,11 @@ public class iMatController implements Initializable, IFoodCategoryListner,
             browserPane.getChildren().add(itemPool.getBrowserListItem(p));
     }
 
-    void setCategories(){
-        FoodCategoryListItem.addListener(this);
+    void setFoodCategories(){
+        if(foodCategoriesUp)
+            return;
+
+        kategoriTilePane.getChildren().clear();
         kategoriTilePane.getChildren().add(new FoodCategoryListItem(new ProductCategory[]
                 {ProductCategory.MEAT},"Kött"));
 
@@ -142,6 +166,8 @@ public class iMatController implements Initializable, IFoodCategoryListner,
         kategoriTilePane.getChildren().add(new FoodCategoryListItem(new ProductCategory[]
                 {ProductCategory.FLOUR_SUGAR_SALT, ProductCategory.PASTA,
                         ProductCategory.POTATO_RICE},"Torrvaror"));
+
+        foodCategoriesUp = true;
     }
 
     public void search(){

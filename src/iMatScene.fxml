@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.TilePane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="879.0" prefWidth="1222.0" stylesheets="@iMat.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="iMatController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="879.0" prefWidth="1222.0" stylesheets="@iMat.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="iMatController">
    <children>
       <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columnConstraints>
@@ -128,7 +128,7 @@
                               <Label layoutX="107.0" layoutY="15.0" prefHeight="43.0" prefWidth="92.0" styleClass="topBarLable" text="Hjälp" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="107.0" AnchorPane.rightAnchor="106.0" AnchorPane.topAnchor="15.0" />
                            </children>
                         </AnchorPane>
-                        <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="topBarPane" GridPane.columnIndex="3">
+                        <AnchorPane fx:id="myPagesPane" prefHeight="200.0" prefWidth="200.0" styleClass="topBarPane" GridPane.columnIndex="3">
                            <children>
                               <Label layoutX="62.0" layoutY="15.0" prefHeight="43.0" prefWidth="181.0" styleClass="topBarLable" text="Mina sidor" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="62.0" AnchorPane.rightAnchor="62.0" AnchorPane.topAnchor="15.0" />
                            </children>

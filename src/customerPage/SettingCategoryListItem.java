@@ -11,7 +11,7 @@ public class SettingCategoryListItem extends KategoriListItem{
     private static final List<ISettingCategoryListener> listeners = new ArrayList<>();
     private AnchorPane settingspanel;
 
-    SettingCategoryListItem(String catName, AnchorPane pane){
+    public SettingCategoryListItem(String catName, AnchorPane pane){
         super(catName);
         settingspanel = pane;
     }
