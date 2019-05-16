@@ -24,7 +24,7 @@
           <RowConstraints maxHeight="32.0" minHeight="10.0" prefHeight="26.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label text="Hjällp">
+            <Label text="Hjälp">
                <font>
                   <Font size="49.0" />
                </font>
