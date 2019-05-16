@@ -13,6 +13,7 @@ import foodcategorylistitem.IFoodCategoryListner;
 import helppage.HelpPage;
 import javafx.collections.ListChangeListener;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -27,6 +28,7 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.TilePane;
 import se.chalmers.cse.dat216.project.*;
 import browseListItem.BrowseListItem;
+import paymentWizard.paymentWizard;
 import javafx.scene.input.MouseEvent;
 
 import java.net.URL;
@@ -228,7 +230,7 @@ public class iMatController implements Initializable, IFoodCategoryListner,
             cartImdicatorPnane.setVisible(true);
         cartImdicatorLabel.setText(String.valueOf(temp));
     }
-
+                                          
     @Override
     public void settingCategoryPressed(AnchorPane pane) {
         browserPane.getChildren().clear();
