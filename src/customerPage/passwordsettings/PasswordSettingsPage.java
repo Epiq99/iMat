@@ -90,7 +90,7 @@ public class PasswordSettingsPage extends AnchorPane {
         }
         errorMessagePane2.setVisible(false);
         handler.getUser().setPassword(newPass.getText());
-        
+
         currentPass.clear();
         confirmPass.clear();
         newPass.clear();
