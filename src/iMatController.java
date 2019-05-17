@@ -1,6 +1,7 @@
 import browseListItem.IBrowseListItemListener;
 import browseListItem.ListItemPool;
 import browserTitle.BrowseTitle;
+import cartPage.CartPage;
 import customerPage.ISettingCategoryListener;
 import customerPage.SettingCategoryListItem;
 import customerPage.passwordsettings.PasswordSettingsPage;
@@ -73,15 +74,10 @@ public class iMatController implements Initializable, IFoodCategoryListner,
         cartImage.setImage(shoppingCartImage);
         cartImdicatorPnane.setVisible(false);
 
-        handlaMenuPane.addEventHandler(MouseEvent.MOUSE_CLICKED, event->
-                setUpStartPage()
-                );
-        helpMenuPane.addEventHandler(MouseEvent.MOUSE_CLICKED, event ->
-                setUpHelpPage()
-        );
-        myPagesPane.addEventHandler(MouseEvent.MOUSE_CLICKED, event->
-                setUpMyPages()
-                );
+        handlaMenuPane.addEventHandler(MouseEvent.MOUSE_CLICKED, event-> setUpStartPage());
+        helpMenuPane.addEventHandler(MouseEvent.MOUSE_CLICKED, event ->  setUpHelpPage());
+        myPagesPane.addEventHandler(MouseEvent.MOUSE_CLICKED, event->    setUpMyPages());
+        cartImage.addEventHandler(MouseEvent.MOUSE_CLICKED, event->      setUpCartPage());
 
         kategoriTilePane.getChildren().addListener(new ListChangeListener<Node>() {
             @Override
@@ -130,6 +126,11 @@ public class iMatController implements Initializable, IFoodCategoryListner,
             browserPane.getChildren().add(itemPool.getBrowserListItem(p));
 
         mainScrollPane.setHvalue(0);
+    }
+
+    void setUpCartPage(){
+        browserPane.getChildren().clear();
+        browserPane.getChildren().add(CartPage.getInstance());
     }
 
     void setUpOfferPage(){

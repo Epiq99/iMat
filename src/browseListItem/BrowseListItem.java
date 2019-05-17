@@ -33,7 +33,7 @@ public class BrowseListItem extends AnchorPane {
     private final Product product;
     private int amount = 0;
 
-    @FXML Label itemNameLable;
+    @FXML Label itemNameLabel;
     @FXML Label priceLable;
     @FXML Label unitLable;
     @FXML ImageView itemImage;
@@ -58,7 +58,7 @@ public class BrowseListItem extends AnchorPane {
             throw new RuntimeException(exception);
         }
 
-        itemNameLable.setText(prod.getName());
+        itemNameLabel.setText(prod.getName());
         priceLable.setText(String.valueOf(prod.getPrice()));
         unitLable.setText(prod.getUnit());
         itemImage.setImage(handler.getFXImage(prod));
@@ -94,7 +94,7 @@ public class BrowseListItem extends AnchorPane {
                 favoriteImage.setVisible(false)
                 );
 
-        itemNameLable.addEventHandler(MouseEvent.MOUSE_CLICKED, event->notifyOnDetailedView());
+        itemNameLabel.addEventHandler(MouseEvent.MOUSE_CLICKED, event->notifyOnDetailedView());
 
         favoriteImage.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> favoriteImage_click(event));
     }
