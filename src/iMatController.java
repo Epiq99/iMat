@@ -210,10 +210,13 @@ public class iMatController implements Initializable, IFoodCategoryListner,
     }
 
     @Override
-    public void addToCartNotify(BrowseListItem item) {
+    public void cartChange(BrowseListItem item) {
         int temp = handler.getShoppingCart().getItems().size();
         if(temp>0)
             cartImdicatorPnane.setVisible(true);
+        else
+            cartImdicatorPnane.setVisible(false);
+        
         cartImdicatorLabel.setText(String.valueOf(temp));
     }
 
