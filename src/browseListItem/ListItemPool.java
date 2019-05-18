@@ -27,7 +27,9 @@ public class ListItemPool {
     }
 
     public BrowseListItem getBrowserListItem(Product p){
-        return listItems.get(p);
+        BrowseListItem item = listItems.get(p);
+        item.update();
+        return item;
     }
 
 }

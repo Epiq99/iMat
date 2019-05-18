@@ -99,6 +99,22 @@ public class BrowseListItem extends AnchorPane {
         favoriteImage.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> favoriteImage_click(event));
     }
 
+    public void update(){
+        if(handler.isFavorite(product))
+            favoriteImage.setImage(favoriteFullImage);
+        else
+            favoriteImage.setImage(favoriteEmptyImage);
+
+        if(shoppingItem.getAmount() !=0)
+            mainPane.setStyle("-fx-background-color: #E0D565");
+        else {
+            mainPane.setStyle("-fx-background-color: white");
+            handler.getShoppingCart().removeItem(shoppingItem);
+        }
+
+        amountField.setText(String.valueOf((int) shoppingItem.getAmount()));
+    }
+
     private void favoriteImage_click(MouseEvent event){
         if(handler.isFavorite(product)){
             handler.removeFavorite(product);
@@ -117,10 +133,7 @@ public class BrowseListItem extends AnchorPane {
         shoppingItem.setAmount(shoppingItem.getAmount()-1);
         amountField.setText(String.valueOf((int)shoppingItem.getAmount()));
 
-        if(shoppingItem.getAmount()==0) {
-            handler.getShoppingCart().removeItem(shoppingItem);
-            mainPane.setStyle("-fx-background-color: white");
-        }
+        update();
         notifyOnCartChange();
     }
 
@@ -129,8 +142,8 @@ public class BrowseListItem extends AnchorPane {
             handler.getShoppingCart().addItem(shoppingItem);
 
         shoppingItem.setAmount(shoppingItem.getAmount() + 1);
-        amountField.setText(String.valueOf((int)shoppingItem.getAmount()));
-        mainPane.setStyle("-fx-background-color: #E0D565");
+
+        update();
         notifyOnCartChange();
     }
 

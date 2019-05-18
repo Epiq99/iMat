@@ -2,6 +2,7 @@ package cartPage;
 
 
 import cartPage.cartListItem.CartListItem;
+import cartPage.cartListItem.ICartItemListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,13 +24,15 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CartPage extends AnchorPane {
+public class CartPage extends AnchorPane implements ICartItemListener {
 
     IMatDataHandler handler = IMatDataHandler.getInstance();
 
+    private static final List<ICartPageListener> listeners = new ArrayList<>();
     private static CartPage self;
 
     @FXML FlowPane itemFlowPane;
+    @FXML Label totalSumLabel;
 
     private CartPage() {
 
@@ -43,6 +46,8 @@ public class CartPage extends AnchorPane {
             throw new RuntimeException(exception);
         }
 
+        CartListItem.addListener(this);
+
         updateItemList();
     }
 
@@ -50,6 +55,8 @@ public class CartPage extends AnchorPane {
         itemFlowPane.getChildren().clear();
         for(ShoppingItem s: handler.getShoppingCart().getItems())
             itemFlowPane.getChildren().add(new CartListItem(s));
+        
+        totalSumLabel.setText(String.valueOf(handler.getShoppingCart().getTotal()));
     }
 
     public static CartPage getInstance(){
@@ -57,5 +64,25 @@ public class CartPage extends AnchorPane {
             self = new CartPage();
 
         return self;
+    }
+
+    @Override
+    public void removeFromList(CartListItem item) {
+        updateItemList();
+        notifyOnCartChange();
+    }
+
+    @Override
+    public void changeValues(CartListItem item) {
+        totalSumLabel.setText(String.valueOf(handler.getShoppingCart().getTotal()));
+    }
+
+    public static void addListener(ICartPageListener listener) {
+        listeners.add(listener);
+    }
+
+    private void notifyOnCartChange(){
+        for(ICartPageListener l: listeners)
+            l.onCartChanged(this);
     }
 }

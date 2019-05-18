@@ -2,6 +2,8 @@ import browseListItem.IBrowseListItemListener;
 import browseListItem.ListItemPool;
 import browserTitle.BrowseTitle;
 import cartPage.CartPage;
+import cartPage.ICartPageListener;
+import cartPage.cartListItem.ICartItemListener;
 import customerPage.ISettingCategoryListener;
 import customerPage.SettingCategoryListItem;
 import customerPage.passwordsettings.PasswordSettingsPage;
@@ -37,7 +39,7 @@ import java.util.*;
 
 public class iMatController implements Initializable, IFoodCategoryListner,
                                         IBrowseListItemListener, IDetailedViewListener,
-                                        ISettingCategoryListener {
+                                        ISettingCategoryListener, ICartPageListener {
     IMatDataHandler handler = IMatDataHandler.getInstance();
     private Image shoppingCartImage = new Image("images/shoppingcart.png");
 
@@ -70,6 +72,7 @@ public class iMatController implements Initializable, IFoodCategoryListner,
         DetailedView.addListener(this);
         SettingCategoryListItem.addListener(this);
         FoodCategoryListItem.addListener(this);
+        CartPage.addListener(this);
 
         cartImage.setImage(shoppingCartImage);
         cartImdicatorPnane.setVisible(false);
@@ -131,6 +134,7 @@ public class iMatController implements Initializable, IFoodCategoryListner,
     void setUpCartPage(){
         browserPane.getChildren().clear();
         browserPane.getChildren().add(CartPage.getInstance());
+        CartPage.getInstance().updateItemList();
     }
 
     void setUpOfferPage(){
@@ -196,6 +200,16 @@ public class iMatController implements Initializable, IFoodCategoryListner,
             browserPane.getChildren().add(itemPool.getBrowserListItem(p));
     }
 
+    private void updateCartIndicator(){
+        int temp = handler.getShoppingCart().getItems().size();
+        if(temp>0)
+            cartImdicatorPnane.setVisible(true);
+        else
+            cartImdicatorPnane.setVisible(false);
+
+        cartImdicatorLabel.setText(String.valueOf(temp));
+    }
+
     @Override
     public void notify(FoodCategoryListItem item) {
         browserPane.getChildren().clear();
@@ -212,13 +226,7 @@ public class iMatController implements Initializable, IFoodCategoryListner,
 
     @Override
     public void cartChange(BrowseListItem item) {
-        int temp = handler.getShoppingCart().getItems().size();
-        if(temp>0)
-            cartImdicatorPnane.setVisible(true);
-        else
-            cartImdicatorPnane.setVisible(false);
-        
-        cartImdicatorLabel.setText(String.valueOf(temp));
+        updateCartIndicator();
     }
 
     @Override
@@ -239,5 +247,10 @@ public class iMatController implements Initializable, IFoodCategoryListner,
     public void settingCategoryPressed(AnchorPane pane) {
         browserPane.getChildren().clear();
         browserPane.getChildren().add(pane);
+    }
+
+    @Override
+    public void onCartChanged(CartPage page) {
+        updateCartIndicator();
     }
 }
