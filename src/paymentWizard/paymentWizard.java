@@ -19,7 +19,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class paymentWizard implements Initializable {
+public class paymentWizard extends AnchorPane {
 
     @FXML private AnchorPane wizardPane;
 
@@ -72,16 +72,10 @@ public paymentWizard () {
             throw new RuntimeException(exception);
         }
 
+    //updateTotalCost();
+    //updateCardInfo();
+
 }
-
-
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-
-        updateTotalCost();
-        updateCardInfo();
-
-    }
 
 
         // Metoder för feedback

@@ -15,3 +15,7 @@
        -fx-font-size: 14px;
        -fx-font-family: "Arial";
 }
+
+.panes{
+    -fx-background-color: red;
+}
