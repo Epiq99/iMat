@@ -1,3 +1,5 @@
+/*#54C95D #A5D057 #E0D565*/
+
 .dark-panel {
     -fx-background-color: rgba(0, 0, 0, 0.75);
 }
@@ -17,5 +19,27 @@
 }
 
 .panes{
-    -fx-background-color: red;
+    -fx-background-color: white;
+}
+
+.wizButton{
+    -fx-background-color: #A5D057;
+    -fx-background-radius: 5px;
+}
+
+.wizButton:hover{
+    -fx-cursor: hand;
+    -fx-background-color: #E0D565;
+}
+
+.wizButtonLabel{
+    -fx-font-size: 22px;
+    -fx-text-fill: white;
+    -fx-font-weight: bolder;
+}
+
+.wizGuideLabel{
+    -fx-font-size: 15px;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
 }
