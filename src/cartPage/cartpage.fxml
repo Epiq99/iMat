@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<fx:root prefHeight="642.0" prefWidth="1120.0" styleClass="mainPane" stylesheets="@CartPage.css" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root prefHeight="642.0" prefWidth="1120.0" styleClass="mainPane" stylesheets="@CartPage.css" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <GridPane layoutX="118.0" layoutY="29.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columnConstraints>
@@ -40,7 +40,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button fx:id="checkoutButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="179.0" text="Gå till kassan" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="179.0" text="Gå till kassan" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <GridPane GridPane.columnIndex="1">
                     <columnConstraints>
                       <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="280.0" minWidth="10.0" prefWidth="280.0" />
@@ -52,9 +52,9 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Label styleClass="pricelabels" text="Total summa:" />
-                        <Label fx:id="totalSumLabel" styleClass="pricelabels" text="99999" GridPane.columnIndex="2" />
-                        <Label styleClass="pricelabels" text=" kr" GridPane.columnIndex="3" />
+                        <Label text="Total summa:" />
+                        <Label fx:id="totalSumLabel" text="99999" GridPane.columnIndex="2" />
+                        <Label text="kr" GridPane.columnIndex="3" />
                      </children>
                   </GridPane>
                </children>

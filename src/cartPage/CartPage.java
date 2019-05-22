@@ -33,7 +33,6 @@ public class CartPage extends AnchorPane implements ICartItemListener {
 
     @FXML FlowPane itemFlowPane;
     @FXML Label totalSumLabel;
-    @FXML Button checkoutButton;
 
     private CartPage() {
 
@@ -50,12 +49,6 @@ public class CartPage extends AnchorPane implements ICartItemListener {
         CartListItem.addListener(this);
 
         updateItemList();
-
-        checkoutButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> setUpPaymentWizard());
-    }
-
-    private void setUpPaymentWizard(){
-
     }
 
     public void updateItemList(){

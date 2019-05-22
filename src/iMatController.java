@@ -25,7 +25,10 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.*;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.TilePane;
 import se.chalmers.cse.dat216.project.*;
 import browseListItem.BrowseListItem;
 import paymentWizard.paymentWizard;
@@ -53,8 +56,6 @@ public class iMatController implements Initializable, IFoodCategoryListner,
     @FXML AnchorPane helpMenuPane;
     @FXML AnchorPane myPagesPane;
     @FXML ScrollPane mainScrollPane;
-    @FXML StackPane mainStackPane;
-
     private ListItemPool itemPool;
 
     private boolean foodCategoriesUp = false;
@@ -95,9 +96,6 @@ public class iMatController implements Initializable, IFoodCategoryListner,
         setUpStartPage();
 
         //favoriteButton.setOnAction(event->favoriteClicked());
-        mainStackPane.getChildren().add(new paymentWizard());
-
-
     }
 
     private void setUpMyPages(){
