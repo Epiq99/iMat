@@ -31,7 +31,7 @@
                   <GridPane prefHeight="710.0" prefWidth="1222.0" GridPane.rowIndex="1">
                     <columnConstraints>
                         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="260.0" minWidth="260.0" prefWidth="260.0" />
-                      <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="1142.0" minWidth="10.0" prefWidth="959.0" />
+                      <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="1300.0" minWidth="10.0" prefWidth="959.0" />
                     </columnConstraints>
                     <rowConstraints>
                       <RowConstraints maxHeight="759.0" minHeight="10.0" prefHeight="716.0" valignment="TOP" vgrow="SOMETIMES" />
@@ -67,13 +67,13 @@
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                     </columnConstraints>
                     <rowConstraints>
-                      <RowConstraints maxHeight="72.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
                       <RowConstraints maxHeight="75.0" minHeight="10.0" prefHeight="56.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="72.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <GridPane GridPane.rowIndex="1">
+                        <GridPane>
                           <columnConstraints>
-                            <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="476.0" minWidth="10.0" prefWidth="232.0" />
+                            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="476.0" minWidth="10.0" prefWidth="232.0" />
                             <ColumnConstraints hgrow="SOMETIMES" maxWidth="773.0" minWidth="10.0" prefWidth="561.0" />
                               <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="773.0" minWidth="0.0" prefWidth="0.0" />
                               <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="773.0" minWidth="10.0" prefWidth="168.0" />
@@ -103,9 +103,14 @@
                                     </AnchorPane>
                                  </children>
                               </AnchorPane>
+                              <ImageView fx:id="logoImageView" fitHeight="69.0" fitWidth="197.0" pickOnBounds="true" preserveRatio="true" styleClass="logo">
+                                 <image>
+                                    <Image url="@../resources/images/logo.png" />
+                                 </image>
+                              </ImageView>
                            </children>
                         </GridPane>
-                        <GridPane prefHeight="106.0" prefWidth="962.0">
+                        <GridPane prefHeight="106.0" prefWidth="962.0" GridPane.rowIndex="1">
                           <columnConstraints>
                               <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                               <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />

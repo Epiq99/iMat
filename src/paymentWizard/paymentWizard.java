@@ -19,7 +19,7 @@ import java.util.List;
 public class paymentWizard extends AnchorPane {
 
     @FXML Circle indicatorCircle, indicatorCircle1, indicatorCircle2;
-    @FXML AnchorPane cancelButton, nextButton;
+    @FXML AnchorPane cancelButton, nextButton, backButton;
     @FXML StackPane contenPane;
     @FXML AnchorPane deliveryPane, payPane, donePane;
     @FXML FlowPane reciptList;
@@ -52,33 +52,58 @@ public class paymentWizard extends AnchorPane {
         wizPanes = new AnchorPane[]{deliveryPane, payPane, donePane};
         circles = new Circle[]{indicatorCircle, indicatorCircle1, indicatorCircle2};
 
-        for(Circle c: circles)
-            c.setRadius(smallCircleRad);
-
-        for(ShoppingItem s: handler.getShoppingCart().getItems())
-            reciptList.getChildren().add(new ReciptItem(s.getProduct().getName(), (int) s.getAmount(), s.getTotal()));
-
-        finalPriceLabel.setText(String.valueOf(handler.getShoppingCart().getTotal()));
-
-        circles[currentPaneIndex].setRadius(bigCircleRad);
-        contenPane.getChildren().clear();
-        contenPane.getChildren().add(wizPanes[currentPaneIndex]);
-
         nextButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> nextClicked());
         cancelButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event->returnByCansel());
+        backButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event->backClicked());
+
+        update();
     }
 
     private void nextClicked() {
 
-        if(currentPaneIndex >= wizPanes.length) {
+        if(++currentPaneIndex >= wizPanes.length) {
             successfulReturn();
             return;
         }
-        circles[currentPaneIndex++].setRadius(smallCircleRad);
-        circles[currentPaneIndex].setRadius(bigCircleRad);
 
+        update();
+
+    }
+
+    private void backClicked(){
+        if(currentPaneIndex == 0){
+            return;
+        }
+
+        currentPaneIndex--;
+        update();
+    }
+
+    private void update(){
+        for(Circle c: circles)
+            c.setRadius(smallCircleRad);
+
+        backButton.setVisible(true);
+        circles[currentPaneIndex].setRadius(bigCircleRad);
         contenPane.getChildren().clear();
         contenPane.getChildren().add(wizPanes[currentPaneIndex]);
+
+        switch(currentPaneIndex){
+            case 0:
+                backButton.setVisible(false);
+                break;
+            case 1:
+
+                finalPriceLabel.setText(String.valueOf(handler.getShoppingCart().getTotal()));
+
+                reciptList.getChildren().clear();
+                for(ShoppingItem s: handler.getShoppingCart().getItems())
+                    reciptList.getChildren().add(new ReciptItem(s.getProduct().getName(), (int) s.getAmount(), s.getTotal()));
+                //TODO: Lägg till fraktkostnad i kvittot
+                break;
+            case 2:
+                break;
+        }
     }
 
     private void successfulReturn(){

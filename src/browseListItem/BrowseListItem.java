@@ -1,12 +1,15 @@
 package browseListItem;
 
 
+import javafx.scene.effect.BlurType;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.input.MouseEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import javafx.util.converter.IntegerStringConverter;
 import se.chalmers.cse.dat216.project.*;
 
@@ -57,6 +60,14 @@ public class BrowseListItem extends AnchorPane {
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
+
+        DropShadow dropShadow = new DropShadow();
+
+        dropShadow.setColor(Color.BLACK);
+        dropShadow.setOffsetX(3);
+        dropShadow.setOffsetY(3);
+
+        mainPane.setEffect(dropShadow);
 
         itemNameLabel.setText(prod.getName());
         priceLable.setText(String.valueOf(prod.getPrice()));

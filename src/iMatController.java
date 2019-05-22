@@ -40,6 +40,7 @@ public class iMatController implements Initializable, IFoodCategoryListner,
                                         ISettingCategoryListener, ICartPageListener, IPaymentWizardListener {
     IMatDataHandler handler = IMatDataHandler.getInstance();
     private Image shoppingCartImage = new Image("images/shoppingcart.png");
+    private static final Image logoImage = new Image("images/logo.png");
 
     @FXML FlowPane browserPane;
     @FXML TilePane kategoriTilePane;
@@ -49,7 +50,7 @@ public class iMatController implements Initializable, IFoodCategoryListner,
     @FXML Button searchButton;
     @FXML Label cartImdicatorLabel;
     @FXML AnchorPane cartImdicatorPnane;
-    @FXML ImageView cartImage;
+    @FXML ImageView cartImage, logoImageView;
     @FXML AnchorPane handlaMenuPane;
     @FXML AnchorPane helpMenuPane;
     @FXML AnchorPane myPagesPane;
@@ -77,11 +78,13 @@ public class iMatController implements Initializable, IFoodCategoryListner,
 
         cartImage.setImage(shoppingCartImage);
         cartImdicatorPnane.setVisible(false);
+        logoImageView.setImage(logoImage);
 
         handlaMenuPane.addEventHandler(MouseEvent.MOUSE_CLICKED, event-> setUpStartPage());
         helpMenuPane.addEventHandler(MouseEvent.MOUSE_CLICKED, event ->  setUpHelpPage());
         myPagesPane.addEventHandler(MouseEvent.MOUSE_CLICKED, event->    setUpMyPages());
         cartImage.addEventHandler(MouseEvent.MOUSE_CLICKED, event->      setUpCartPage());
+        logoImageView.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> setUpStartPage());
 
         kategoriTilePane.getChildren().addListener(new ListChangeListener<Node>() {
             @Override
