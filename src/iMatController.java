@@ -95,10 +95,6 @@ public class iMatController implements Initializable, IFoodCategoryListner,
         setUpStartPage();
 
         //favoriteButton.setOnAction(event->favoriteClicked());
-
-        //Debugging
-        handler.getShoppingCart().addProduct(handler.getProduct(2),3);
-        handler.getShoppingCart().addProduct(handler.getProduct(10),5);
         mainStackPane.getChildren().add(new paymentWizard());
 
 
@@ -248,7 +244,7 @@ public class iMatController implements Initializable, IFoodCategoryListner,
             cartImdicatorPnane.setVisible(true);
         cartImdicatorLabel.setText(String.valueOf(temp));
     }
-
+                                          
     @Override
     public void settingCategoryPressed(AnchorPane pane) {
         browserPane.getChildren().clear();
