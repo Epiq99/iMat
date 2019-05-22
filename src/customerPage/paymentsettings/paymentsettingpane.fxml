@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+
+<fx:root prefHeight="462.0" prefWidth="1120.0" styleClass="mainPane" stylesheets="@PaymentSettingPane.css" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <GridPane layoutX="101.0" layoutY="76.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="554.0" minWidth="10.0" prefWidth="151.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="994.0" minWidth="10.0" prefWidth="969.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="144.0" minHeight="10.0" prefHeight="93.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="338.0" minHeight="10.0" prefHeight="317.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="53.0" minHeight="0.0" prefHeight="21.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="Betalningssätt" GridPane.columnIndex="1">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <GridPane GridPane.columnIndex="1" GridPane.rowIndex="1">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="535.0" minWidth="10.0" prefWidth="535.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="947.0" minWidth="10.0" prefWidth="434.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="87.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="166.0" minHeight="10.0" prefHeight="141.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="166.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="93.0" minHeight="10.0" prefHeight="48.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="93.0" minHeight="10.0" prefHeight="54.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <RadioButton fx:id="cardPayRadioButton" mnemonicParsing="false" styleClass="radioButton" text="Betalkort">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="group1" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <GridPane GridPane.rowIndex="1">
+                    <columnConstraints>
+                      <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="262.0" minWidth="10.0" prefWidth="147.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="449.0" minWidth="10.0" prefWidth="29.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="400.0" minWidth="10.0" prefWidth="374.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="44.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="39.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label styleClass="inputLable" text="Kortnummer:" />
+                        <Label styleClass="inputLable" text="Utgångsdatum:" GridPane.rowIndex="1" />
+                        <Label styleClass="inputLable" text="Förnamn:" GridPane.rowIndex="2" />
+                        <Label styleClass="inputLable" text="Efternamn:" GridPane.rowIndex="3" />
+                        <PasswordField fx:id="entry1" GridPane.columnIndex="2" />
+                        <TextField fx:id="entry4" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                        <TextField fx:id="entry5" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                        <GridPane GridPane.columnIndex="2" GridPane.rowIndex="1">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="72.0" minWidth="10.0" prefWidth="66.0" />
+                            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="113.0" minWidth="10.0" prefWidth="19.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="307.0" minWidth="10.0" prefWidth="63.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="249.0" minWidth="10.0" prefWidth="243.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <TextField fx:id="entry2" />
+                              <TextField fx:id="entry3" GridPane.columnIndex="2" />
+                              <Label styleClass="inputLable" text="/" GridPane.columnIndex="1" />
+                           </children>
+                        </GridPane>
+                     </children>
+                  </GridPane>
+                  <RadioButton fx:id="billRadioButton" mnemonicParsing="false" styleClass="radioButton" text="Faktura" toggleGroup="$group1" GridPane.rowIndex="2" />
+                  <GridPane GridPane.rowIndex="3">
+                    <columnConstraints>
+                      <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="256.0" minWidth="10.0" prefWidth="232.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="364.0" minWidth="10.0" prefWidth="71.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="364.0" minWidth="10.0" prefWidth="348.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label styleClass="inputLable" text="Faktureringsadress:" />
+                        <Label fx:id="billingAddress" prefHeight="16.0" prefWidth="307.0" text="Min adress" GridPane.columnIndex="2" />
+                     </children>
+                  </GridPane>
+                  <RadioButton fx:id="deliveryRadioButton" mnemonicParsing="false" styleClass="radioButton" text="Betala vid leverans" toggleGroup="$group1" GridPane.rowIndex="4" />
+               </children>
+            </GridPane>
+         </children>
+      </GridPane>
+   </children>
+</fx:root>

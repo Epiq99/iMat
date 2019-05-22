@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -8,29 +9,102 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<fx:root prefHeight="207.0" prefWidth="200.0" styleClass="mainPane" stylesheets="@BrowseListItem.css" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root fx:id="mainPane" prefHeight="238.0" prefWidth="200.0" styleClass="mainPane" stylesheets="@BrowseListItem.css" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ImageView fx:id="itemImage" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <image>
-            <Image url="@../../resources/images/product_1.jpg" />
-         </image></ImageView>
-      <Label fx:id="itemNameLable" layoutX="14.0" layoutY="158.0" prefHeight="16.0" prefWidth="168.0" styleClass="itemNameLable" text="Label" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="158.0" />
-      <AnchorPane layoutX="99.0" layoutY="14.0" prefHeight="60.0" prefWidth="83.0" styleClass="pricePane">
+      <GridPane layoutX="3.0" layoutY="3.0" prefHeight="255.0" prefWidth="196.0" AnchorPane.bottomAnchor="-2.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0">
+        <columnConstraints>
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="151.0" minHeight="10.0" prefHeight="146.0" valignment="CENTER" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="105.0" minHeight="10.0" prefHeight="78.0" vgrow="SOMETIMES" />
+        </rowConstraints>
          <children>
-            <GridPane layoutX="7.0" layoutY="15.0" prefHeight="30.0" prefWidth="53.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <ImageView fx:id="itemImage" fitHeight="180.0" fitWidth="180.0" pickOnBounds="true" preserveRatio="true" styleClass="itemImage">
+               <image>
+                  <Image url="@../../../../../.dat215/imat/images/product_1.jpg" />
+               </image>
+            </ImageView>
+            <GridPane prefHeight="131.0" prefWidth="198.0" GridPane.rowIndex="1">
               <columnConstraints>
-                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="80.0" minWidth="10.0" prefWidth="61.0" />
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
               </columnConstraints>
               <rowConstraints>
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label fx:id="unitLable" styleClass="priceLable" text="kr" GridPane.rowIndex="1" />
-                  <Label fx:id="priceLable" alignment="CENTER" contentDisplay="CENTER" prefHeight="21.0" prefWidth="56.0" styleClass="priceLable" text="99.99" />
+                  <GridPane>
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="87.0" minWidth="7.0" prefWidth="15.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="191.0" minWidth="10.0" prefWidth="183.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="TOP" />
+                    </rowConstraints>
+                     <children>
+                        <Label fx:id="itemNameLable" prefHeight="16.0" prefWidth="162.0" styleClass="itemNameLable" text="Label" GridPane.columnIndex="1" />
+                        <GridPane GridPane.columnIndex="1" GridPane.rowIndex="1">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="84.0" minWidth="10.0" prefWidth="71.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="120.0" minWidth="10.0" prefWidth="110.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Label fx:id="unitLable" prefHeight="21.0" prefWidth="95.0" styleClass="priceLable" text="kr" GridPane.columnIndex="1" />
+                              <Label fx:id="priceLable" alignment="CENTER" prefHeight="21.0" prefWidth="80.0" styleClass="priceLable" text="99.99" />
+                           </children>
+                        </GridPane>
+                     </children>
+                  </GridPane>
+                  <GridPane prefHeight="45.0" prefWidth="196.0" GridPane.rowIndex="1">
+                    <columnConstraints>
+                      <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="89.0" minWidth="10.0" prefWidth="58.0" />
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="42.0" minWidth="6.0" prefWidth="18.0" />
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="86.0" minWidth="10.0" prefWidth="62.0" />
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="48.0" minWidth="10.0" prefWidth="18.0" />
+                      <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="69.0" minWidth="10.0" prefWidth="53.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <ImageView fx:id="minusImage" fitHeight="35.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true" styleClass="plusMinusImage">
+                           <image>
+                              <Image url="@../../resources/images/minus.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="plusImage" fitHeight="33.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true" styleClass="plusMinusImage" GridPane.columnIndex="4">
+                           <image>
+                              <Image url="@../../resources/images/add.png" />
+                           </image>
+                        </ImageView>
+                        <TextField fx:id="amountField" alignment="BOTTOM_CENTER" text="0" GridPane.columnIndex="2" />
+                     </children>
+                  </GridPane>
+               </children>
+            </GridPane>
+            <GridPane>
+              <columnConstraints>
+                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="89.0" minWidth="10.0" prefWidth="46.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="149.0" minWidth="10.0" prefWidth="148.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="67.0" minHeight="10.0" prefHeight="40.0" valignment="BOTTOM" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="112.0" minHeight="10.0" prefHeight="105.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <ImageView fx:id="favoriteImage" fitHeight="31.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../resources/images/favorite_empty.png" />
+                     </image>
+                  </ImageView>
                </children>
             </GridPane>
          </children>
-      </AnchorPane>
+      </GridPane>
    </children>
 </fx:root>

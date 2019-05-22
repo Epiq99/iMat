@@ -1,0 +1,11 @@
+.titleLabel{
+    -fx-font-size: 25px;
+}
+
+.inputLable{
+    -fx-font-size: 15px;
+}
+
+.inputText{
+    -fx-font-size: 13px;
+}
