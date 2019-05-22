@@ -13,6 +13,7 @@ import paymentWizard.reciptItem.ReciptItem;
 import se.chalmers.cse.dat216.project.*;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class paymentWizard extends AnchorPane {
@@ -22,10 +23,15 @@ public class paymentWizard extends AnchorPane {
     @FXML StackPane contenPane;
     @FXML AnchorPane deliveryPane, payPane, donePane;
     @FXML FlowPane reciptList;
-    //@FXML Label finalPriceLabel;
+    @FXML Label finalPriceLabel;
 
     AnchorPane[] wizPanes;
     Circle[] circles;
+
+    private static List<IPaymentWizardListener> listeners = new ArrayList<>();
+
+    private static final int bigCircleRad = 20;
+    private static final int smallCircleRad = 10;
 
     private int currentPaneIndex;
     private IMatDataHandler handler = IMatDataHandler.getInstance();
@@ -47,18 +53,19 @@ public class paymentWizard extends AnchorPane {
         circles = new Circle[]{indicatorCircle, indicatorCircle1, indicatorCircle2};
 
         for(Circle c: circles)
-            c.setRadius(5);
+            c.setRadius(smallCircleRad);
 
         for(ShoppingItem s: handler.getShoppingCart().getItems())
             reciptList.getChildren().add(new ReciptItem(s.getProduct().getName(), (int) s.getAmount(), s.getTotal()));
 
-        //finalPriceLabel.setText(String.valueOf(handler.getShoppingCart().getTotal()));
+        finalPriceLabel.setText(String.valueOf(handler.getShoppingCart().getTotal()));
 
-        circles[currentPaneIndex].setRadius(10);
+        circles[currentPaneIndex].setRadius(bigCircleRad);
         contenPane.getChildren().clear();
         contenPane.getChildren().add(wizPanes[currentPaneIndex]);
 
         nextButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> nextClicked());
+        cancelButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event->returnByCansel());
     }
 
     private void nextClicked() {
@@ -67,19 +74,29 @@ public class paymentWizard extends AnchorPane {
             successfulReturn();
             return;
         }
-        circles[currentPaneIndex++].setRadius(5);
-        circles[currentPaneIndex].setRadius(10);
+        circles[currentPaneIndex++].setRadius(smallCircleRad);
+        circles[currentPaneIndex].setRadius(bigCircleRad);
 
         contenPane.getChildren().clear();
         contenPane.getChildren().add(wizPanes[currentPaneIndex]);
     }
 
     private void successfulReturn(){
-
+        handler.getShoppingCart().clear();
+        notifyToReturn();
     }
 
     private void returnByCansel(){
+        notifyToReturn();
+    }
 
+    private void notifyToReturn(){
+        for(IPaymentWizardListener l: listeners)
+            l.notifyOnReturn(this);
+    }
+
+    public static void addListener(IPaymentWizardListener listener){
+        listeners.add(listener);
     }
 
     /*

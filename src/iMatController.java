@@ -30,13 +30,14 @@ import se.chalmers.cse.dat216.project.*;
 import browseListItem.BrowseListItem;
 import paymentWizard.paymentWizard;
 import javafx.scene.input.MouseEvent;
+import paymentWizard.*;
 
 import java.net.URL;
 import java.util.*;
 
 public class iMatController implements Initializable, IFoodCategoryListner,
                                         IBrowseListItemListener, IDetailedViewListener,
-                                        ISettingCategoryListener, ICartPageListener {
+                                        ISettingCategoryListener, ICartPageListener, IPaymentWizardListener {
     IMatDataHandler handler = IMatDataHandler.getInstance();
     private Image shoppingCartImage = new Image("images/shoppingcart.png");
 
@@ -72,6 +73,7 @@ public class iMatController implements Initializable, IFoodCategoryListner,
         SettingCategoryListItem.addListener(this);
         FoodCategoryListItem.addListener(this);
         CartPage.addListener(this);
+        paymentWizard.addListener(this);
 
         cartImage.setImage(shoppingCartImage);
         cartImdicatorPnane.setVisible(false);
@@ -255,5 +257,10 @@ public class iMatController implements Initializable, IFoodCategoryListner,
     @Override
     public void onCartChanged(CartPage page) {
         updateCartIndicator();
+    }
+
+    @Override
+    public void notifyOnReturn(paymentWizard item) {
+        mainStackPane.getChildren().remove(item);
     }
 }

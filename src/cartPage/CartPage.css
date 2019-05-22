@@ -1,0 +1,16 @@
+
+.goButton:hover{
+    -fx-cursor: hand;
+    -fx-background-color: #E0D565;
+}
+
+.goButton{
+    -fx-background-color: #A5D057;
+    -fx-background-radius: 5px;
+}
+
+.goButtonLabel{
+    -fx-font-size: 22px;
+    -fx-text-fill: white;
+    -fx-font-weight: bolder;
+}

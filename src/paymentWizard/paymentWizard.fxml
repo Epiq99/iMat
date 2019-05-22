@@ -13,6 +13,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -58,9 +59,9 @@
                                  <children>
                                     <GridPane layoutY="52.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                       <columnConstraints>
-                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="170.0" minWidth="10.0" prefWidth="73.0" />
-                                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="293.0" minWidth="10.0" prefWidth="229.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="255.0" minWidth="10.0" prefWidth="77.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="170.0" minWidth="10.0" prefWidth="75.0" />
+                                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="255.0" minWidth="10.0" prefWidth="75.0" />
                                       </columnConstraints>
                                       <rowConstraints>
                                           <RowConstraints maxHeight="21.0" minHeight="10.0" prefHeight="21.0" vgrow="SOMETIMES" />
@@ -71,6 +72,7 @@
                                        <children>
                                           <Circle fx:id="indicatorCircle" fill="WHITE" radius="9.0" stroke="WHITE" strokeType="INSIDE" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                           <Label fx:id="indicatorLabel" alignment="CENTER" prefHeight="26.0" prefWidth="71.0" styleClass="wizGuideLabel" text="Frakt" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="8.0" stroke="WHITE" strokeType="INSIDE" width="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                                        </children>
                                     </GridPane>
                                  </children>
@@ -79,9 +81,9 @@
                                  <children>
                                     <GridPane layoutY="52.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <columnConstraints>
-                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="170.0" minWidth="10.0" prefWidth="73.0" />
-                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="293.0" minWidth="10.0" prefWidth="229.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="255.0" minWidth="10.0" prefWidth="77.0" />
+                                          <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="170.0" minWidth="10.0" prefWidth="75.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="255.0" minWidth="10.0" prefWidth="75.0" />
                                        </columnConstraints>
                                        <rowConstraints>
                                           <RowConstraints maxHeight="21.0" minHeight="10.0" prefHeight="21.0" vgrow="SOMETIMES" />
@@ -92,6 +94,8 @@
                                        <children>
                                           <Circle fx:id="indicatorCircle1" fill="WHITE" radius="9.0" stroke="WHITE" strokeType="INSIDE" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                           <Label fx:id="indicatorLabel1" alignment="CENTER" prefHeight="26.0" prefWidth="141.0" styleClass="wizGuideLabel" text="Bekräfta köp" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="8.0" stroke="WHITE" strokeType="INSIDE" width="200.0" GridPane.rowIndex="1" />
+                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="8.0" stroke="WHITE" strokeType="INSIDE" width="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                                        </children>
                                     </GridPane>
                                  </children>
@@ -100,9 +104,9 @@
                                  <children>
                                     <GridPane layoutY="52.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <columnConstraints>
-                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="170.0" minWidth="10.0" prefWidth="73.0" />
-                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="293.0" minWidth="10.0" prefWidth="229.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="255.0" minWidth="10.0" prefWidth="77.0" />
+                                          <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="75.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="120.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="75.0" />
                                        </columnConstraints>
                                        <rowConstraints>
                                           <RowConstraints maxHeight="21.0" minHeight="10.0" prefHeight="21.0" vgrow="SOMETIMES" />
@@ -113,6 +117,7 @@
                                        <children>
                                           <Circle fx:id="indicatorCircle2" fill="WHITE" radius="9.0" stroke="WHITE" strokeType="INSIDE" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                           <Label fx:id="indicatorLabel2" alignment="CENTER" prefHeight="26.0" prefWidth="161.0" styleClass="wizGuideLabel" text="Köp genomfört" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="8.0" stroke="WHITE" strokeType="INSIDE" width="200.0" GridPane.rowIndex="1" />
                                        </children>
                                     </GridPane>
                                  </children>
@@ -295,7 +300,7 @@
                                                       <Font size="22.0" />
                                                    </font>
                                                 </Label>
-                                                <Label alignment="BOTTOM_CENTER" layoutX="156.0" layoutY="14.0" text="1000" GridPane.columnIndex="2">
+                                                <Label fx:id="finalPriceLabel" alignment="BOTTOM_CENTER" layoutX="156.0" layoutY="14.0" text="1000" GridPane.columnIndex="2">
                                                    <font>
                                                       <Font size="22.0" />
                                                    </font>
