@@ -1,0 +1,23 @@
+.button:hover{
+    -fx-cursor: hand;
+}
+
+.button{
+    -fx-background-color: #A5D057;
+    -fx-background-radius: 5px;
+    -fx-font-size: 22px;
+    -fx-text-fill: white;
+    -fx-font-weight: bolder;
+}
+
+.inactive-button{
+    -fx-background-color: gray;
+    -fx-background-radius: 5px;
+    -fx-font-size: 22px;
+    -fx-text-fill: white;
+    -fx-font-weight: bolder;
+}
+
+.inactive-button:hover{
+    -fx-cursor: pointer;
+}

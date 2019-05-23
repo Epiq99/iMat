@@ -1,231 +1,134 @@
 package paymentWizard;
 
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.control.*;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
+import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.shape.Circle;
+import paymentWizard.reciptItem.ReciptItem;
 import se.chalmers.cse.dat216.project.*;
-import se.chalmers.cse.dat216.project.IMatDataHandler;
-import se.chalmers.cse.dat216.project.ShoppingCart;
-import se.chalmers.cse.dat216.project.Product;
 
 import java.io.IOException;
-import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.ResourceBundle;
 
-public class paymentWizard implements Initializable {
+public class paymentWizard extends AnchorPane {
 
-    @FXML private AnchorPane wizardPane;
+    @FXML Circle indicatorCircle, indicatorCircle1, indicatorCircle2;
+    @FXML AnchorPane cancelButton, nextButton, backButton;
+    @FXML StackPane contenPane;
+    @FXML AnchorPane deliveryPane, payPane, donePane;
+    @FXML FlowPane reciptList;
+    @FXML Label finalPriceLabel, nextButtonLabel;
 
-    // Första sidan
-    @FXML private AnchorPane pageOne;
-    @FXML private Label deliveryTitle;
-    @FXML private RadioButton deliveryNormal;
-    @FXML private RadioButton deliveryExpress;
-    @FXML private ImageView POCancel;
-    @FXML private ImageView PONext;
+    AnchorPane[] wizPanes;
+    Circle[] circles;
 
-    // Andra sidan
-    @FXML private AnchorPane pageTwo;
-    @FXML private Label payTitle;
-    @FXML private RadioButton payCard;
-    @FXML private RadioButton payInvoice;
-    @FXML private ImageView infoButton;
-    @FXML private ImageView PTPay;
-    @FXML private ImageView PTPrevious;
-    @FXML private Label priceLabel;
-    @FXML private Label cardLabel;
-    @FXML private PasswordField cvcField;
+    private static List<IPaymentWizardListener> listeners = new ArrayList<>();
 
-    // Tredje sidan
-    @FXML private AnchorPane pageThree;
-    @FXML private Label titleConfirm;
-    @FXML private ImageView backToFront;
-    @FXML private ImageView recipeButton;
+    private static final int bigCircleRad = 20;
+    private static final int smallCircleRad = 10;
 
-    // Info CVC pop-up
-    @FXML private AnchorPane infoPage;
+    private int currentPaneIndex;
+    private IMatDataHandler handler = IMatDataHandler.getInstance();
 
-    // Recipe pop-up
-    @FXML private AnchorPane recipePage;
-    @FXML private TextArea recipeList;
-
-
-    private IMatDataHandler iMatDataHandler = IMatDataHandler.getInstance();
-    private ShoppingCart shoppingCart = iMatDataHandler.getShoppingCart();
-
-public paymentWizard () {
+    public paymentWizard() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("paymentWizard.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 
         try {
-        fxmlLoader.load();
-         } catch (
-                 IOException exception) {
+            fxmlLoader.load();
+        } catch (
+                IOException exception) {
             throw new RuntimeException(exception);
         }
 
-}
+        currentPaneIndex = 0;
+        wizPanes = new AnchorPane[]{deliveryPane, payPane, donePane};
+        circles = new Circle[]{indicatorCircle, indicatorCircle1, indicatorCircle2};
 
+        nextButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> nextClicked());
+        cancelButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event->returnByCansel());
+        backButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event->backClicked());
 
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
+        update();
+    }
 
-        updateTotalCost();
-        updateCardInfo();
+    private void nextClicked() {
+
+        if(++currentPaneIndex >= wizPanes.length) {
+            successfulReturn();
+            return;
+        }
+
+        update();
 
     }
 
+    private void backClicked(){
+        if(currentPaneIndex == 0){
+            return;
+        }
 
-        // Metoder för feedback
-
-    @FXML
-    public void cancelEnter(){
-        POCancel.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
-                "paymentWizard/wizardPictures/CancelClick_00000.png")));
+        currentPaneIndex--;
+        update();
     }
 
-    @FXML
-    public void nextEnter(){
-        PONext.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
-                "paymentWizard/wizardPictures/NextClick_00000.png")));
+    private void update(){
+        for(Circle c: circles)
+            c.setRadius(smallCircleRad);
+
+        backButton.setVisible(true);
+        circles[currentPaneIndex].setRadius(bigCircleRad);
+        contenPane.getChildren().clear();
+        contenPane.getChildren().add(wizPanes[currentPaneIndex]);
+
+        switch(currentPaneIndex){
+            case 0:
+                backButton.setVisible(false);
+                break;
+            case 1:
+
+                finalPriceLabel.setText(String.valueOf(handler.getShoppingCart().getTotal()));
+                nextButtonLabel.setText("Betala");
+                break;
+            case 2:
+                reciptList.getChildren().clear();
+                for(ShoppingItem s: handler.getShoppingCart().getItems())
+                    reciptList.getChildren().add(new ReciptItem(s.getProduct().getName(), (int) s.getAmount(), s.getTotal()));
+                //TODO: Lägg till fraktkostnad i kvittot
+
+                nextButtonLabel.setText("Avsluta");
+                break;
+        }
     }
 
-    @FXML
-    public void backEnter(){
-        PTPrevious.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
-                "paymentWizard/wizardPictures/BackClick_00000.png")));
+    private void successfulReturn(){
+        handler.getShoppingCart().clear();
+        notifyToReturn();
     }
 
-    @FXML
-    public void payEnter(){
-        PTPay.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
-                "paymentWizard/wizardPictures/PayClick_00000.png")));
+    private void returnByCansel(){
+        notifyToReturn();
     }
 
-    @FXML
-    public void BTFEnter(){
-        backToFront.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
-                "paymentWizard/wizardPictures/BTFClick_00000.png")));
+    private void notifyToReturn(){
+        for(IPaymentWizardListener l: listeners)
+            l.notifyOnReturn(this);
     }
 
-    @FXML
-    public void recipeEnter(){
-        recipeButton.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
-                "paymentWizard/wizardPictures/KvittoClick_00000.png")));
+    public static void addListener(IPaymentWizardListener listener){
+        listeners.add(listener);
     }
 
-    @FXML
-    public void infoEnter(){
-        infoButton.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
-                "paymentWizard/wizardPictures/InfoClick_00000.png")));
-    }
+    /*
+     private  void updateCardInfo () {
 
-
-
-    //// ---------------------- ////
-
-    @FXML
-    public void cancelExited(){
-        POCancel.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
-                "paymentWizard/wizardPictures/CancelNormal_00000.png")));
-    }
-
-    @FXML
-    public void nextExited(){
-        PONext.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
-                "paymentWizard/wizardPictures/NextNormal_00000.png")));
-    }
-
-    @FXML
-    public void backExited(){
-        PTPrevious.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
-                "paymentWizard/wizardPictures/BackNormal_00000.png")));
-    }
-
-    @FXML
-    public void payExited(){
-        PTPay.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
-                "paymentWizard/wizardPictures/PayNormal_00000.png")));
-    }
-
-    @FXML
-    public void BTFExited(){
-        backToFront.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
-                "paymentWizard/wizardPictures/BTFNormal_00000.png")));
-    }
-
-    @FXML
-    public void recipeExited(){
-        recipeButton.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
-                "paymentWizard/wizardPictures/KvittoNormal_00000.png")));
-    }
-
-    @FXML
-    public void infoExited(){
-        infoButton.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
-                "paymentWizard/wizardPictures/InfoNormal_00000.png")));
-    }
-
-    // Metoder för knapptryck
-
-    @FXML
-    public void cancelClicked(){
-
-        // TODO: Lägg till funktionalitet för att stänga fönstret.
-
-    }
-
-    @FXML
-    public void nextClick(){
-        pageTwo.toFront();
-    }
-
-    @FXML
-    public void payClick(){
-        pageThree.toFront();
-    }
-
-    @FXML
-    public void backClick(){
-        pageOne.toFront();
-    }
-
-    @FXML
-    public void BTFClick(){
-
-        // TODO: Lägg till funktionalitet för att återgå till startsidan.
-
-    }
-
-    @FXML
-    public void infoClick(){
-        infoPage.toFront();
-    }
-
-    @FXML
-    public void recipeClick(ShoppingCart shoppingCart){
-        updateRecipe(shoppingCart);
-        recipePage.toFront();
-    }
-
-
-    // Hjälpmetoder
-
-    private void updateTotalCost () {
-
-        priceLabel.setText(String.format("%.2f",shoppingCart.getTotal()) + " kr");
-
-    }
-
-    private  void updateCardInfo () {
 
         cardLabel.setText(iMatDataHandler.getCreditCard().getCardNumber());
 
@@ -244,12 +147,5 @@ public paymentWizard () {
 
     }
 
-
-     //
-
-    @FXML
-    public void mouseTrap(Event event){
-        event.consume();
-    }
-
+    */
 }

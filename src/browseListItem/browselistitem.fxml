@@ -44,7 +44,7 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="TOP" />
                     </rowConstraints>
                      <children>
-                        <Label fx:id="itemNameLable" prefHeight="16.0" prefWidth="162.0" styleClass="itemNameLable" text="Label" GridPane.columnIndex="1" />
+                        <Label fx:id="itemNameLabel" prefHeight="16.0" prefWidth="162.0" styleClass="itemNameLable" text="Label" GridPane.columnIndex="1" />
                         <GridPane GridPane.columnIndex="1" GridPane.rowIndex="1">
                           <columnConstraints>
                             <ColumnConstraints hgrow="SOMETIMES" maxWidth="84.0" minWidth="10.0" prefWidth="71.0" />
@@ -89,19 +89,25 @@
             </GridPane>
             <GridPane>
               <columnConstraints>
-                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="89.0" minWidth="10.0" prefWidth="46.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="149.0" minWidth="10.0" prefWidth="148.0" />
+                  <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="89.0" minWidth="10.0" prefWidth="16.0" />
+                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="89.0" minWidth="10.0" prefWidth="34.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="149.0" minWidth="10.0" prefWidth="145.0" />
               </columnConstraints>
               <rowConstraints>
-                <RowConstraints maxHeight="67.0" minHeight="10.0" prefHeight="40.0" valignment="BOTTOM" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="112.0" minHeight="10.0" prefHeight="105.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="67.0" minHeight="5.0" prefHeight="13.0" valignment="BOTTOM" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="67.0" minHeight="10.0" prefHeight="35.0" valignment="BOTTOM" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="112.0" minHeight="10.0" prefHeight="103.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <ImageView fx:id="favoriteImage" fitHeight="31.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../resources/images/favorite_empty.png" />
-                     </image>
-                  </ImageView>
+                  <AnchorPane fx:id="favIcon" prefHeight="200.0" prefWidth="200.0" styleClass="favoriteIcon" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <children>
+                        <ImageView fx:id="favoriteImage" fitHeight="31.0" fitWidth="32.0" layoutX="-1.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" styleClass="favoriteIcon" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="3.0">
+                           <image>
+                              <Image url="@../../resources/images/favorite_empty.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
                </children>
             </GridPane>
          </children>

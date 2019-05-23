@@ -1,0 +1,96 @@
+package cartPage;
+
+
+import cartPage.cartListItem.CartListItem;
+import cartPage.cartListItem.ICartItemListener;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.control.TextFormatter;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.FlowPane;
+import javafx.util.converter.IntegerStringConverter;
+import se.chalmers.cse.dat216.project.IMatDataHandler;
+import se.chalmers.cse.dat216.project.Product;
+import se.chalmers.cse.dat216.project.ShoppingItem;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+public class CartPage extends AnchorPane implements ICartItemListener {
+
+    IMatDataHandler handler = IMatDataHandler.getInstance();
+
+    private static final List<ICartPageListener> listeners = new ArrayList<>();
+    private static CartPage self;
+
+    @FXML FlowPane itemFlowPane;
+    @FXML Label totalSumLabel;
+    @FXML AnchorPane payButton;
+
+    private CartPage() {
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("cartpage.fxml"));
+        fxmlLoader.setRoot(this);
+        fxmlLoader.setController(this);
+
+        try {
+            fxmlLoader.load();
+        } catch (IOException exception) {
+            throw new RuntimeException(exception);
+        }
+
+        CartListItem.addListener(this);
+
+        updateItemList();
+
+        payButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event->notifyOnCheckout());
+    }
+
+    public void updateItemList(){
+        itemFlowPane.getChildren().clear();
+        for(ShoppingItem s: handler.getShoppingCart().getItems())
+            itemFlowPane.getChildren().add(new CartListItem(s));
+        
+        totalSumLabel.setText(String.valueOf(handler.getShoppingCart().getTotal()));
+    }
+
+    public static CartPage getInstance(){
+        if(self == null)
+            self = new CartPage();
+
+        return self;
+    }
+
+    @Override
+    public void removeFromList(CartListItem item) {
+        updateItemList();
+        notifyOnCartChange();
+    }
+
+    @Override
+    public void changeValues(CartListItem item) {
+        totalSumLabel.setText(String.valueOf(handler.getShoppingCart().getTotal()));
+    }
+
+    public static void addListener(ICartPageListener listener) {
+        listeners.add(listener);
+    }
+
+    private void notifyOnCartChange(){
+        for(ICartPageListener l: listeners)
+            l.onCartChanged(this);
+    }
+
+    private void notifyOnCheckout(){
+        for(ICartPageListener l: listeners)
+            l.onCheckoutClick(this);
+    }
+}
