@@ -57,7 +57,9 @@ public class iMatController implements Initializable, IFoodCategoryListner,
     @FXML AnchorPane myPagesPane;
     @FXML ScrollPane mainScrollPane;
     @FXML StackPane mainStackPane;
+    @FXML AnchorPane favoritePage;
 
+    private DetailedView openDetails;
     private ListItemPool itemPool;
 
     private boolean foodCategoriesUp = false;
@@ -86,6 +88,7 @@ public class iMatController implements Initializable, IFoodCategoryListner,
         myPagesPane.addEventHandler(MouseEvent.MOUSE_CLICKED, event->    setUpMyPages());
         cartImage.addEventHandler(MouseEvent.MOUSE_CLICKED, event->      setUpCartPage());
         logoImageView.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> setUpStartPage());
+        favoritePage.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> setUpFavoritePage());
 
         kategoriTilePane.getChildren().addListener(new ListChangeListener<Node>() {
             @Override
@@ -133,15 +136,16 @@ public class iMatController implements Initializable, IFoodCategoryListner,
         if(handler.favorites().size()>0) {
             browserPane.getChildren().add(new BrowseTitle("Favoriter"));
             for(Product p: handler.favorites())
-                browserPane.getChildren().add(new BrowseListItem(p));
+                browserPane.getChildren().add(itemPool.getBrowserListItem(p));
         }
 
         browserPane.getChildren().add(new BrowseTitle("Alla produkter"));
 
         for(Product p: handler.getProducts())
-            browserPane.getChildren().add(itemPool.getBrowserListItem(p));
+            if(!handler.favorites().contains(p))
+                browserPane.getChildren().add(itemPool.getBrowserListItem(p));
 
-        mainScrollPane.setHvalue(0);
+        mainScrollPane.setVvalue(0);
     }
 
     void setUpCartPage(){
@@ -150,15 +154,17 @@ public class iMatController implements Initializable, IFoodCategoryListner,
         CartPage.getInstance().updateItemList();
     }
 
-    void setUpOfferPage(){
+    void setUpFavoritePage(){
+        setFoodCategories();
 
-    }
-
-    void favoriteClicked(){
         browserPane.getChildren().clear();
         browserPane.getChildren().add(new BrowseTitle("Favoriter"));
 
-        browserPane.getChildren().clear();
+        if(handler.favorites().isEmpty()){
+            browserPane.getChildren().add(new Label("Du har inga favoriter :("));
+            return;
+        }
+
         for(Product p: handler.favorites())
             browserPane.getChildren().add(itemPool.getBrowserListItem(p));
     }
@@ -228,13 +234,11 @@ public class iMatController implements Initializable, IFoodCategoryListner,
         browserPane.getChildren().clear();
         browserPane.getChildren().add(new BrowseTitle(item.getCategoryName()));
 
-
-        browserPane.getChildren().clear();
         for(Product p: handler.getProducts())
             if(Arrays.asList(item.getCategories()).contains(p.getCategory()))
                 browserPane.getChildren().add(itemPool.getBrowserListItem(p));
 
-        mainScrollPane.setHvalue(0);
+        mainScrollPane.setVvalue(0);
     }
 
     @Override
@@ -243,10 +247,23 @@ public class iMatController implements Initializable, IFoodCategoryListner,
     }
 
     @Override
-    public void detailedViewNotify(BrowseListItem item){
-        browserPane.getChildren().clear();
-        browserPane.getChildren().add(new DetailedView(item.getProduct()));
+    public void detailedViewShow(BrowseListItem item){
+        closeDetailedView(null);
+
+        openDetails = new DetailedView(item.getShoppingItem());
+        browserPane.getChildren().set(browserPane.getChildren().indexOf(item), openDetails);
+        //browserPane.getChildren().add(new DetailedView(item.getProduct()));
     }
+
+    @Override
+    public void closeDetailedView(DetailedView item) {
+        if(openDetails != null) {
+            browserPane.getChildren().set(browserPane.getChildren().indexOf(openDetails),
+                    itemPool.getBrowserListItem(openDetails.getProduct()));
+            openDetails = null;
+        }
+    }
+
 
     @Override
     public void addToCartNotification(DetailedView item) {

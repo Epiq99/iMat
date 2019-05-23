@@ -2,8 +2,6 @@ package browseListItem;
 
 
 import javafx.event.ActionEvent;
-import javafx.event.Event;
-import javafx.scene.effect.BlurType;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.input.MouseEvent;
 import javafx.fxml.FXMLLoader;
@@ -80,12 +78,14 @@ public class BrowseListItem extends AnchorPane {
         minusImage.setImage(minusImageRes);
 
 
-        if(handler.isFavorite(product))
+        if(handler.isFavorite(product)) {
             favoriteImage.setImage(favoriteFullImage);
-        else
+            favIcon.setVisible(true);
+        }
+        else {
             favoriteImage.setImage(favoriteEmptyImage);
-
-        favIcon.setVisible(false);
+            favIcon.setVisible(false);
+        }
 
         //amountField.setTextFormatter(new TextFormatter<>(new DoubleStringConverter(), 1.0));
         amountField.setTextFormatter(new TextFormatter<>(new IntegerStringConverter(), 0));
@@ -181,7 +181,7 @@ public class BrowseListItem extends AnchorPane {
 
     private void notifyOnDetailedView(){
         for(IBrowseListItemListener l: listeners)
-            l.detailedViewNotify(this);
+            l.detailedViewShow(this);
     }
 
     public static void addListener(IBrowseListItemListener listener){
@@ -189,6 +189,8 @@ public class BrowseListItem extends AnchorPane {
     }
 
     public Product getProduct(){return product;}
+
+    public ShoppingItem getShoppingItem(){return shoppingItem;}
 
     private void onAmountFieldChange(){
         if(Integer.parseInt(amountField.getText()) == shoppingItem.getAmount())

@@ -18,6 +18,7 @@ import javafx.util.converter.IntegerStringConverter;
 import se.chalmers.cse.dat216.project.IMatDataHandler;
 import se.chalmers.cse.dat216.project.Product;
 import se.chalmers.cse.dat216.project.ProductCategory;
+import se.chalmers.cse.dat216.project.ShoppingItem;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -31,10 +32,12 @@ public class DetailedView extends AnchorPane {
     private static final Image minusImageRes = new Image("images/minus.png");
     private static final Image favoriteFullImage = new Image("images/favorite_full.png");
     private static final Image favoriteEmptyImage = new Image("images/favorite_empty.png");
+    private static final Image closeImage = new Image("images/close.png");
 
     public static final List<IDetailedViewListener> listeners = new ArrayList<>();
 
     private Product product;
+    private ShoppingItem shoppingItem;
 
     @FXML Label priceLabel;
     @FXML Label unitLabel;
@@ -43,13 +46,15 @@ public class DetailedView extends AnchorPane {
     @FXML ImageView ecoImage;
     @FXML ImageView favoriteImage;
     @FXML TextField amountField;
-    @FXML Button addButton;
     @FXML ImageView plusImage;
     @FXML ImageView minusImage;
     @FXML Label favoriteLable;
-    public DetailedView(Product prod) {
+    @FXML ImageView closeButton;
 
-        product = prod;
+    public DetailedView(ShoppingItem item) {
+
+        shoppingItem = item;
+        product = item.getProduct();
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("detailedview.fxml"));
         fxmlLoader.setRoot(this);
@@ -71,24 +76,47 @@ public class DetailedView extends AnchorPane {
         plusImage.setImage(addImage);
         minusImage.setImage(minusImageRes);
 
-        amountField.setTextFormatter(new TextFormatter<>(new IntegerStringConverter(), 1));
+        amountField.setTextFormatter(new TextFormatter<>(new IntegerStringConverter(), 0));
+        amountField.setText(String.valueOf((int) shoppingItem.getAmount()));
 
-        addButton.addEventHandler(ActionEvent.ACTION, (event)->
-                addToCart()
-        );
+        plusImage.addEventHandler(MouseEvent.MOUSE_CLICKED, event-> plusButtonClicked());
 
-        //handler.getShoppingCart().addProduct(product, Double.parseDouble(amountField.getText()));
-
-        plusImage.addEventHandler(MouseEvent.MOUSE_CLICKED, event->
-                amountField.setText(String.valueOf(Integer.parseInt(amountField.getText()) + 1))
-        );
-
-        minusImage.addEventHandler(MouseEvent.MOUSE_CLICKED, event->
-                amountField.setText(String.valueOf(Integer.parseInt(amountField.getText()) - 1))
-        );
+        minusImage.addEventHandler(MouseEvent.MOUSE_CLICKED, event-> minusImageClicked());
 
         favoriteLable.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> onFavoriteClick());
         favoriteImage.addEventHandler(MouseEvent.MOUSE_CLICKED, event->onFavoriteClick());
+        closeButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> notifyOnClose());
+        closeButton.setImage(closeImage);
+        amountField.addEventHandler(ActionEvent.ACTION, event-> amountFieldChanged());
+    }
+
+    private void plusButtonClicked(){
+        amountField.setText(String.valueOf(Integer.parseInt(amountField.getText()) + 1));
+        amountFieldChanged();
+    }
+
+    private void minusImageClicked(){
+        if(Double.parseDouble(amountField.getText()) <= 0)
+            return;
+
+        amountField.setText(String.valueOf(Integer.parseInt(amountField.getText()) - 1));
+        amountFieldChanged();
+    }
+
+    private void amountFieldChanged(){
+        if(Integer.parseInt(amountField.getText()) == shoppingItem.getAmount())
+            return;
+
+        shoppingItem.setAmount(Double.parseDouble(amountField.getText()));
+
+        if(shoppingItem.getAmount() <= 0)
+            handler.getShoppingCart().removeItem(shoppingItem);
+
+        if(shoppingItem.getAmount() > 0 && !handler.getShoppingCart().getItems().contains(shoppingItem)) {
+            handler.getShoppingCart().addItem(shoppingItem);
+        }
+
+        notifyOnCartAdd();
     }
 
     private void onFavoriteClick(){
@@ -102,11 +130,6 @@ public class DetailedView extends AnchorPane {
         favoriteImage.setImage(favoriteFullImage);
     }
 
-    private void addToCart(){
-        handler.getShoppingCart().addProduct(product, Double.parseDouble(amountField.getText()));
-        notifyOnCartAdd();
-    }
-
     public static void addListener(IDetailedViewListener listener){
         listeners.add(listener);
     }
@@ -114,6 +137,11 @@ public class DetailedView extends AnchorPane {
     public void notifyOnCartAdd(){
         for(IDetailedViewListener l: listeners)
             l.addToCartNotification(this);
+    }
+
+    public void notifyOnClose(){
+        for(IDetailedViewListener l: listeners)
+            l.closeDetailedView(this);
     }
 
     public Product getProduct() {return product;}

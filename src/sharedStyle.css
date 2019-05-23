@@ -21,3 +21,7 @@
 .inactive-button:hover{
     -fx-cursor: pointer;
 }
+
+.clickabel:hover{
+    -fx-cursor: hand;
+}

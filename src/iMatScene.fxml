@@ -29,10 +29,10 @@
                 <RowConstraints minHeight="10.0" prefHeight="729.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <GridPane prefHeight="710.0" prefWidth="1222.0" GridPane.rowIndex="1">
+                  <GridPane hgap="30.0" prefHeight="710.0" prefWidth="1222.0" GridPane.rowIndex="1">
                     <columnConstraints>
                         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="18.0" minWidth="0.0" prefWidth="0.0" />
-                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="279.0" minWidth="234.0" prefWidth="279.0" />
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="260.0" minWidth="234.0" prefWidth="260.0" />
                       <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="1150.0" minWidth="10.0" prefWidth="949.0" />
                     </columnConstraints>
                     <rowConstraints>
@@ -41,7 +41,7 @@
                      <children>
                         <GridPane GridPane.columnIndex="1">
                           <columnConstraints>
-                            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="260.0" />
+                            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="260.0" minWidth="10.0" prefWidth="260.0" />
                           </columnConstraints>
                           <rowConstraints>
                               <RowConstraints maxHeight="500.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
@@ -57,9 +57,9 @@
                               </AnchorPane>
                            </children>
                         </GridPane>
-                        <ScrollPane fx:id="mainScrollPane" hvalue="1.0" prefHeight="599.0" prefWidth="763.0" GridPane.columnIndex="2">
+                        <ScrollPane fx:id="mainScrollPane" hvalue="1.0" prefHeight="599.0" prefWidth="1120.0" GridPane.columnIndex="2">
                            <content>
-                              <FlowPane fx:id="browserPane" prefHeight="28.0" prefWidth="941.0" />
+                              <FlowPane fx:id="browserPane" prefHeight="28.0" prefWidth="1120.0" />
                            </content>
                         </ScrollPane>
                      </children>
@@ -128,22 +128,22 @@
                            <children>
                               <AnchorPane fx:id="handlaMenuPane" prefHeight="200.0" prefWidth="200.0" styleClass="topBarPane">
                                  <children>
-                                    <Label layoutX="98.0" layoutY="15.0" prefHeight="43.0" prefWidth="111.0" styleClass="topBarLable" text="Handla" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="98.0" AnchorPane.rightAnchor="97.0" AnchorPane.topAnchor="15.0" />
+                                    <Label alignment="CENTER" layoutX="98.0" layoutY="15.0" prefHeight="43.0" prefWidth="111.0" styleClass="topBarLable" text="Handla" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="98.0" AnchorPane.rightAnchor="97.0" AnchorPane.topAnchor="15.0" />
                                  </children>
                               </AnchorPane>
-                              <AnchorPane fx:id="erbjudandenPane" prefHeight="200.0" prefWidth="200.0" styleClass="topBarPane" GridPane.columnIndex="1">
+                              <AnchorPane fx:id="favoritePage" prefHeight="200.0" prefWidth="200.0" styleClass="topBarPane" GridPane.columnIndex="1">
                                  <children>
-                                    <Label layoutX="52.0" layoutY="15.0" prefHeight="43.0" prefWidth="203.0" styleClass="topBarLable" text="Erbjudanden" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="52.0" AnchorPane.rightAnchor="51.0" AnchorPane.topAnchor="15.0" />
+                                    <Label alignment="CENTER" layoutX="52.0" layoutY="15.0" prefHeight="43.0" prefWidth="203.0" styleClass="topBarLable" text="Favoriter" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="52.0" AnchorPane.rightAnchor="51.0" AnchorPane.topAnchor="15.0" />
                                  </children>
                               </AnchorPane>
                               <AnchorPane fx:id="helpMenuPane" prefHeight="200.0" prefWidth="200.0" styleClass="topBarPane" GridPane.columnIndex="2">
                                  <children>
-                                    <Label layoutX="107.0" layoutY="15.0" prefHeight="43.0" prefWidth="92.0" styleClass="topBarLable" text="Hjälp" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="107.0" AnchorPane.rightAnchor="106.0" AnchorPane.topAnchor="15.0" />
+                                    <Label alignment="CENTER" layoutX="107.0" layoutY="15.0" prefHeight="43.0" prefWidth="92.0" styleClass="topBarLable" text="Hjälp" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="107.0" AnchorPane.rightAnchor="106.0" AnchorPane.topAnchor="15.0" />
                                  </children>
                               </AnchorPane>
                               <AnchorPane fx:id="myPagesPane" prefHeight="200.0" prefWidth="200.0" styleClass="topBarPane" GridPane.columnIndex="3">
                                  <children>
-                                    <Label layoutX="62.0" layoutY="15.0" prefHeight="43.0" prefWidth="181.0" styleClass="topBarLable" text="Mina sidor" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="62.0" AnchorPane.rightAnchor="62.0" AnchorPane.topAnchor="15.0" />
+                                    <Label alignment="CENTER" layoutX="62.0" layoutY="15.0" prefHeight="43.0" prefWidth="181.0" styleClass="topBarLable" text="Mina sidor" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="62.0" AnchorPane.rightAnchor="62.0" AnchorPane.topAnchor="15.0" />
                                  </children>
                               </AnchorPane>
                            </children>
