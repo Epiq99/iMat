@@ -128,37 +128,6 @@
                         </GridPane>
                         <StackPane fx:id="contenPane" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: white;" GridPane.rowIndex="2">
                            <children>
-                              <AnchorPane fx:id="donePane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;">
-                                 <children>
-                                    <GridPane layoutX="79.0" layoutY="71.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                       <columnConstraints>
-                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                       </columnConstraints>
-                                       <rowConstraints>
-                                          <RowConstraints maxHeight="72.0" minHeight="10.0" prefHeight="40.0" valignment="BOTTOM" vgrow="SOMETIMES" />
-                                          <RowConstraints maxHeight="128.0" minHeight="10.0" prefHeight="66.0" vgrow="SOMETIMES" />
-                                          <RowConstraints maxHeight="264.0" minHeight="10.0" prefHeight="179.0" vgrow="SOMETIMES" />
-                                          <RowConstraints maxHeight="213.0" minHeight="10.0" prefHeight="53.0" vgrow="SOMETIMES" />
-                                       </rowConstraints>
-                                       <children>
-                                          <Label alignment="BOTTOM_CENTER" styleClass="text-Title" text="Köp genomfört" GridPane.columnIndex="1" />
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Köpet är genomfört! Tack för att du handlar med iMat" textAlignment="CENTER" wrappingWidth="153.609375" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                          <ScrollPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                                             <content>
-                                                <FlowPane fx:id="reciptList" prefHeight="33.0" prefWidth="328.0" />
-                                             </content>
-                                          </ScrollPane>
-                                          <Label fx:id="finalPriceLabel1" alignment="BOTTOM_CENTER" text="1000" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                                             <font>
-                                                <Font size="22.0" />
-                                             </font>
-                                          </Label>
-                                       </children>
-                                    </GridPane>
-                                 </children>
-                              </AnchorPane>
                               <AnchorPane fx:id="deliveryPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;">
                                  <children>
                                     <GridPane layoutX="79.0" layoutY="71.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -209,6 +178,32 @@
                                     </GridPane>
                                  </children>
                               </AnchorPane>
+                              <AnchorPane fx:id="donePane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;">
+                                 <children>
+                                    <GridPane layoutX="79.0" layoutY="71.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <columnConstraints>
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints maxHeight="72.0" minHeight="10.0" prefHeight="40.0" valignment="BOTTOM" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="128.0" minHeight="10.0" prefHeight="66.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="264.0" minHeight="10.0" prefHeight="179.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="213.0" minHeight="10.0" prefHeight="53.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                       <children>
+                                          <Label alignment="BOTTOM_CENTER" styleClass="text-Title" text="Köp genomfört" GridPane.columnIndex="1" />
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Köpet är genomfört! Tack för att du handlar med iMat" textAlignment="CENTER" wrappingWidth="153.609375" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                          <ScrollPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                             <content>
+                                                <FlowPane fx:id="reciptList" prefHeight="33.0" prefWidth="328.0" />
+                                             </content>
+                                          </ScrollPane>
+                                       </children>
+                                    </GridPane>
+                                 </children>
+                              </AnchorPane>
                               <AnchorPane fx:id="payPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;">
                                  <children>
                                     <GridPane hgap="30.0" layoutX="79.0" layoutY="71.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -229,6 +224,7 @@
                                                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="947.0" minWidth="10.0" prefWidth="136.0" />
                                              </columnConstraints>
                                              <rowConstraints>
+                                                <RowConstraints maxHeight="87.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                 <RowConstraints maxHeight="87.0" minHeight="10.0" prefHeight="22.0" vgrow="SOMETIMES" />
                                                 <RowConstraints maxHeight="87.0" minHeight="10.0" prefHeight="26.0" vgrow="SOMETIMES" />
                                                 <RowConstraints maxHeight="87.0" minHeight="10.0" prefHeight="26.0" vgrow="SOMETIMES" />
@@ -237,13 +233,13 @@
                                                 <RowConstraints maxHeight="93.0" minHeight="10.0" prefHeight="29.0" vgrow="SOMETIMES" />
                                              </rowConstraints>
                                              <children>
-                                                <RadioButton fx:id="cardPayRadioButton" mnemonicParsing="false" selected="true" styleClass="text-Other" stylesheets="@paymentWizard.css" text="Betalkort" GridPane.columnIndex="1">
+                                                <RadioButton fx:id="cardPayRadioButton" mnemonicParsing="false" selected="true" styleClass="text-Other" stylesheets="@paymentWizard.css" text="Betalkort" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                                    <toggleGroup>
                                                       <ToggleGroup fx:id="group11" />
                                                    </toggleGroup>
                                                 </RadioButton>
-                                                <RadioButton fx:id="billRadioButton" mnemonicParsing="false" styleClass="text-Other" stylesheets="@paymentWizard.css" text="Faktura" toggleGroup="$group11" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                                <GridPane hgap="30.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                                <RadioButton fx:id="billRadioButton" mnemonicParsing="false" styleClass="text-Other" stylesheets="@paymentWizard.css" text="Faktura" toggleGroup="$group11" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                                <GridPane hgap="30.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
                                                    <columnConstraints>
                                                       <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="256.0" minWidth="0.0" prefWidth="0.0" />
                                                       <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="256.0" minWidth="10.0" prefWidth="164.0" />
@@ -257,8 +253,8 @@
                                                       <Label fx:id="billingAddress" prefHeight="16.0" prefWidth="307.0" styleClass="text-Other" stylesheets="@paymentWizard.css" text="Min adress" GridPane.columnIndex="2" />
                                                    </children>
                                                 </GridPane>
-                                                <RadioButton fx:id="deliveryRadioButton" mnemonicParsing="false" styleClass="text-Other" stylesheets="@paymentWizard.css" text="Betala vid leverans" toggleGroup="$group11" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                                                <GridPane GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                <RadioButton fx:id="deliveryRadioButton" mnemonicParsing="false" styleClass="text-Other" stylesheets="@paymentWizard.css" text="Betala vid leverans" toggleGroup="$group11" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                                                <GridPane GridPane.columnIndex="1" GridPane.rowIndex="3">
                                                   <columnConstraints>
                                                       <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" prefWidth="43.0" />
                                                     <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="223.0" minWidth="10.0" prefWidth="74.0" />
@@ -279,7 +275,7 @@
                                                       </ImageView>
                                                    </children>
                                                 </GridPane>
-                                                <GridPane GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                <GridPane GridPane.columnIndex="1" GridPane.rowIndex="2">
                                                   <columnConstraints>
                                                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="44.0" />
                                                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="571.0" minWidth="10.0" prefWidth="562.0" />
@@ -289,6 +285,33 @@
                                                   </rowConstraints>
                                                    <children>
                                                       <Label styleClass="text-Other" stylesheets="@paymentWizard.css" text="Kort: ***************" GridPane.columnIndex="1" />
+                                                   </children>
+                                                </GridPane>
+                                                <GridPane hgap="30.0" GridPane.columnIndex="1">
+                                                  <columnConstraints>
+                                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="176.0" minWidth="1.0" prefWidth="68.0" />
+                                                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="363.0" minWidth="10.0" prefWidth="48.0" />
+                                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="402.0" minWidth="10.0" prefWidth="402.0" />
+                                                  </columnConstraints>
+                                                  <rowConstraints>
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                  </rowConstraints>
+                                                   <children>
+                                                      <Label fx:id="finalPriceLabel" alignment="BOTTOM_CENTER" text="1000" GridPane.columnIndex="1">
+                                                         <font>
+                                                            <Font size="22.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label fx:id="finalPriceLabel1" alignment="BOTTOM_CENTER" text="Summa:">
+                                                         <font>
+                                                            <Font size="22.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label fx:id="finalPriceLabel2" alignment="BOTTOM_CENTER" text="kr" GridPane.columnIndex="2">
+                                                         <font>
+                                                            <Font size="22.0" />
+                                                         </font>
+                                                      </Label>
                                                    </children>
                                                 </GridPane>
                                              </children>
@@ -322,7 +345,7 @@
                               </AnchorPane>
                               <AnchorPane fx:id="nextButton" prefHeight="30.0" prefWidth="106.0" styleClass="wizButton" GridPane.columnIndex="5" GridPane.rowIndex="1">
                                  <children>
-                                    <Label alignment="CENTER" layoutX="13.0" layoutY="1.0" prefHeight="27.0" prefWidth="98.0" styleClass="wizButtonLabel" text="NÄSTA" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                    <Label fx:id="nextButtonLabel" alignment="CENTER" layoutX="13.0" layoutY="1.0" prefHeight="27.0" prefWidth="98.0" styleClass="wizButtonLabel" text="NÄSTA" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
             
                                  </children>
                               </AnchorPane>

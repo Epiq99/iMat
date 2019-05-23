@@ -36,6 +36,10 @@
     -webkit-fx-font-family: "Blackadder ITC";
 }
 
+.cartImage:hover{
+    -fx-cursor: hand;
+}
+
 .cartIndicatorPane{
     -fx-background-color: red;
     -fx-background-radius: 15px;

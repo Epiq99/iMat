@@ -11,6 +11,7 @@ import customerPage.paymentsettings.PaymentSettingPane;
 import customerPage.personaldatapane.PersonalDataPane;
 import detailedview.DetailedView;
 import detailedview.IDetailedViewListener;
+import feature.Feature;
 import foodcategorylistitem.FoodCategoryListItem;
 import foodcategorylistitem.IFoodCategoryListner;
 import helppage.HelpPage;
@@ -101,9 +102,9 @@ public class iMatController implements Initializable, IFoodCategoryListner,
 
         //favoriteButton.setOnAction(event->favoriteClicked());
         //Debugging
-        handler.getShoppingCart().addProduct(handler.getProduct(2),3);
-        handler.getShoppingCart().addProduct(handler.getProduct(10),5);
-        mainStackPane.getChildren().add(new paymentWizard());
+        //handler.getShoppingCart().addProduct(handler.getProduct(2),3);
+        //handler.getShoppingCart().addProduct(handler.getProduct(10),5);
+
     }
 
     private void setUpMyPages(){
@@ -125,6 +126,10 @@ public class iMatController implements Initializable, IFoodCategoryListner,
     private void setUpStartPage(){
         setFoodCategories();
         browserPane.getChildren().clear();
+
+        browserPane.getChildren().add(new Feature(new FoodCategoryListItem(new ProductCategory[]
+                {ProductCategory.SWEET},"Godis")));
+
         if(handler.favorites().size()>0) {
             browserPane.getChildren().add(new BrowseTitle("Favoriter"));
             for(Product p: handler.favorites())
@@ -263,7 +268,14 @@ public class iMatController implements Initializable, IFoodCategoryListner,
     }
 
     @Override
+    public void onCheckoutClick(CartPage page) {
+        mainStackPane.getChildren().add(new paymentWizard());
+    }
+
+    @Override
     public void notifyOnReturn(paymentWizard item) {
+        updateCartIndicator();
+        setUpCartPage();
         mainStackPane.getChildren().remove(item);
     }
 }

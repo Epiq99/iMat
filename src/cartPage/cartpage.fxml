@@ -67,7 +67,7 @@
                         <RowConstraints maxHeight="68.0" minHeight="10.0" prefHeight="27.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <AnchorPane fx:id="nextButton" prefHeight="30.0" prefWidth="106.0" styleClass="goButton" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <AnchorPane fx:id="payButton" prefHeight="30.0" prefWidth="106.0" styleClass="goButton" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <children>
                               <Label alignment="CENTER" layoutX="13.0" layoutY="1.0" prefHeight="27.0" prefWidth="98.0" styleClass="goButtonLabel" text="GÅ TILL KASSAN" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                            </children>

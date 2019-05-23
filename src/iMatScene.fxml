@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
@@ -15,7 +16,7 @@
 <?import javafx.scene.layout.TilePane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="879.0" prefWidth="1222.0" stylesheets="@iMat.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="iMatController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="879.0" prefWidth="1222.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="iMatController">
    <children>
       <StackPane fx:id="mainStackPane" prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -24,22 +25,23 @@
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
               </columnConstraints>
               <rowConstraints>
-                <RowConstraints maxHeight="430.0" minHeight="10.0" prefHeight="150.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="765.0" minHeight="10.0" prefHeight="729.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="150.0" minHeight="10.0" prefHeight="150.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="729.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
                   <GridPane prefHeight="710.0" prefWidth="1222.0" GridPane.rowIndex="1">
                     <columnConstraints>
-                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="260.0" minWidth="260.0" prefWidth="260.0" />
-                      <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="1300.0" minWidth="10.0" prefWidth="959.0" />
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="18.0" minWidth="0.0" prefWidth="0.0" />
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="279.0" minWidth="234.0" prefWidth="279.0" />
+                      <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="1150.0" minWidth="10.0" prefWidth="949.0" />
                     </columnConstraints>
                     <rowConstraints>
-                      <RowConstraints maxHeight="759.0" minHeight="10.0" prefHeight="716.0" valignment="TOP" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="716.0" valignment="TOP" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <GridPane>
+                        <GridPane GridPane.columnIndex="1">
                           <columnConstraints>
-                            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="260.0" />
                           </columnConstraints>
                           <rowConstraints>
                               <RowConstraints maxHeight="500.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
@@ -50,14 +52,14 @@
                               <TilePane fx:id="kategoriTilePane" maxHeight="507.0" prefHeight="500.0" prefWidth="260.0" styleClass="kategorierLista" GridPane.rowIndex="1" />
                               <AnchorPane prefHeight="200.0" prefWidth="200.0">
                                  <children>
-                                    <Label layoutY="10.0" styleClass="kategoriRubrikLable" text="Kategorier" AnchorPane.leftAnchor="0.0" />
+                                    <Label layoutY="10.0" styleClass="kategoriRubrikLable" text="Kategorier" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="0.0" />
                                  </children>
                               </AnchorPane>
                            </children>
                         </GridPane>
-                        <ScrollPane fx:id="mainScrollPane" prefHeight="303.0" prefWidth="416.0" GridPane.columnIndex="1">
+                        <ScrollPane fx:id="mainScrollPane" hvalue="1.0" prefHeight="599.0" prefWidth="763.0" GridPane.columnIndex="2">
                            <content>
-                              <FlowPane fx:id="browserPane" prefHeight="707.0" prefWidth="1120.0" />
+                              <FlowPane fx:id="browserPane" prefHeight="28.0" prefWidth="941.0" />
                            </content>
                         </ScrollPane>
                      </children>
@@ -67,8 +69,8 @@
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                     </columnConstraints>
                     <rowConstraints>
-                      <RowConstraints maxHeight="75.0" minHeight="10.0" prefHeight="56.0" vgrow="SOMETIMES" />
-                      <RowConstraints maxHeight="72.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="56.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
                         <GridPane>
@@ -80,14 +82,17 @@
                               <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="773.0" minWidth="10.0" prefWidth="175.0" />
                           </columnConstraints>
                           <rowConstraints>
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="90.0" minHeight="10.0" prefHeight="70.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <TextField fx:id="searchBar" onAction="#search" GridPane.columnIndex="1" />
+                              <TextField fx:id="searchBar" onAction="#search" prefHeight="43.0" prefWidth="578.0" promptText="Sök" GridPane.columnIndex="1">
+                                 <font>
+                                    <Font size="22.0" />
+                                 </font></TextField>
                               <Button fx:id="searchButton" mnemonicParsing="false" onAction="#search" prefHeight="25.0" prefWidth="67.0" text="Sök" GridPane.columnIndex="3" />
                               <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4">
                                  <children>
-                                    <ImageView fx:id="cartImage" fitHeight="75.0" fitWidth="61.0" layoutX="66.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fx:id="cartImage" fitHeight="75.0" fitWidth="61.0" layoutX="66.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" styleClass="cartImage">
                                        <image>
                                           <Image url="@../resources/images/shoppingcart.png" />
                                        </image>
@@ -118,7 +123,7 @@
                             <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                           </columnConstraints>
                           <rowConstraints>
-                              <RowConstraints maxHeight="74.0" minHeight="10.0" prefHeight="42.0" valignment="CENTER" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="50.0" valignment="CENTER" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
                               <AnchorPane fx:id="handlaMenuPane" prefHeight="200.0" prefWidth="200.0" styleClass="topBarPane">
@@ -150,4 +155,8 @@
          </children>
       </StackPane>
    </children>
+   <stylesheets>
+      <URL value="@iMat.css" />
+      <URL value="@sharedStyle.css" />
+   </stylesheets>
 </AnchorPane>

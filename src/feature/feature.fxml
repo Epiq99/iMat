@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+
+<fx:root prefHeight="519.0" prefWidth="1120.0" styleClass="mainPane" stylesheets="@Feature.css" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fx:id="featureImageView" fitHeight="560.0" fitWidth="1120.0" layoutX="159.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="-19.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <image>
+            <Image url="@../../resources/images/feature.png" />
+         </image>
+      </ImageView>
+      <GridPane layoutX="81.0" layoutY="267.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="683.0" minWidth="10.0" prefWidth="443.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="683.0" minWidth="10.0" prefWidth="239.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="550.0" minWidth="10.0" prefWidth="441.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="385.0" minHeight="10.0" prefHeight="369.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="341.0" minHeight="10.0" prefHeight="58.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="167.0" minHeight="6.0" prefHeight="92.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <AnchorPane fx:id="exploreButton" prefHeight="57.0" prefWidth="244.0" styleClass="button" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <children>
+                  <Label alignment="CENTER" layoutX="-5.0" layoutY="101.0" prefHeight="35.0" prefWidth="273.0" styleClass="buttonLabel" text="TILL ERBJUDANDET" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="9.300000000000011" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+               </children>
+            </AnchorPane>
+         </children>
+      </GridPane>
+   </children>
+</fx:root>

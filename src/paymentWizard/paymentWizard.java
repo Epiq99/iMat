@@ -23,7 +23,7 @@ public class paymentWizard extends AnchorPane {
     @FXML StackPane contenPane;
     @FXML AnchorPane deliveryPane, payPane, donePane;
     @FXML FlowPane reciptList;
-    @FXML Label finalPriceLabel;
+    @FXML Label finalPriceLabel, nextButtonLabel;
 
     AnchorPane[] wizPanes;
     Circle[] circles;
@@ -95,13 +95,15 @@ public class paymentWizard extends AnchorPane {
             case 1:
 
                 finalPriceLabel.setText(String.valueOf(handler.getShoppingCart().getTotal()));
-
+                nextButtonLabel.setText("Betala");
+                break;
+            case 2:
                 reciptList.getChildren().clear();
                 for(ShoppingItem s: handler.getShoppingCart().getItems())
                     reciptList.getChildren().add(new ReciptItem(s.getProduct().getName(), (int) s.getAmount(), s.getTotal()));
                 //TODO: Lägg till fraktkostnad i kvittot
-                break;
-            case 2:
+
+                nextButtonLabel.setText("Avsluta");
                 break;
         }
     }

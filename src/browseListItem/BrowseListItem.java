@@ -1,6 +1,8 @@
 package browseListItem;
 
 
+import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.scene.effect.BlurType;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.input.MouseEvent;
@@ -44,7 +46,7 @@ public class BrowseListItem extends AnchorPane {
     @FXML ImageView minusImage;
     @FXML TextField amountField;
     @FXML ImageView favoriteImage;
-    @FXML AnchorPane mainPane;
+    @FXML AnchorPane mainPane, favIcon;
 
     public BrowseListItem(Product prod) {
 
@@ -77,12 +79,13 @@ public class BrowseListItem extends AnchorPane {
         plusImage.setImage(addImage);
         minusImage.setImage(minusImageRes);
 
+
         if(handler.isFavorite(product))
             favoriteImage.setImage(favoriteFullImage);
         else
             favoriteImage.setImage(favoriteEmptyImage);
 
-        favoriteImage.setVisible(false);
+        favIcon.setVisible(false);
 
         //amountField.setTextFormatter(new TextFormatter<>(new DoubleStringConverter(), 1.0));
         amountField.setTextFormatter(new TextFormatter<>(new IntegerStringConverter(), 0));
@@ -98,23 +101,36 @@ public class BrowseListItem extends AnchorPane {
         );
 
         this.addEventHandler(MouseEvent.MOUSE_ENTERED, event->
-                favoriteImage.setVisible(true)
+                favIcon.setVisible(true)
                 );
 
-        this.addEventHandler(MouseEvent.MOUSE_EXITED, event->
-                favoriteImage.setVisible(false)
-                );
+        this.addEventHandler(MouseEvent.MOUSE_EXITED, event-> mouseExit());
 
         itemNameLabel.addEventHandler(MouseEvent.MOUSE_CLICKED, event->notifyOnDetailedView());
+        favIcon.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> favoriteImage_click(event));
+        amountField.addEventHandler(ActionEvent.ACTION, event-> onAmountFieldChange());
+    }
 
-        favoriteImage.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> favoriteImage_click(event));
+    private void mouseExit(){
+        if(handler.isFavorite(product))
+            return;
+
+        favIcon.setVisible(false);
     }
 
     public void update(){
-        if(handler.isFavorite(product))
+
+        if(!handler.getShoppingCart().getItems().contains(shoppingItem))
+            shoppingItem.setAmount(0);
+
+        if(handler.isFavorite(product)) {
             favoriteImage.setImage(favoriteFullImage);
-        else
+            favIcon.setVisible(true);
+        }
+        else {
             favoriteImage.setImage(favoriteEmptyImage);
+            favIcon.setVisible(false);
+        }
 
         if(shoppingItem.getAmount() !=0)
             mainPane.setStyle("-fx-background-color: #E0D565");
@@ -173,4 +189,17 @@ public class BrowseListItem extends AnchorPane {
     }
 
     public Product getProduct(){return product;}
+
+    private void onAmountFieldChange(){
+        if(Integer.parseInt(amountField.getText()) == shoppingItem.getAmount())
+            return;
+
+        shoppingItem.setAmount(Double.parseDouble(amountField.getText()));
+
+        if(shoppingItem.getAmount() > 0 && !handler.getShoppingCart().getItems().contains(shoppingItem))
+            handler.getShoppingCart().addItem(shoppingItem);
+
+        update();
+        notifyOnCartChange();
+    }
 }
