@@ -9,6 +9,7 @@ import customerPage.SettingCategoryListItem;
 import customerPage.passwordsettings.PasswordSettingsPage;
 import customerPage.paymentsettings.PaymentSettingPane;
 import customerPage.personaldatapane.PersonalDataPane;
+import customerPage.receiptHistoryPage.ReceiptHistoryPage;
 import detailedview.DetailedView;
 import detailedview.IDetailedViewListener;
 import feature.Feature;
@@ -58,6 +59,7 @@ public class iMatController implements Initializable, IFoodCategoryListner,
     @FXML ScrollPane mainScrollPane;
     @FXML StackPane mainStackPane;
     @FXML AnchorPane favoritePage;
+    @FXML Button toCartButton;
 
     private DetailedView openDetails;
     private ListItemPool itemPool;
@@ -68,6 +70,7 @@ public class iMatController implements Initializable, IFoodCategoryListner,
     public void initialize(URL location, ResourceBundle resources) {
 
         itemPool = ListItemPool.getInstance();
+        updateCartIndicator();
 
         browserPane.setVgap(30);
         browserPane.setHgap(30);
@@ -80,7 +83,6 @@ public class iMatController implements Initializable, IFoodCategoryListner,
         paymentWizard.addListener(this);
 
         cartImage.setImage(shoppingCartImage);
-        cartImdicatorPnane.setVisible(false);
         logoImageView.setImage(logoImage);
 
         handlaMenuPane.addEventHandler(MouseEvent.MOUSE_CLICKED, event-> setUpStartPage());
@@ -88,7 +90,8 @@ public class iMatController implements Initializable, IFoodCategoryListner,
         myPagesPane.addEventHandler(MouseEvent.MOUSE_CLICKED, event->    setUpMyPages());
         cartImage.addEventHandler(MouseEvent.MOUSE_CLICKED, event->      setUpCartPage());
         logoImageView.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> setUpStartPage());
-        favoritePage.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> setUpFavoritePage());
+        favoritePage.addEventHandler(MouseEvent.MOUSE_CLICKED, event ->  setUpFavoritePage());
+        toCartButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event->   setUpCartPage());
 
         kategoriTilePane.getChildren().addListener(new ListChangeListener<Node>() {
             @Override
@@ -107,6 +110,7 @@ public class iMatController implements Initializable, IFoodCategoryListner,
         //Debugging
         //handler.getShoppingCart().addProduct(handler.getProduct(2),3);
         //handler.getShoppingCart().addProduct(handler.getProduct(10),5);
+        //mainStackPane.getChildren().add(new paymentWizard());
 
     }
 
@@ -115,6 +119,7 @@ public class iMatController implements Initializable, IFoodCategoryListner,
         kategoriTilePane.getChildren().add(new SettingCategoryListItem("Personuppgifter",PersonalDataPane.getInstance()));
         kategoriTilePane.getChildren().add(new SettingCategoryListItem("Lösenord", PasswordSettingsPage.getInstance()));
         kategoriTilePane.getChildren().add(new SettingCategoryListItem("Betalningssätt", PaymentSettingPane.getInstance()));
+        kategoriTilePane.getChildren().add(new SettingCategoryListItem("Köphistorik", ReceiptHistoryPage.getInstance()));
 
         settingCategoryPressed(PersonalDataPane.getInstance());
         foodCategoriesUp = false;

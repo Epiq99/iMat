@@ -10,6 +10,7 @@ import javafx.scene.control.TextFormatter;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import javafx.util.converter.IntegerStringConverter;
 import se.chalmers.cse.dat216.project.*;
 
@@ -36,7 +37,7 @@ public class BrowseListItem extends AnchorPane {
     private final Product product;
     private int amount = 0;
 
-    @FXML Label itemNameLabel;
+    @FXML Text itemNameLabel;
     @FXML Label priceLable;
     @FXML Label unitLable;
     @FXML ImageView itemImage;
@@ -46,10 +47,10 @@ public class BrowseListItem extends AnchorPane {
     @FXML ImageView favoriteImage;
     @FXML AnchorPane mainPane, favIcon;
 
-    public BrowseListItem(Product prod) {
+    public BrowseListItem(ShoppingItem prod) {
 
-        product = prod;
-        shoppingItem = new ShoppingItem(product, 0);
+        product = prod.getProduct();
+        shoppingItem = prod;
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("browselistitem.fxml"));
         fxmlLoader.setRoot(this);
@@ -69,10 +70,10 @@ public class BrowseListItem extends AnchorPane {
 
         mainPane.setEffect(dropShadow);
 
-        itemNameLabel.setText(prod.getName());
-        priceLable.setText(String.valueOf(prod.getPrice()));
-        unitLable.setText(prod.getUnit());
-        itemImage.setImage(handler.getFXImage(prod));
+        itemNameLabel.setText(product.getName());
+        priceLable.setText(String.valueOf(product.getPrice()));
+        unitLable.setText(product.getUnit());
+        itemImage.setImage(handler.getFXImage(product));
 
         plusImage.setImage(addImage);
         minusImage.setImage(minusImageRes);
@@ -109,6 +110,8 @@ public class BrowseListItem extends AnchorPane {
         itemNameLabel.addEventHandler(MouseEvent.MOUSE_CLICKED, event->notifyOnDetailedView());
         favIcon.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> favoriteImage_click(event));
         amountField.addEventHandler(ActionEvent.ACTION, event-> onAmountFieldChange());
+
+        update();
     }
 
     private void mouseExit(){

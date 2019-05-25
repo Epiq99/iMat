@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -39,20 +40,28 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <GridPane GridPane.columnIndex="1">
+                  <GridPane hgap="20.0" GridPane.columnIndex="1">
                     <columnConstraints>
-                      <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="280.0" minWidth="10.0" prefWidth="280.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="34.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="189.0" minWidth="10.0" prefWidth="83.0" />
+                      <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="280.0" minWidth="10.0" prefWidth="183.0" />
+                        <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="189.0" minWidth="10.0" prefWidth="121.0" />
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="189.0" minWidth="10.0" prefWidth="84.0" />
                     </columnConstraints>
                     <rowConstraints>
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Label text="Total summa:" />
-                        <Label fx:id="totalSumLabel" text="99999" GridPane.columnIndex="2" />
-                        <Label text="kr" GridPane.columnIndex="3" />
+                        <Label text="Total summa:">
+                           <font>
+                              <Font size="25.0" />
+                           </font></Label>
+                        <Label fx:id="totalSumLabel" alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="118.0" text="99999" GridPane.columnIndex="1">
+                           <font>
+                              <Font size="25.0" />
+                           </font></Label>
+                        <Label prefHeight="30.0" prefWidth="35.0" text="kr" GridPane.columnIndex="2">
+                           <font>
+                              <Font size="25.0" />
+                           </font></Label>
                      </children>
                   </GridPane>
                   <GridPane GridPane.columnIndex="1" GridPane.rowIndex="1">
@@ -63,15 +72,11 @@
                     </columnConstraints>
                     <rowConstraints>
                       <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="12.0" vgrow="SOMETIMES" />
-                      <RowConstraints maxHeight="68.0" minHeight="10.0" prefHeight="42.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="68.0" minHeight="10.0" prefHeight="27.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="68.0" minHeight="10.0" prefHeight="51.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="68.0" minHeight="10.0" prefHeight="18.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <AnchorPane fx:id="payButton" prefHeight="30.0" prefWidth="106.0" styleClass="goButton" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                           <children>
-                              <Label alignment="CENTER" layoutX="13.0" layoutY="1.0" prefHeight="27.0" prefWidth="98.0" styleClass="goButtonLabel" text="GÅ TILL KASSAN" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                           </children>
-                        </AnchorPane>
+                        <Button fx:id="payButton" mnemonicParsing="false" prefHeight="50.0" prefWidth="246.0" styleClass="inactive-button" text="TILL KASSAN" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                      </children>
                   </GridPane>
                </children>

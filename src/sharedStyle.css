@@ -1,5 +1,8 @@
+/*#54C95D #A5D057 #E0D565*/
+
 .button:hover{
     -fx-cursor: hand;
+    -fx-background-color: #E0D565;
 }
 
 .button{
@@ -24,4 +27,8 @@
 
 .clickabel:hover{
     -fx-cursor: hand;
+}
+
+.header{
+    -fx-font-size: 25px;
 }

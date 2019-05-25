@@ -1,6 +1,7 @@
 package customerPage.passwordsettings;
 
 
+import customerPage.SettingsPane;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -17,7 +18,7 @@ import se.chalmers.cse.dat216.project.IMatDataHandler;
 
 import java.io.IOException;
 
-public class PasswordSettingsPage extends AnchorPane {
+public class PasswordSettingsPage extends SettingsPane {
 
     private static final Image errorImage = new Image("images/error.png");
     private static final Image confirmImage = new Image("images/confirmed.png");
@@ -105,4 +106,10 @@ public class PasswordSettingsPage extends AnchorPane {
         return self;
     }
 
+    @Override
+    public void update() {
+        confirmPass.setText("");
+        newPass.setText("");
+        currentPass.setText("");
+    }
 }

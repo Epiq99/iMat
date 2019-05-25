@@ -4,6 +4,8 @@ package cartPage;
 import cartPage.cartListItem.CartListItem;
 import cartPage.cartListItem.ICartItemListener;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -30,10 +32,11 @@ public class CartPage extends AnchorPane implements ICartItemListener {
 
     private static final List<ICartPageListener> listeners = new ArrayList<>();
     private static CartPage self;
+    EventHandler payEvent;
 
     @FXML FlowPane itemFlowPane;
     @FXML Label totalSumLabel;
-    @FXML AnchorPane payButton;
+    @FXML Button payButton;
 
     private CartPage() {
 
@@ -49,9 +52,8 @@ public class CartPage extends AnchorPane implements ICartItemListener {
 
         CartListItem.addListener(this);
 
+        payEvent = event->notifyOnCheckout();
         updateItemList();
-
-        payButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event->notifyOnCheckout());
     }
 
     public void updateItemList(){
@@ -60,6 +62,14 @@ public class CartPage extends AnchorPane implements ICartItemListener {
             itemFlowPane.getChildren().add(new CartListItem(s));
         
         totalSumLabel.setText(String.valueOf(handler.getShoppingCart().getTotal()));
+
+        if(handler.getShoppingCart().getItems().isEmpty() && !payButton.getStyleClass().contains("inactive-button")){
+            payButton.getStyleClass().add("inactive-button");
+            payButton.removeEventHandler(MouseEvent.MOUSE_CLICKED, payEvent);
+        } else {
+            payButton.getStyleClass().remove("inactive-button");
+            payButton.addEventHandler(MouseEvent.MOUSE_CLICKED, payEvent);
+        }
     }
 
     public static CartPage getInstance(){
