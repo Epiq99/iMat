@@ -11,6 +11,7 @@
     -fx-font-size: 22px;
     -fx-text-fill: white;
     -fx-font-weight: bolder;
+    -fx-alignment: center;
 }
 
 .inactive-button{
@@ -19,6 +20,7 @@
     -fx-font-size: 22px;
     -fx-text-fill: white;
     -fx-font-weight: bolder;
+    -fx-alignment: center;
 }
 
 .inactive-button:hover{

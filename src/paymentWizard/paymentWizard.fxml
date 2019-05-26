@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.String?>
+<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
@@ -20,7 +21,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<fx:root fx:id="wizardPane" prefHeight="737.0" prefWidth="1167.0" stylesheets="@paymentWizard.css" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root fx:id="wizardPane" prefHeight="737.0" prefWidth="1167.0" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columnConstraints>
@@ -73,8 +74,8 @@
                                         <RowConstraints maxHeight="36.0" minHeight="10.0" prefHeight="18.0" vgrow="SOMETIMES" />
                                       </rowConstraints>
                                        <children>
-                                          <Circle fx:id="indicatorCircle" fill="WHITE" radius="9.0" stroke="WHITE" strokeType="INSIDE" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                          <Label fx:id="indicatorLabel" alignment="CENTER" prefHeight="26.0" prefWidth="71.0" styleClass="wizGuideLabel" text="Frakt" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                          <Circle fx:id="indicatorCircle" fill="WHITE" radius="9.0" stroke="WHITE" strokeType="INSIDE" styleClass="active-indicator" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                          <Label fx:id="indicatorLabel" alignment="CENTER" prefHeight="26.0" prefWidth="71.0" styleClass="active-indicator" text="Frakt" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="8.0" stroke="WHITE" strokeType="INSIDE" width="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                                        </children>
                                     </GridPane>
@@ -95,8 +96,8 @@
                                           <RowConstraints maxHeight="36.0" minHeight="10.0" prefHeight="18.0" vgrow="SOMETIMES" />
                                        </rowConstraints>
                                        <children>
-                                          <Circle fx:id="indicatorCircle1" fill="WHITE" radius="9.0" stroke="WHITE" strokeType="INSIDE" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                          <Label fx:id="indicatorLabel1" alignment="CENTER" prefHeight="26.0" prefWidth="141.0" styleClass="wizGuideLabel" text="Bekräfta köp" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                          <Circle fx:id="indicatorCircle1" fill="WHITE" radius="9.0" stroke="WHITE" strokeType="INSIDE" styleClass="inactive-indicator" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                          <Label fx:id="indicatorLabel1" alignment="CENTER" prefHeight="26.0" prefWidth="141.0" styleClass="inactive-indicator" text="Bekräfta köp" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="8.0" stroke="WHITE" strokeType="INSIDE" width="200.0" GridPane.rowIndex="1" />
                                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="8.0" stroke="WHITE" strokeType="INSIDE" width="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                                        </children>
@@ -118,8 +119,8 @@
                                           <RowConstraints maxHeight="36.0" minHeight="10.0" prefHeight="18.0" vgrow="SOMETIMES" />
                                        </rowConstraints>
                                        <children>
-                                          <Circle fx:id="indicatorCircle2" fill="WHITE" radius="9.0" stroke="WHITE" strokeType="INSIDE" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                          <Label fx:id="indicatorLabel2" alignment="CENTER" prefHeight="26.0" prefWidth="161.0" styleClass="wizGuideLabel" text="Köp genomfört" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                          <Circle fx:id="indicatorCircle2" fill="WHITE" radius="9.0" stroke="WHITE" strokeType="INSIDE" styleClass="inactive-indicator" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                          <Label fx:id="indicatorLabel2" alignment="CENTER" prefHeight="26.0" prefWidth="161.0" styleClass="inactive-indicator" text="Köp genomfört" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="8.0" stroke="WHITE" strokeType="INSIDE" width="200.0" GridPane.rowIndex="1" />
                                        </children>
                                     </GridPane>
@@ -129,6 +130,82 @@
                         </GridPane>
                         <StackPane fx:id="contenPane" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: white;" GridPane.rowIndex="2">
                            <children>
+                              <AnchorPane fx:id="deliveryPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;">
+                                 <children>
+                                    <GridPane layoutX="79.0" layoutY="71.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                      <columnConstraints>
+                                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                        <RowConstraints maxHeight="72.0" minHeight="10.0" prefHeight="29.0" valignment="BOTTOM" vgrow="SOMETIMES" />
+                                        <RowConstraints maxHeight="232.0" minHeight="10.0" prefHeight="232.0" vgrow="SOMETIMES" />
+                                        <RowConstraints maxHeight="115.0" minHeight="10.0" prefHeight="18.0" vgrow="SOMETIMES" />
+                                      </rowConstraints>
+                                       <children>
+                                          <Label alignment="BOTTOM_CENTER" styleClass="text-Title" text="Frakt" />
+                                          <GridPane GridPane.rowIndex="1">
+                                            <columnConstraints>
+                                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="365.0" minWidth="10.0" prefWidth="279.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="469.0" minWidth="10.0" prefWidth="156.0" />
+                                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="469.0" minWidth="10.0" prefWidth="311.0" />
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                                <RowConstraints maxHeight="63.0" minHeight="10.0" prefHeight="42.0" valignment="BOTTOM" vgrow="SOMETIMES" />
+                                              <RowConstraints maxHeight="87.0" minHeight="10.0" prefHeight="32.0" valignment="BOTTOM" vgrow="SOMETIMES" />
+                                              <RowConstraints maxHeight="38.0" minHeight="10.0" prefHeight="28.0" valignment="BOTTOM" vgrow="SOMETIMES" />
+                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                            </rowConstraints>
+                                             <children>
+                                                <RadioButton mnemonicParsing="false" selected="true" styleClass="text-Other" text="Normal 2-3 dagar" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                   <toggleGroup>
+                                                      <ToggleGroup fx:id="group1" />
+                                                   </toggleGroup>
+                                                </RadioButton>
+                                                <Label styleClass="text-Other" text="0 kr" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                                <RadioButton fx:id="expressRadioButton" mnemonicParsing="false" styleClass="text-Other" text="Express 1 dag" toggleGroup="$group1" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                <Label styleClass="text-Other" text="50 kr" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                                                <Label text="Typ" GridPane.columnIndex="1">
+                                                   <font>
+                                                      <Font size="16.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label text="Pris" GridPane.columnIndex="2">
+                                                   <font>
+                                                      <Font size="16.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </GridPane>
+                                       </children>
+                                    </GridPane>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane fx:id="donePane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;">
+                                 <children>
+                                    <GridPane layoutX="79.0" layoutY="71.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <columnConstraints>
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="340.0" minWidth="10.0" prefWidth="161.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="680.0" minWidth="10.0" prefWidth="648.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="188.0" minWidth="10.0" prefWidth="188.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints maxHeight="72.0" minHeight="10.0" prefHeight="40.0" valignment="BOTTOM" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="128.0" minHeight="10.0" prefHeight="66.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="264.0" minHeight="10.0" prefHeight="207.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="213.0" minHeight="3.0" prefHeight="17.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                       <children>
+                                          <Label alignment="BOTTOM_CENTER" styleClass="text-Title" text="Köp genomfört" GridPane.columnIndex="1" />
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-Other" text="Tack för att du handlar med iMat" textAlignment="CENTER" wrappingWidth="350.609375" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                          <ScrollPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                             <content>
+                                                <FlowPane fx:id="reciptList" prefHeight="33.0" prefWidth="328.0" />
+                                             </content>
+                                          </ScrollPane>
+                                       </children>
+                                    </GridPane>
+                                 </children>
+                              </AnchorPane>
                               <AnchorPane fx:id="payPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;">
                                  <children>
                                     <GridPane hgap="30.0" layoutX="79.0" layoutY="71.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -137,8 +214,8 @@
                                        </columnConstraints>
                                        <rowConstraints>
                                           <RowConstraints maxHeight="72.0" minHeight="10.0" prefHeight="37.0" valignment="CENTER" vgrow="SOMETIMES" />
-                                          <RowConstraints maxHeight="312.0" minHeight="10.0" prefHeight="245.0" vgrow="SOMETIMES" />
-                                          <RowConstraints maxHeight="147.0" minHeight="0.0" prefHeight="47.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="312.0" minHeight="10.0" prefHeight="264.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="147.0" minHeight="0.0" prefHeight="24.0" vgrow="SOMETIMES" />
                                        </rowConstraints>
                                        <children>
                                           <Label alignment="BOTTOM_CENTER" styleClass="text-Title" text="Bekräfta köp" />
@@ -192,24 +269,22 @@
                                                   </rowConstraints>
                                                    <children>
                                                       <Label prefHeight="21.0" prefWidth="94.0" styleClass="text-Other" stylesheets="@paymentWizard.css" text="CVC kod:" GridPane.columnIndex="1" />
-                                                      <TextField GridPane.columnIndex="2" />
-                                                      <ImageView fitHeight="47.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4">
-                                                         <image>
-                                                            <Image url="@wizardPictures/InfoClick_00000.png" />
-                                                         </image>
-                                                      </ImageView>
+                                                      <TextField fx:id="cvcEntry" GridPane.columnIndex="2" />
+                                                      <Button fx:id="questionButton" mnemonicParsing="false" text="?" GridPane.columnIndex="4" />
                                                    </children>
                                                 </GridPane>
                                                 <GridPane GridPane.columnIndex="1" GridPane.rowIndex="2">
                                                   <columnConstraints>
-                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="44.0" />
-                                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="571.0" minWidth="10.0" prefWidth="562.0" />
+                                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="146.0" minWidth="10.0" prefWidth="56.0" />
+                                                    <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="571.0" minWidth="10.0" prefWidth="305.0" />
+                                                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="571.0" minWidth="10.0" prefWidth="274.0" />
                                                   </columnConstraints>
                                                   <rowConstraints>
                                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                   </rowConstraints>
                                                    <children>
                                                       <Label styleClass="text-Other" stylesheets="@paymentWizard.css" text="Kort: ***************" GridPane.columnIndex="1" />
+                                                      <Label fx:id="lastFoutLabel" styleClass="text-Other" text="1234" GridPane.columnIndex="2" />
                                                    </children>
                                                 </GridPane>
                                                 <GridPane hgap="30.0" GridPane.columnIndex="1">
@@ -243,82 +318,33 @@
                                           </GridPane>
                                        </children>
                                     </GridPane>
-                                 </children>
-                              </AnchorPane>
-                              <AnchorPane fx:id="deliveryPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;">
-                                 <children>
-                                    <GridPane layoutX="79.0" layoutY="71.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                      <columnConstraints>
-                                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                      </columnConstraints>
-                                      <rowConstraints>
-                                        <RowConstraints maxHeight="72.0" minHeight="10.0" prefHeight="29.0" valignment="BOTTOM" vgrow="SOMETIMES" />
-                                        <RowConstraints maxHeight="232.0" minHeight="10.0" prefHeight="232.0" vgrow="SOMETIMES" />
-                                        <RowConstraints maxHeight="115.0" minHeight="10.0" prefHeight="18.0" vgrow="SOMETIMES" />
-                                      </rowConstraints>
+                                    <AnchorPane fx:id="cvcHelp" layoutX="6.0" layoutY="2.0" pickOnBounds="true" styleClass="cvcHelper" AnchorPane.bottomAnchor="2.0" AnchorPane.rightAnchor="74.0">
                                        <children>
-                                          <Label alignment="BOTTOM_CENTER" styleClass="text-Title" text="Frakt" />
-                                          <GridPane GridPane.rowIndex="1">
+                                          <ImageView fx:id="cvcHelpImageView" fitHeight="180.0" fitWidth="350.0" layoutX="1.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+                                             <image>
+                                                <Image url="@../../resources/images/CVCHelp.jpg" />
+                                             </image>
+                                          </ImageView>
+                                          <GridPane layoutX="2.0" layoutY="1.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="1.0">
                                             <columnConstraints>
-                                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="365.0" minWidth="10.0" prefWidth="279.0" />
-                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="469.0" minWidth="10.0" prefWidth="156.0" />
-                                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="469.0" minWidth="10.0" prefWidth="311.0" />
+                                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="291.0" minWidth="10.0" prefWidth="284.0" />
+                                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="158.0" minWidth="10.0" prefWidth="47.0" />
                                             </columnConstraints>
                                             <rowConstraints>
-                                                <RowConstraints maxHeight="63.0" minHeight="10.0" prefHeight="42.0" valignment="BOTTOM" vgrow="SOMETIMES" />
-                                              <RowConstraints maxHeight="87.0" minHeight="10.0" prefHeight="32.0" valignment="BOTTOM" vgrow="SOMETIMES" />
-                                              <RowConstraints maxHeight="38.0" minHeight="10.0" prefHeight="28.0" valignment="BOTTOM" vgrow="SOMETIMES" />
+                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                             </rowConstraints>
                                              <children>
-                                                <RadioButton mnemonicParsing="false" selected="true" styleClass="text-Other" text="Normal 2-3 dagar" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                                                   <toggleGroup>
-                                                      <ToggleGroup fx:id="group1" />
-                                                   </toggleGroup>
-                                                </RadioButton>
-                                                <Label styleClass="text-Other" text="0 kr" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                                                <RadioButton mnemonicParsing="false" styleClass="text-Other" text="Express 1 dag" toggleGroup="$group1" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                                <Label styleClass="text-Other" text="50 kr" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                                                <Label text="Typ" GridPane.columnIndex="1">
-                                                   <font>
-                                                      <Font size="16.0" />
-                                                   </font>
-                                                </Label>
-                                                <Label text="Pris" GridPane.columnIndex="2">
-                                                   <font>
-                                                      <Font size="16.0" />
-                                                   </font>
-                                                </Label>
+                                                <ImageView fx:id="cvcHelpCloseImageView" fitHeight="36.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true" styleClass="clickabel" GridPane.columnIndex="1">
+                                                   <image>
+                                                      <Image url="@../../resources/images/close.png" />
+                                                   </image>
+                                                </ImageView>
                                              </children>
                                           </GridPane>
                                        </children>
-                                    </GridPane>
-                                 </children>
-                              </AnchorPane>
-                              <AnchorPane fx:id="donePane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;">
-                                 <children>
-                                    <GridPane layoutX="79.0" layoutY="71.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                       <columnConstraints>
-                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="340.0" minWidth="10.0" prefWidth="161.0" />
-                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="680.0" minWidth="10.0" prefWidth="648.0" />
-                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="188.0" minWidth="10.0" prefWidth="188.0" />
-                                       </columnConstraints>
-                                       <rowConstraints>
-                                          <RowConstraints maxHeight="72.0" minHeight="10.0" prefHeight="40.0" valignment="BOTTOM" vgrow="SOMETIMES" />
-                                          <RowConstraints maxHeight="128.0" minHeight="10.0" prefHeight="66.0" vgrow="SOMETIMES" />
-                                          <RowConstraints maxHeight="264.0" minHeight="10.0" prefHeight="207.0" vgrow="SOMETIMES" />
-                                          <RowConstraints maxHeight="213.0" minHeight="3.0" prefHeight="17.0" vgrow="SOMETIMES" />
-                                       </rowConstraints>
-                                       <children>
-                                          <Label alignment="BOTTOM_CENTER" styleClass="text-Title" text="Köp genomfört" GridPane.columnIndex="1" />
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-Other" text="Tack för att du handlar med iMat" textAlignment="CENTER" wrappingWidth="350.609375" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                          <ScrollPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                                             <content>
-                                                <FlowPane fx:id="reciptList" prefHeight="33.0" prefWidth="328.0" />
-                                             </content>
-                                          </ScrollPane>
-                                       </children>
-                                    </GridPane>
+                                    </AnchorPane>
                                  </children>
                               </AnchorPane>
                            </children>
@@ -339,9 +365,9 @@
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <Button fx:id="cancelButton" mnemonicParsing="false" prefHeight="57.0" prefWidth="193.0" text="AVBRYT" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                              <Button fx:id="backButton" mnemonicParsing="false" prefHeight="143.0" prefWidth="335.0" text="TILLBAKA" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                              <Button fx:id="nextButton" mnemonicParsing="false" prefHeight="60.0" prefWidth="240.0" text="NÄSTA" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+                              <Button fx:id="cancelButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="57.0" prefWidth="193.0" text="AVBRYT" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <Button fx:id="backButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="143.0" prefWidth="335.0" text="TILLBAKA" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                              <Button fx:id="nextButton" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="60.0" prefWidth="240.0" text="NÄSTA" GridPane.columnIndex="5" GridPane.rowIndex="1" />
                            </children>
                         </GridPane>
                      </children>
@@ -355,4 +381,8 @@
       <String fx:value="mainPane" />
       <String fx:value="dark-panel" />
    </styleClass>
+   <stylesheets>
+      <URL value="@paymentWizard.css" />
+      <URL value="@../sharedStyle.css" />
+   </stylesheets>
 </fx:root>

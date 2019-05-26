@@ -47,3 +47,26 @@
 .indicatorPane{
     -fx-background-color: #54C95D;
 }
+
+.inactive-indicator{
+    -fx-fill: lightgray;
+    -fx-stroke: lightgray;
+    -fx-font-size: 18px;
+    -fx-text-fill: lightgray;
+    -fx-font-weight: bold;
+}
+
+.active-indicator{
+    -fx-fill: white;
+    -fx-stroke: white;
+    -fx-font-size: 18px;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.cvcHelper{
+    -fx-background-radius: 5px;
+    -fx-border-color: black;
+    -fx-border-radius: 5px;
+    -fx-background-color: white;
+}

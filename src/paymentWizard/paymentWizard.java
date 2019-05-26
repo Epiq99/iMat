@@ -1,10 +1,18 @@
 package paymentWizard;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
@@ -20,6 +28,9 @@ import java.util.List;
 
 public class paymentWizard extends AnchorPane {
 
+    private static Image cvcHelpImage = new Image("images/CVCHelp.jpg");
+    private static Image closeImage = new Image("images/close.png");
+
     @FXML Circle indicatorCircle, indicatorCircle1, indicatorCircle2;
     @FXML Button cancelButton, nextButton, backButton;
     @FXML StackPane contenPane;
@@ -27,6 +38,12 @@ public class paymentWizard extends AnchorPane {
     @FXML FlowPane reciptList;
     @FXML Label finalPriceLabel;
     @FXML Label indicatorLabel, indicatorLabel1, indicatorLabel2;
+    @FXML RadioButton expressRadioButton, cardPayRadioButton;
+    @FXML Label billingAddress, lastFoutLabel;
+    @FXML TextField cvcEntry;
+    @FXML Button questionButton;
+    @FXML AnchorPane cvcHelp;
+    @FXML ImageView cvcHelpImageView, cvcHelpCloseImageView;
 
     Label[] indicatorLabels;
     Circle[] circles;
@@ -56,7 +73,30 @@ public class paymentWizard extends AnchorPane {
         currentPaneIndex = 0;
         indicatorLabels = new Label[]{indicatorLabel, indicatorLabel1, indicatorLabel2};
         circles = new Circle[]{indicatorCircle, indicatorCircle1, indicatorCircle2};
+        cvcEntry.textProperty().addListener(((observable, oldValue, newValue) -> cvcCodeChange(observable,oldValue,newValue)));
+        cardPayRadioButton.selectedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
 
+                if(!newValue){
+                    cvcEntry.setDisable(true);
+                    editNavButtons(event -> setUpDeliveryPage(),event->setUpDonePage(), 1);
+                }
+                else {
+                    cvcEntry.setDisable(false);
+                    cvcCodeChange(null, cvcEntry.getText(), cvcEntry.getText());
+                }
+
+            }
+        });
+
+        cvcHelp.setVisible(false);
+        cvcHelpImageView.setImage(cvcHelpImage);
+        cvcHelpCloseImageView.setImage(closeImage);
+        cvcHelpCloseImageView.addEventHandler(MouseEvent.MOUSE_CLICKED, event->cvcHelp.setVisible(false));
+        questionButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> cvcHelp.setVisible(true));
+
+        cancelButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> returnByCancel());
         setUpDeliveryPage();
     }
 
@@ -68,10 +108,15 @@ public class paymentWizard extends AnchorPane {
     }
 
     private void setUpPaymentPage(){
-        editNavButtons(event-> setUpDeliveryPage(), event ->setUpDonePage(), 1);
+        editNavButtons(event-> setUpDeliveryPage(), null, 1);
         contenPane.getChildren().clear();
         contenPane.getChildren().add(payPane);
-        finalPriceLabel.setText(String.valueOf(handler.getShoppingCart().getTotal()));
+        cvcEntry.setText("");
+        if(!handler.getCreditCard().getCardNumber().isEmpty())
+            lastFoutLabel.setText(handler.getCreditCard().getCardNumber().substring(11));
+
+        finalPriceLabel.setText(String.valueOf(handler.getShoppingCart().getTotal() + (expressRadioButton.isSelected()?50:0)));
+        billingAddress.setText(handler.getCustomer().getAddress());
         nextButton.setText("Betala");
     }
 
@@ -82,6 +127,18 @@ public class paymentWizard extends AnchorPane {
         reciptList.getChildren().clear();
         for(ShoppingItem s: handler.getShoppingCart().getItems())
             reciptList.getChildren().add(new ReciptItem(s.getProduct().getName(), (int) s.getAmount(), s.getTotal()));
+
+        cancelButton.setVisible(false);
+    }
+
+    private void cvcCodeChange(Object a, String oldValue, String newValue){
+        if(newValue.length() < 4) {
+            editNavButtons(event -> setUpDeliveryPage(),null, 1);
+            return;
+        }
+
+        cvcEntry.setText(newValue.substring(0,4));
+        editNavButtons(event -> setUpDeliveryPage(),event->setUpDonePage(), 1);
     }
 
     private void editNavButtons(EventHandler backEvent, EventHandler nextEvent, int pageIndex){
@@ -92,11 +149,19 @@ public class paymentWizard extends AnchorPane {
         if(nextButtonEvent != null)
             nextButton.removeEventHandler(MouseEvent.MOUSE_CLICKED, nextButtonEvent);
 
-        if(backEvent != null)
+        if(backEvent != null) {
             backButton.addEventHandler(MouseEvent.MOUSE_CLICKED, backEvent);
+            changeStyleClass(backButton,"button");
+        }
+        else
+            changeStyleClass(backButton, "inactive-button");
 
-        if(nextEvent != null)
+        if(nextEvent != null) {
             nextButton.addEventHandler(MouseEvent.MOUSE_CLICKED, nextEvent);
+            changeStyleClass(nextButton,"button");
+        }
+        else
+            changeStyleClass(nextButton,"inactive-button");
 
         backButtonEvent = backEvent;
         nextButtonEvent = nextEvent;
@@ -105,13 +170,15 @@ public class paymentWizard extends AnchorPane {
     }
 
     private void activateGuide(int i) {
-        for(Circle c: circles)
-            c.setRadius(smallCircleRad);
-
-        for(Label l: indicatorLabels)
-        {
-            //TODO: set standard
+        for(int j=0; j < circles.length; j++){
+            circles[j].setRadius(smallCircleRad);
+            changeStyleClass(circles[j],"inactive-indicator");
+            changeStyleClass(indicatorLabels[j],"inactive-indicator");
         }
+
+        circles[i].setRadius(bigCircleRad);
+        changeStyleClass(circles[i],"active-indicator");
+        changeStyleClass(indicatorLabels[i],"active-indicator");
     }
 
     private void successfulReturn(){
@@ -119,7 +186,7 @@ public class paymentWizard extends AnchorPane {
         notifyToReturn();
     }
 
-    private void returnByCansel(){
+    private void returnByCancel(){
         notifyToReturn();
     }
 
@@ -132,26 +199,8 @@ public class paymentWizard extends AnchorPane {
         listeners.add(listener);
     }
 
-    /*
-     private  void updateCardInfo () {
-
-
-        cardLabel.setText(iMatDataHandler.getCreditCard().getCardNumber());
-
+    private static void changeStyleClass(Node obj, String className){
+        obj.getStyleClass().clear();
+        obj.getStyleClass().add(className);
     }
-
-    private void updateRecipe(ShoppingCart shoppingCart){
-
-        StringBuilder sb = new StringBuilder();
-        List<ShoppingItem> itemsList = shoppingCart.getItems();
-
-        for ( ShoppingItem product : itemsList) {
-            sb.append(product).append(" - ").append(product.getProduct().getPrice()).append("\n");
-        }
-        sb.append("\n").append("Totalpris: ").append(shoppingCart.getTotal());
-        recipeList.setText(sb.toString());
-
-    }
-
-    */
 }
