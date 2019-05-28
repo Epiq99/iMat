@@ -33,8 +33,9 @@ public class DetailedView extends AnchorPane {
     private static final Image favoriteFullImage = new Image("images/favorite_full.png");
     private static final Image favoriteEmptyImage = new Image("images/favorite_empty.png");
     private static final Image closeImage = new Image("images/close.png");
+    private static final Image ecoImageRes = new Image("images/ekologisk.png");
 
-    public static final List<IDetailedViewListener> listeners = new ArrayList<>();
+    private static final List<IDetailedViewListener> listeners = new ArrayList<>();
 
     private Product product;
     private ShoppingItem shoppingItem;
@@ -66,6 +67,7 @@ public class DetailedView extends AnchorPane {
             throw new RuntimeException(exception);
         }
 
+        ecoImage.setImage(ecoImageRes);
         titleLabel.setText(product.getName());
         priceLabel.setText(String.valueOf(product.getPrice()));
         unitLabel.setText(product.getUnit());

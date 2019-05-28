@@ -15,7 +15,7 @@ import se.chalmers.cse.dat216.project.ShoppingItem;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 public class ReceiptListItem extends AnchorPane {
 
@@ -28,7 +28,7 @@ public class ReceiptListItem extends AnchorPane {
     @FXML FlowPane itemList;
     @FXML Button showButton;
     @FXML AnchorPane mainPane;
-    @FXML Label dateLabel, orderNumberLabel, noProdLabel;
+    @FXML Label dateLabel, orderNumberLabel, sumLabel;
 
     public ReceiptListItem(Order receipt) {
 
@@ -49,10 +49,18 @@ public class ReceiptListItem extends AnchorPane {
 
         orderNumberLabel.setText(String.valueOf(order.getOrderNumber()));
         dateLabel.setText(dateFormat.format(order.getDate()));
-        noProdLabel.setText(String.valueOf(order.getItems().size()));
+        sumLabel.setText(String.valueOf(getSum(order.getItems())));
 
         if(id++%2==0)
             mainPane.setStyle("-fx-background-color: lightgray");
+    }
+
+    private double getSum(List<ShoppingItem> list){
+        double sum = 0;
+        for(ShoppingItem i:list)
+            sum += i.getProduct().getPrice() * i.getAmount();
+
+        return sum;
     }
 
     private void showItems(){

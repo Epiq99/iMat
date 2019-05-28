@@ -150,7 +150,7 @@
                            </font></Text>
                         <ImageView fx:id="ecoImage" fitHeight="63.0" fitWidth="82.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
                            <image>
-                              <Image url="@../../resources/images/ekologosk.png" />
+                              <Image url="@../../resources/images/ekologisk.png" />
                            </image>
                         </ImageView>
                      </children>

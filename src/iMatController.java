@@ -262,11 +262,11 @@ public class iMatController implements Initializable, IFoodCategoryListner,
 
     @Override
     public void closeDetailedView(DetailedView item) {
-        if(openDetails != null) {
+        if(openDetails != null && browserPane.getChildren().contains(openDetails)) {
             browserPane.getChildren().set(browserPane.getChildren().indexOf(openDetails),
                     itemPool.getBrowserListItem(openDetails.getProduct()));
-            openDetails = null;
         }
+        openDetails = null;
     }
 
 

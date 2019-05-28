@@ -129,6 +129,7 @@ public class paymentWizard extends AnchorPane {
             reciptList.getChildren().add(new ReciptItem(s.getProduct().getName(), (int) s.getAmount(), s.getTotal()));
 
         cancelButton.setVisible(false);
+        nextButton.setText("Avsluta");
     }
 
     private void cvcCodeChange(Object a, String oldValue, String newValue){

@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.TilePane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="879.0" prefWidth="1222.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="iMatController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="879.0" prefWidth="1222.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="iMatController">
    <children>
       <StackPane fx:id="mainStackPane" prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -91,7 +91,7 @@
                                  <font>
                                     <Font size="22.0" />
                                  </font></TextField>
-                              <Button fx:id="searchButton" mnemonicParsing="false" onAction="#search" prefHeight="25.0" prefWidth="67.0" text="Sök" GridPane.columnIndex="3" />
+                              <Button fx:id="searchButton" mnemonicParsing="false" onAction="#search" prefHeight="48.0" prefWidth="72.0" text="Sök" GridPane.columnIndex="3" />
                               <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4">
                                  <children>
                                     <ImageView fx:id="cartImage" fitHeight="75.0" fitWidth="61.0" layoutX="194.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true" styleClass="cartImage">
@@ -99,11 +99,11 @@
                                           <Image url="@../resources/images/shoppingcart.png" />
                                        </image>
                                     </ImageView>
-                                    <AnchorPane fx:id="cartImdicatorPnane" layoutX="248.0" layoutY="16.0" prefHeight="200.0" prefWidth="200.0" styleClass="cartIndicatorPane">
+                                    <AnchorPane fx:id="cartImdicatorPnane" layoutX="248.0" layoutY="21.0" prefHeight="39.0" prefWidth="45.0" styleClass="cartIndicatorPane">
                                        <children>
                                           <Label fx:id="cartImdicatorLabel" alignment="CENTER" layoutX="8.0" layoutY="7.0" prefHeight="30.0" prefWidth="30.0" text="0" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="6.0">
                                              <font>
-                                                <Font size="13.0" />
+                                                <Font size="18.0" />
                                              </font>
                                           </Label>
                                        </children>
