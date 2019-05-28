@@ -2,17 +2,21 @@
 
 .mainPane
 {
-    -fx-pref-width: 200px;
-    -fx-pref-height: 255px;
-    -fx-border-color: black;
     -fx-background-radius: 10px;
     -fx-border-radius: 10px;
     -fx-background-color: white;
 }
-
-.itemNameLable
+.mainPane2
 {
-    -fx-font-size: 18px;
+ -fx-pref-width: 200px;
+ -fx-pref-height: 255px;
+ -fx-background-radius: 10px;
+ -fx-border-radius: 10px;
+ -fx-background-color: white;
+}
+
+.itemNameLable{
+    -fx-font-size: 20px;
     -fx-font-weight: bold;
 }
 
@@ -24,7 +28,7 @@
 .priceLable
 {
     -fx-text-fill: black;
-    -fx-font-size: 17px;
+    -fx-font-size: 20px;
     -fx-font-weight: bolder;
     -fx-text-alignment: left;
 }
@@ -37,5 +41,14 @@
 }
 
 .plusMinusImage:hover{
+    -fx-cursor: hand;
+}
+
+.favoriteIcon{
+    -fx-background-color: white;
+    -fx-background-radius: 3px;
+}
+
+.favoriteIcon:hover{
     -fx-cursor: hand;
 }

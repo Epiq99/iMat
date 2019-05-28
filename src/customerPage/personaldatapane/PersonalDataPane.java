@@ -1,6 +1,7 @@
 package customerPage.personaldatapane;
 
 
+import customerPage.SettingsPane;
 import detailedview.IDetailedViewListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,6 +15,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.converter.IntegerStringConverter;
+import se.chalmers.cse.dat216.project.Customer;
 import se.chalmers.cse.dat216.project.IMatDataHandler;
 import se.chalmers.cse.dat216.project.Product;
 
@@ -21,11 +23,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PersonalDataPane extends AnchorPane {
+public class PersonalDataPane extends SettingsPane {
 
     IMatDataHandler handler = IMatDataHandler.getInstance();
 
-    @FXML TextField userNameEntry, entry1, entry2, entry3, entry4, entry5, entry6, entry7;
+    @FXML TextField userNameEntry, firstNameEntry, lastNameEntry, phoneNumberEntry,
+            emailEntry, addressEntry, postalCodeEntry, mobilePhoneEntry;
     @FXML Button changeButton;
 
     private final TextField entries[];
@@ -45,12 +48,17 @@ public class PersonalDataPane extends AnchorPane {
             throw new RuntimeException(exception);
         }
 
-        entries = new TextField[]{userNameEntry, entry1, entry2, entry3, entry4, entry5, entry6, entry7};
+        update();
+
+        entries = new TextField[]{userNameEntry, firstNameEntry, lastNameEntry, phoneNumberEntry,
+                emailEntry, addressEntry, postalCodeEntry, mobilePhoneEntry};
 
         for(TextField e: entries)
             e.setDisable(!editModeOn);
 
         changeButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event->onChangeButtonClicked());
+
+
     }
 
 
@@ -64,6 +72,15 @@ public class PersonalDataPane extends AnchorPane {
 
         for(TextField e: entries)
             e.setDisable(!editModeOn);
+
+        Customer c = handler.getCustomer();
+        c.setFirstName(firstNameEntry.getText());
+        c.setLastName(lastNameEntry.getText());
+        c.setPhoneNumber(phoneNumberEntry.getText());
+        c.setMobilePhoneNumber(mobilePhoneEntry.getText());
+        c.setEmail(emailEntry.getText());
+        c.setAddress(addressEntry.getText());
+        c.setPostAddress(postalCodeEntry.getText());
     }
 
     public static PersonalDataPane getInstance(){
@@ -74,4 +91,16 @@ public class PersonalDataPane extends AnchorPane {
     }
 
     public TextField[] getEtries(){return entries;}
+
+    @Override
+    public void update() {
+        Customer c = handler.getCustomer();
+        firstNameEntry.setText(c.getFirstName());
+        lastNameEntry.setText(c.getLastName());
+        phoneNumberEntry.setText(c.getPhoneNumber());
+        mobilePhoneEntry.setText(c.getMobilePhoneNumber());
+        addressEntry.setText(c.getAddress());
+        postalCodeEntry.setText(c.getPostAddress());
+        emailEntry.setText(c.getEmail());
+    }
 }

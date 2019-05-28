@@ -7,8 +7,7 @@
     -fx-border-color: black;
 }
 
-.mainPane:hover
-{
+.mainPane:hover {
     -fx-background-color: #E0D565;
     -fx-cursor: hand;
 }

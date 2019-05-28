@@ -1,0 +1,5 @@
+
+.paneButton:hover{
+    -fx-cursor: hand;
+    -fx-background-color: #E0D565;
+}

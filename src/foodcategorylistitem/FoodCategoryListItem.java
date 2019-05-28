@@ -28,8 +28,7 @@ public class FoodCategoryListItem extends KategoriListItem {
         super(kategoriNamn);
 
         kategorier = kat;
-        
-        this.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> onClick());
+
     }
 
     @Override

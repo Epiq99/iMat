@@ -1,6 +1,7 @@
 package customerPage.paymentsettings;
 
 
+import customerPage.SettingsPane;
 import customerPage.personaldatapane.PersonalDataPane;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -12,16 +13,17 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import se.chalmers.cse.dat216.project.CreditCard;
 import se.chalmers.cse.dat216.project.IMatDataHandler;
 
 import java.io.IOException;
 
-public class PaymentSettingPane extends AnchorPane {
+public class PaymentSettingPane extends SettingsPane {
 
     IMatDataHandler handler = IMatDataHandler.getInstance();
 
     @FXML RadioButton cardPayRadioButton, deliveryRadioButton, billRadioButton;
-    @FXML TextField entry1, entry2, entry3, entry4, entry5;
+    @FXML TextField entry1, entry2, entry3, entry4;
     @FXML Label billingAddress;
     private final TextField entries[];
 
@@ -39,10 +41,9 @@ public class PaymentSettingPane extends AnchorPane {
             throw new RuntimeException(exception);
         }
 
-        entries = new TextField[]{entry1, entry2, entry3, entry4, entry5};
+        entries = new TextField[]{entry1, entry2, entry3, entry4};
 
         cardPayRadioButton.setSelected(true);
-        billingAddress.setText(getUserAddress());
 
         cardPayRadioButton.getToggleGroup().selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
             @Override
@@ -54,24 +55,15 @@ public class PaymentSettingPane extends AnchorPane {
                 {
                     for(TextField t: entries)
                         t.setDisable(true);
-                    if(billRadioButton.isSelected())
-                        billingAddress.setText(getUserAddress());
                 }
             }
         });
-    }
+        CreditCard c = handler.getCreditCard();
 
-    private String getUserAddress(){
-        StringBuilder builder = new StringBuilder();
-        TextField entries[] = PersonalDataPane.getInstance().getEtries();
-
-        builder.append(entries[5].getText());
-        builder.append(", ");
-        builder.append(entries[6].getText());
-        builder.append(" ");
-        builder.append(entries[7].getText());
-
-        return builder.toString();
+        entry1.textProperty().addListener(((observable, oldValue, newValue) -> c.setCardNumber(newValue)));
+        entry2.textProperty().addListener(((observable, oldValue, newValue) -> c.setValidMonth(Integer.parseInt(newValue))));
+        entry3.textProperty().addListener(((observable, oldValue, newValue) -> c.setValidYear(Integer.parseInt(newValue))));
+        entry4.textProperty().addListener(((observable, oldValue, newValue) -> c.setHoldersName(newValue)));
     }
 
     public static PaymentSettingPane getInstance(){
@@ -81,4 +73,15 @@ public class PaymentSettingPane extends AnchorPane {
         return self;
     }
 
+    @Override
+    public void update() {
+        billingAddress.setText(handler.getCustomer().getAddress());
+
+        CreditCard c = handler.getCreditCard();
+
+        entry1.setText(c.getCardNumber());
+        entry2.setText(String.valueOf(c.getValidMonth()));
+        entry3.setText(String.valueOf(c.getValidYear()));
+        entry4.setText(c.getHoldersName());
+    }
 }

@@ -1,12 +1,16 @@
 package browseListItem;
 
 
+import javafx.event.ActionEvent;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.input.MouseEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import javafx.util.converter.IntegerStringConverter;
 import se.chalmers.cse.dat216.project.*;
 
@@ -33,7 +37,7 @@ public class BrowseListItem extends AnchorPane {
     private final Product product;
     private int amount = 0;
 
-    @FXML Label itemNameLable;
+    @FXML Text itemNameLabel;
     @FXML Label priceLable;
     @FXML Label unitLable;
     @FXML ImageView itemImage;
@@ -41,12 +45,12 @@ public class BrowseListItem extends AnchorPane {
     @FXML ImageView minusImage;
     @FXML TextField amountField;
     @FXML ImageView favoriteImage;
-    @FXML AnchorPane mainPane;
+    @FXML AnchorPane mainPane, favIcon;
 
-    public BrowseListItem(Product prod) {
+    public BrowseListItem(ShoppingItem prod) {
 
-        product = prod;
-        shoppingItem = new ShoppingItem(product, 0);
+        product = prod.getProduct();
+        shoppingItem = prod;
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("browselistitem.fxml"));
         fxmlLoader.setRoot(this);
@@ -58,20 +62,31 @@ public class BrowseListItem extends AnchorPane {
             throw new RuntimeException(exception);
         }
 
-        itemNameLable.setText(prod.getName());
-        priceLable.setText(String.valueOf(prod.getPrice()));
-        unitLable.setText(prod.getUnit());
-        itemImage.setImage(handler.getFXImage(prod));
+        DropShadow dropShadow = new DropShadow();
+
+        dropShadow.setColor(Color.BLACK);
+        dropShadow.setOffsetX(3);
+        dropShadow.setOffsetY(3);
+
+        mainPane.setEffect(dropShadow);
+
+        itemNameLabel.setText(product.getName());
+        priceLable.setText(String.valueOf(product.getPrice()));
+        unitLable.setText(product.getUnit());
+        itemImage.setImage(handler.getFXImage(product));
 
         plusImage.setImage(addImage);
         minusImage.setImage(minusImageRes);
 
-        if(handler.isFavorite(product))
-            favoriteImage.setImage(favoriteFullImage);
-        else
-            favoriteImage.setImage(favoriteEmptyImage);
 
-        favoriteImage.setVisible(false);
+        if(handler.isFavorite(product)) {
+            favoriteImage.setImage(favoriteFullImage);
+            favIcon.setVisible(true);
+        }
+        else {
+            favoriteImage.setImage(favoriteEmptyImage);
+            favIcon.setVisible(false);
+        }
 
         //amountField.setTextFormatter(new TextFormatter<>(new DoubleStringConverter(), 1.0));
         amountField.setTextFormatter(new TextFormatter<>(new IntegerStringConverter(), 0));
@@ -87,16 +102,47 @@ public class BrowseListItem extends AnchorPane {
         );
 
         this.addEventHandler(MouseEvent.MOUSE_ENTERED, event->
-                favoriteImage.setVisible(true)
+                favIcon.setVisible(true)
                 );
 
-        this.addEventHandler(MouseEvent.MOUSE_EXITED, event->
-                favoriteImage.setVisible(false)
-                );
+        this.addEventHandler(MouseEvent.MOUSE_EXITED, event-> mouseExit());
 
-        itemNameLable.addEventHandler(MouseEvent.MOUSE_CLICKED, event->notifyOnDetailedView());
+        itemNameLabel.addEventHandler(MouseEvent.MOUSE_CLICKED, event->notifyOnDetailedView());
+        favIcon.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> favoriteImage_click(event));
+        amountField.addEventHandler(ActionEvent.ACTION, event-> onAmountFieldChange());
 
-        favoriteImage.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> favoriteImage_click(event));
+        update();
+    }
+
+    private void mouseExit(){
+        if(handler.isFavorite(product))
+            return;
+
+        favIcon.setVisible(false);
+    }
+
+    public void update(){
+
+        if(!handler.getShoppingCart().getItems().contains(shoppingItem))
+            shoppingItem.setAmount(0);
+
+        if(handler.isFavorite(product)) {
+            favoriteImage.setImage(favoriteFullImage);
+            favIcon.setVisible(true);
+        }
+        else {
+            favoriteImage.setImage(favoriteEmptyImage);
+            favIcon.setVisible(false);
+        }
+
+        if(shoppingItem.getAmount() !=0)
+            mainPane.setStyle("-fx-background-color: #E0D565");
+        else {
+            mainPane.setStyle("-fx-background-color: white");
+            handler.getShoppingCart().removeItem(shoppingItem);
+        }
+
+        amountField.setText(String.valueOf((int) shoppingItem.getAmount()));
     }
 
     private void favoriteImage_click(MouseEvent event){
@@ -117,10 +163,7 @@ public class BrowseListItem extends AnchorPane {
         shoppingItem.setAmount(shoppingItem.getAmount()-1);
         amountField.setText(String.valueOf((int)shoppingItem.getAmount()));
 
-        if(shoppingItem.getAmount()==0) {
-            handler.getShoppingCart().removeItem(shoppingItem);
-            mainPane.setStyle("-fx-background-color: white");
-        }
+        update();
         notifyOnCartChange();
     }
 
@@ -129,8 +172,8 @@ public class BrowseListItem extends AnchorPane {
             handler.getShoppingCart().addItem(shoppingItem);
 
         shoppingItem.setAmount(shoppingItem.getAmount() + 1);
-        amountField.setText(String.valueOf((int)shoppingItem.getAmount()));
-        mainPane.setStyle("-fx-background-color: #E0D565");
+
+        update();
         notifyOnCartChange();
     }
 
@@ -141,7 +184,7 @@ public class BrowseListItem extends AnchorPane {
 
     private void notifyOnDetailedView(){
         for(IBrowseListItemListener l: listeners)
-            l.detailedViewNotify(this);
+            l.detailedViewShow(this);
     }
 
     public static void addListener(IBrowseListItemListener listener){
@@ -149,4 +192,19 @@ public class BrowseListItem extends AnchorPane {
     }
 
     public Product getProduct(){return product;}
+
+    public ShoppingItem getShoppingItem(){return shoppingItem;}
+
+    private void onAmountFieldChange(){
+        if(Integer.parseInt(amountField.getText()) == shoppingItem.getAmount())
+            return;
+
+        shoppingItem.setAmount(Double.parseDouble(amountField.getText()));
+
+        if(shoppingItem.getAmount() > 0 && !handler.getShoppingCart().getItems().contains(shoppingItem))
+            handler.getShoppingCart().addItem(shoppingItem);
+
+        update();
+        notifyOnCartChange();
+    }
 }

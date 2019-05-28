@@ -1,3 +1,5 @@
+/*#54C95D #A5D057 #E0D565*/
+
 .dark-panel {
     -fx-background-color: rgba(0, 0, 0, 0.75);
 }
@@ -12,6 +14,63 @@
 }
 
 .text-Other{
-       -fx-font-size: 14px;
+       -fx-font-size: 18px;
        -fx-font-family: "Arial";
+}
+
+.panes{
+    -fx-background-color: white;
+}
+
+.wizButton{
+    -fx-background-color: #A5D057;
+    -fx-background-radius: 5px;
+}
+
+.wizButton:hover{
+    -fx-cursor: hand;
+    -fx-background-color: #E0D565;
+}
+
+.wizButtonLabel{
+    -fx-font-size: 22px;
+    -fx-text-fill: white;
+    -fx-font-weight: bolder;
+}
+
+.wizGuideLabel{
+    -fx-font-size: 18px;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.indicatorPane{
+    -fx-background-color: #54C95D;
+}
+
+.inactive-indicator{
+    -fx-fill: lightgray;
+    -fx-stroke: lightgray;
+    -fx-font-size: 18px;
+    -fx-text-fill: lightgray;
+    -fx-font-weight: bold;
+}
+
+.active-indicator{
+    -fx-fill: white;
+    -fx-stroke: white;
+    -fx-font-size: 18px;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.cvcHelper{
+    -fx-background-radius: 5px;
+    -fx-border-color: black;
+    -fx-border-radius: 5px;
+    -fx-background-color: white;
+}
+
+.radioButtonText{
+    -fx-font-size: 25px;
 }

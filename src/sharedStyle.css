@@ -1,0 +1,36 @@
+/*#54C95D #A5D057 #E0D565*/
+
+.button:hover{
+    -fx-cursor: hand;
+    -fx-background-color: #E0D565;
+}
+
+.button{
+    -fx-background-color: #A5D057;
+    -fx-background-radius: 5px;
+    -fx-font-size: 22px;
+    -fx-text-fill: white;
+    -fx-font-weight: bolder;
+    -fx-alignment: center;
+}
+
+.inactive-button{
+    -fx-background-color: gray;
+    -fx-background-radius: 5px;
+    -fx-font-size: 22px;
+    -fx-text-fill: white;
+    -fx-font-weight: bolder;
+    -fx-alignment: center;
+}
+
+.inactive-button:hover{
+    -fx-cursor: pointer;
+}
+
+.clickabel:hover{
+    -fx-cursor: hand;
+}
+
+.header{
+    -fx-font-size: 25px;
+}

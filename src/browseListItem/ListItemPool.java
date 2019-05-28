@@ -2,6 +2,7 @@ package browseListItem;
 
 import se.chalmers.cse.dat216.project.IMatDataHandler;
 import se.chalmers.cse.dat216.project.Product;
+import se.chalmers.cse.dat216.project.ShoppingItem;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -15,8 +16,14 @@ public class ListItemPool {
         IMatDataHandler handler = IMatDataHandler.getInstance();
         listItems = new HashMap<>();
 
-        for(Product p: handler.getProducts())
-            listItems.put(p,new BrowseListItem(p));
+        for(ShoppingItem i: handler.getShoppingCart().getItems()) {
+            listItems.put(i.getProduct(), new BrowseListItem(i));
+        }
+
+        for(Product p: handler.getProducts()) {
+            if(!listItems.containsKey(p))
+                listItems.put(p,new BrowseListItem(new ShoppingItem(p,0)));
+        }
     }
 
     static public ListItemPool getInstance(){
@@ -27,7 +34,9 @@ public class ListItemPool {
     }
 
     public BrowseListItem getBrowserListItem(Product p){
-        return listItems.get(p);
+        BrowseListItem item = listItems.get(p);
+        item.update();
+        return item;
     }
 
 }

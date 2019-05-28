@@ -1,0 +1,6 @@
+.extendedPane{
+    -fx-border-color: black;
+    -fx-border-radius: 5px;
+    -fx-background-color: white;
+    -fx-background-radius: 5px;
+}

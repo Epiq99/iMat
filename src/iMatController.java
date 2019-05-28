@@ -1,13 +1,18 @@
 import browseListItem.IBrowseListItemListener;
 import browseListItem.ListItemPool;
 import browserTitle.BrowseTitle;
+import cartPage.CartPage;
+import cartPage.ICartPageListener;
+import cartPage.cartListItem.ICartItemListener;
 import customerPage.ISettingCategoryListener;
 import customerPage.SettingCategoryListItem;
 import customerPage.passwordsettings.PasswordSettingsPage;
 import customerPage.paymentsettings.PaymentSettingPane;
 import customerPage.personaldatapane.PersonalDataPane;
+import customerPage.receiptHistoryPage.ReceiptHistoryPage;
 import detailedview.DetailedView;
 import detailedview.IDetailedViewListener;
+import feature.Feature;
 import foodcategorylistitem.FoodCategoryListItem;
 import foodcategorylistitem.IFoodCategoryListner;
 import helppage.HelpPage;
@@ -22,23 +27,22 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.TilePane;
+import javafx.scene.layout.*;
 import se.chalmers.cse.dat216.project.*;
 import browseListItem.BrowseListItem;
 import paymentWizard.paymentWizard;
 import javafx.scene.input.MouseEvent;
+import paymentWizard.*;
 
 import java.net.URL;
 import java.util.*;
 
 public class iMatController implements Initializable, IFoodCategoryListner,
                                         IBrowseListItemListener, IDetailedViewListener,
-                                        ISettingCategoryListener {
+                                        ISettingCategoryListener, ICartPageListener, IPaymentWizardListener {
     IMatDataHandler handler = IMatDataHandler.getInstance();
     private Image shoppingCartImage = new Image("images/shoppingcart.png");
+    private static final Image logoImage = new Image("images/logo.png");
 
     @FXML FlowPane browserPane;
     @FXML TilePane kategoriTilePane;
@@ -48,11 +52,16 @@ public class iMatController implements Initializable, IFoodCategoryListner,
     @FXML Button searchButton;
     @FXML Label cartImdicatorLabel;
     @FXML AnchorPane cartImdicatorPnane;
-    @FXML ImageView cartImage;
+    @FXML ImageView cartImage, logoImageView;
     @FXML AnchorPane handlaMenuPane;
     @FXML AnchorPane helpMenuPane;
     @FXML AnchorPane myPagesPane;
     @FXML ScrollPane mainScrollPane;
+    @FXML StackPane mainStackPane;
+    @FXML AnchorPane favoritePage;
+    @FXML Button toCartButton;
+
+    private DetailedView openDetails;
     private ListItemPool itemPool;
 
     private boolean foodCategoriesUp = false;
@@ -61,6 +70,7 @@ public class iMatController implements Initializable, IFoodCategoryListner,
     public void initialize(URL location, ResourceBundle resources) {
 
         itemPool = ListItemPool.getInstance();
+        updateCartIndicator();
 
         browserPane.setVgap(30);
         browserPane.setHgap(30);
@@ -69,19 +79,19 @@ public class iMatController implements Initializable, IFoodCategoryListner,
         DetailedView.addListener(this);
         SettingCategoryListItem.addListener(this);
         FoodCategoryListItem.addListener(this);
+        CartPage.addListener(this);
+        paymentWizard.addListener(this);
 
         cartImage.setImage(shoppingCartImage);
-        cartImdicatorPnane.setVisible(false);
+        logoImageView.setImage(logoImage);
 
-        handlaMenuPane.addEventHandler(MouseEvent.MOUSE_CLICKED, event->
-                setUpStartPage()
-                );
-        helpMenuPane.addEventHandler(MouseEvent.MOUSE_CLICKED, event ->
-                setUpHelpPage()
-        );
-        myPagesPane.addEventHandler(MouseEvent.MOUSE_CLICKED, event->
-                setUpMyPages()
-                );
+        handlaMenuPane.addEventHandler(MouseEvent.MOUSE_CLICKED, event-> setUpStartPage());
+        helpMenuPane.addEventHandler(MouseEvent.MOUSE_CLICKED, event ->  setUpHelpPage());
+        myPagesPane.addEventHandler(MouseEvent.MOUSE_CLICKED, event->    setUpMyPages());
+        cartImage.addEventHandler(MouseEvent.MOUSE_CLICKED, event->      setUpCartPage());
+        logoImageView.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> setUpStartPage());
+        favoritePage.addEventHandler(MouseEvent.MOUSE_CLICKED, event ->  setUpFavoritePage());
+        toCartButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event->   setUpCartPage());
 
         kategoriTilePane.getChildren().addListener(new ListChangeListener<Node>() {
             @Override
@@ -97,6 +107,11 @@ public class iMatController implements Initializable, IFoodCategoryListner,
         setUpStartPage();
 
         //favoriteButton.setOnAction(event->favoriteClicked());
+        //Debugging
+        //handler.getShoppingCart().addProduct(handler.getProduct(2),3);
+        //handler.getShoppingCart().addProduct(handler.getProduct(10),5);
+        //mainStackPane.getChildren().add(new paymentWizard());
+
     }
 
     private void setUpMyPages(){
@@ -104,6 +119,7 @@ public class iMatController implements Initializable, IFoodCategoryListner,
         kategoriTilePane.getChildren().add(new SettingCategoryListItem("Personuppgifter",PersonalDataPane.getInstance()));
         kategoriTilePane.getChildren().add(new SettingCategoryListItem("Lösenord", PasswordSettingsPage.getInstance()));
         kategoriTilePane.getChildren().add(new SettingCategoryListItem("Betalningssätt", PaymentSettingPane.getInstance()));
+        kategoriTilePane.getChildren().add(new SettingCategoryListItem("Köphistorik", ReceiptHistoryPage.getInstance()));
 
         settingCategoryPressed(PersonalDataPane.getInstance());
         foodCategoriesUp = false;
@@ -118,29 +134,42 @@ public class iMatController implements Initializable, IFoodCategoryListner,
     private void setUpStartPage(){
         setFoodCategories();
         browserPane.getChildren().clear();
+
+        browserPane.getChildren().add(new Feature(new FoodCategoryListItem(new ProductCategory[]
+                {ProductCategory.SWEET},"Godis")));
+
         if(handler.favorites().size()>0) {
             browserPane.getChildren().add(new BrowseTitle("Favoriter"));
             for(Product p: handler.favorites())
-                browserPane.getChildren().add(new BrowseListItem(p));
+                browserPane.getChildren().add(itemPool.getBrowserListItem(p));
         }
 
         browserPane.getChildren().add(new BrowseTitle("Alla produkter"));
 
         for(Product p: handler.getProducts())
-            browserPane.getChildren().add(itemPool.getBrowserListItem(p));
+            if(!handler.favorites().contains(p))
+                browserPane.getChildren().add(itemPool.getBrowserListItem(p));
 
-        mainScrollPane.setHvalue(0);
+        mainScrollPane.setVvalue(0);
     }
 
-    void setUpOfferPage(){
-
+    void setUpCartPage(){
+        browserPane.getChildren().clear();
+        browserPane.getChildren().add(CartPage.getInstance());
+        CartPage.getInstance().updateItemList();
     }
 
-    void favoriteClicked(){
+    void setUpFavoritePage(){
+        setFoodCategories();
+
         browserPane.getChildren().clear();
         browserPane.getChildren().add(new BrowseTitle("Favoriter"));
 
-        browserPane.getChildren().clear();
+        if(handler.favorites().isEmpty()){
+            browserPane.getChildren().add(new Label("Du har inga favoriter :("));
+            return;
+        }
+
         for(Product p: handler.favorites())
             browserPane.getChildren().add(itemPool.getBrowserListItem(p));
     }
@@ -195,36 +224,51 @@ public class iMatController implements Initializable, IFoodCategoryListner,
             browserPane.getChildren().add(itemPool.getBrowserListItem(p));
     }
 
-    @Override
-    public void notify(FoodCategoryListItem item) {
-        browserPane.getChildren().clear();
-        browserPane.getChildren().add(new BrowseTitle(item.getCategoryName()));
-
-
-        browserPane.getChildren().clear();
-        for(Product p: handler.getProducts())
-            if(Arrays.asList(item.getCategories()).contains(p.getCategory()))
-                browserPane.getChildren().add(itemPool.getBrowserListItem(p));
-
-        mainScrollPane.setHvalue(0);
-    }
-
-    @Override
-    public void cartChange(BrowseListItem item) {
+    private void updateCartIndicator(){
         int temp = handler.getShoppingCart().getItems().size();
         if(temp>0)
             cartImdicatorPnane.setVisible(true);
         else
             cartImdicatorPnane.setVisible(false);
-        
+
         cartImdicatorLabel.setText(String.valueOf(temp));
     }
 
     @Override
-    public void detailedViewNotify(BrowseListItem item){
+    public void notify(FoodCategoryListItem item) {
         browserPane.getChildren().clear();
-        browserPane.getChildren().add(new DetailedView(item.getProduct()));
+        browserPane.getChildren().add(new BrowseTitle(item.getCategoryName()));
+
+        for(Product p: handler.getProducts())
+            if(Arrays.asList(item.getCategories()).contains(p.getCategory()))
+                browserPane.getChildren().add(itemPool.getBrowserListItem(p));
+
+        mainScrollPane.setVvalue(0);
     }
+
+    @Override
+    public void cartChange(BrowseListItem item) {
+        updateCartIndicator();
+    }
+
+    @Override
+    public void detailedViewShow(BrowseListItem item){
+        closeDetailedView(null);
+
+        openDetails = new DetailedView(item.getShoppingItem());
+        browserPane.getChildren().set(browserPane.getChildren().indexOf(item), openDetails);
+        //browserPane.getChildren().add(new DetailedView(item.getProduct()));
+    }
+
+    @Override
+    public void closeDetailedView(DetailedView item) {
+        if(openDetails != null && browserPane.getChildren().contains(openDetails)) {
+            browserPane.getChildren().set(browserPane.getChildren().indexOf(openDetails),
+                    itemPool.getBrowserListItem(openDetails.getProduct()));
+        }
+        openDetails = null;
+    }
+
 
     @Override
     public void addToCartNotification(DetailedView item) {
@@ -233,10 +277,27 @@ public class iMatController implements Initializable, IFoodCategoryListner,
             cartImdicatorPnane.setVisible(true);
         cartImdicatorLabel.setText(String.valueOf(temp));
     }
-                                          
+
     @Override
     public void settingCategoryPressed(AnchorPane pane) {
         browserPane.getChildren().clear();
         browserPane.getChildren().add(pane);
+    }
+
+    @Override
+    public void onCartChanged(CartPage page) {
+        updateCartIndicator();
+    }
+
+    @Override
+    public void onCheckoutClick(CartPage page) {
+        mainStackPane.getChildren().add(new paymentWizard());
+    }
+
+    @Override
+    public void notifyOnReturn(paymentWizard item) {
+        updateCartIndicator();
+        setUpCartPage();
+        mainStackPane.getChildren().remove(item);
     }
 }
