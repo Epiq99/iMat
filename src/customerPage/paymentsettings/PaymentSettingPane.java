@@ -13,6 +13,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import se.chalmers.cse.dat216.project.CreditCard;
 import se.chalmers.cse.dat216.project.IMatDataHandler;
 
 import java.io.IOException;
@@ -22,7 +23,7 @@ public class PaymentSettingPane extends SettingsPane {
     IMatDataHandler handler = IMatDataHandler.getInstance();
 
     @FXML RadioButton cardPayRadioButton, deliveryRadioButton, billRadioButton;
-    @FXML TextField entry1, entry2, entry3, entry4, entry5;
+    @FXML TextField entry1, entry2, entry3, entry4;
     @FXML Label billingAddress;
     private final TextField entries[];
 
@@ -40,7 +41,7 @@ public class PaymentSettingPane extends SettingsPane {
             throw new RuntimeException(exception);
         }
 
-        entries = new TextField[]{entry1, entry2, entry3, entry4, entry5};
+        entries = new TextField[]{entry1, entry2, entry3, entry4};
 
         cardPayRadioButton.setSelected(true);
 
@@ -57,6 +58,12 @@ public class PaymentSettingPane extends SettingsPane {
                 }
             }
         });
+        CreditCard c = handler.getCreditCard();
+
+        entry1.textProperty().addListener(((observable, oldValue, newValue) -> c.setCardNumber(newValue)));
+        entry2.textProperty().addListener(((observable, oldValue, newValue) -> c.setValidMonth(Integer.parseInt(newValue))));
+        entry3.textProperty().addListener(((observable, oldValue, newValue) -> c.setValidYear(Integer.parseInt(newValue))));
+        entry4.textProperty().addListener(((observable, oldValue, newValue) -> c.setHoldersName(newValue)));
     }
 
     public static PaymentSettingPane getInstance(){
@@ -69,5 +76,12 @@ public class PaymentSettingPane extends SettingsPane {
     @Override
     public void update() {
         billingAddress.setText(handler.getCustomer().getAddress());
+
+        CreditCard c = handler.getCreditCard();
+
+        entry1.setText(c.getCardNumber());
+        entry2.setText(String.valueOf(c.getValidMonth()));
+        entry3.setText(String.valueOf(c.getValidYear()));
+        entry4.setText(c.getHoldersName());
     }
 }

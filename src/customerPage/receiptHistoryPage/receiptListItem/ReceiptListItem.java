@@ -61,12 +61,14 @@ public class ReceiptListItem extends AnchorPane {
         {
             itemList.getChildren().clear();
             itemList.getStyleClass().clear();
+            showButton.setText("VISA");
         }
         else {
             for(ShoppingItem s: order.getItems())
                 itemList.getChildren().add(new ReciptItem(s.getProduct().getName(), (int) s.getAmount(), s.getTotal()));
 
             itemList.getStyleClass().add("extendedPane");
+            showButton.setText("DÖLJ");
         }
 
         isExtended = !isExtended;

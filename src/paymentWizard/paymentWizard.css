@@ -70,3 +70,7 @@
     -fx-border-radius: 5px;
     -fx-background-color: white;
 }
+
+.radioButtonText{
+    -fx-font-size: 25px;
+}
