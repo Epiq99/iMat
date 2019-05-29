@@ -9,10 +9,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.util.converter.IntegerStringConverter;
 import se.chalmers.cse.dat216.project.IMatDataHandler;
@@ -51,6 +53,7 @@ public class DetailedView extends AnchorPane {
     @FXML ImageView minusImage;
     @FXML Label favoriteLable;
     @FXML ImageView closeButton;
+    @FXML AnchorPane mainPane;
 
     public DetailedView(ShoppingItem item) {
 
@@ -66,6 +69,16 @@ public class DetailedView extends AnchorPane {
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
+        DropShadow dropShadow = new DropShadow();
+
+        dropShadow.setColor(Color.BLACK);
+        dropShadow.setOffsetX(3);
+        dropShadow.setOffsetY(3);
+
+        mainPane.setEffect(dropShadow);
+
+        if(shoppingItem.getAmount()>0)
+            mainPane.setStyle("-fx-background-color: #E0D565");
 
         ecoImage.setImage(ecoImageRes);
         titleLabel.setText(product.getName());
@@ -111,11 +124,14 @@ public class DetailedView extends AnchorPane {
 
         shoppingItem.setAmount(Double.parseDouble(amountField.getText()));
 
-        if(shoppingItem.getAmount() <= 0)
+        if(shoppingItem.getAmount() <= 0) {
             handler.getShoppingCart().removeItem(shoppingItem);
+            mainPane.setStyle("-fx-background-color: white");
+        }
 
         if(shoppingItem.getAmount() > 0 && !handler.getShoppingCart().getItems().contains(shoppingItem)) {
             handler.getShoppingCart().addItem(shoppingItem);
+            mainPane.setStyle("-fx-background-color: #E0D565");
         }
 
         notifyOnCartAdd();

@@ -12,6 +12,7 @@ import customerPage.personaldatapane.PersonalDataPane;
 import customerPage.receiptHistoryPage.ReceiptHistoryPage;
 import detailedview.DetailedView;
 import detailedview.IDetailedViewListener;
+import favoriteHelper.FavoriteHelper;
 import feature.Feature;
 import foodcategorylistitem.FoodCategoryListItem;
 import foodcategorylistitem.IFoodCategoryListner;
@@ -36,10 +37,11 @@ import paymentWizard.*;
 
 import java.net.URL;
 import java.util.*;
+import java.util.concurrent.ExecutionException;
 
 public class iMatController implements Initializable, IFoodCategoryListner,
                                         IBrowseListItemListener, IDetailedViewListener,
-                                        ISettingCategoryListener, ICartPageListener, IPaymentWizardListener {
+                                        ISettingCategoryListener, ICartPageListener, IPaymentWizardListener{
     IMatDataHandler handler = IMatDataHandler.getInstance();
     private Image shoppingCartImage = new Image("images/shoppingcart.png");
     private static final Image logoImage = new Image("images/logo.png");
@@ -114,6 +116,10 @@ public class iMatController implements Initializable, IFoodCategoryListner,
 
     }
 
+    private void onScroll(){
+
+    }
+
     private void setUpMyPages(){
         kategoriTilePane.getChildren().clear();
         kategoriTilePane.getChildren().add(new SettingCategoryListItem("Personuppgifter",PersonalDataPane.getInstance()));
@@ -166,7 +172,8 @@ public class iMatController implements Initializable, IFoodCategoryListner,
         browserPane.getChildren().add(new BrowseTitle("Favoriter"));
 
         if(handler.favorites().isEmpty()){
-            browserPane.getChildren().add(new Label("Du har inga favoriter :("));
+            browserPane.getChildren().add(new BrowseTitle("Du har inga favoriter"));
+            browserPane.getChildren().add(new FavoriteHelper());
             return;
         }
 
@@ -202,7 +209,7 @@ public class iMatController implements Initializable, IFoodCategoryListner,
                 {ProductCategory.DAIRIES},"Mjölkprodukter"));
 
         kategoriTilePane.getChildren().add(new FoodCategoryListItem(new ProductCategory[]
-                {ProductCategory.COLD_DRINKS, ProductCategory.HOT_DRINKS},"Drickor"));
+                {ProductCategory.COLD_DRINKS, ProductCategory.HOT_DRINKS},"Dryck"));
 
         kategoriTilePane.getChildren().add(new FoodCategoryListItem(new ProductCategory[]
                 {ProductCategory.SWEET},"Godis"));
@@ -256,8 +263,17 @@ public class iMatController implements Initializable, IFoodCategoryListner,
         closeDetailedView(null);
 
         openDetails = new DetailedView(item.getShoppingItem());
+        double newVvalue = item.getLayoutY() + (item.getLayoutX() == 0?0:item.getHeight());
+        newVvalue = newVvalue/(browserPane.getHeight());
+        System.out.println("paneHeight: " + browserPane.getHeight());
+        System.out.println("expDetailp: " + item.getLayoutY() + (item.getLayoutX() == 0?0:item.getHeight()));
+        System.out.println("detaildHei:" + item.getHeight());
+        System.out.println("newVval: " + newVvalue + '\n');
+
         browserPane.getChildren().set(browserPane.getChildren().indexOf(item), openDetails);
-        //browserPane.getChildren().add(new DetailedView(item.getProduct()));
+
+        mainScrollPane.setVvalue(newVvalue);
+        //browserPane.getChildren().add(new FavoriteHelper(item.getProduct()));
     }
 
     @Override

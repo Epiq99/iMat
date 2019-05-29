@@ -6,6 +6,7 @@ import customerPage.receiptHistoryPage.receiptListItem.ReceiptListItem;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -16,6 +17,10 @@ import se.chalmers.cse.dat216.project.Order;
 import se.chalmers.cse.dat216.project.ShoppingItem;
 
 import java.io.IOException;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 public class ReceiptHistoryPage extends SettingsPane {
 
@@ -23,6 +28,7 @@ public class ReceiptHistoryPage extends SettingsPane {
     private static ReceiptHistoryPage self;
     private static int id = 0;
 
+    @FXML ScrollPane scrollPane;
     @FXML FlowPane receiptLsit;
 
     private ReceiptHistoryPage() {
@@ -36,15 +42,18 @@ public class ReceiptHistoryPage extends SettingsPane {
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
-
-
+        scrollPane.setHvalue(0);
+        scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         update();
     }
 
     @Override
     public void update(){
             receiptLsit.getChildren().clear();
-            for(Order o: handler.getOrders())
+
+            List<Order> orders = handler.getOrders();
+            Collections.sort(orders, Comparator.comparing(Order::getDate).reversed());
+            for(Order o: orders)
                 receiptLsit.getChildren().add(new ReceiptListItem(o));
     }
 

@@ -5,6 +5,8 @@
     -fx-pref-height: 50px;
     -fx-background-color: #A5D057;
     -fx-border-color: black;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
 }
 
 .mainPane:hover {
@@ -13,6 +15,6 @@
 }
 
 .kategoriLable{
-    -fx-font-size: 18px;
+    -fx-font-size: 22px;
     -fx-text-fill: black;
 }

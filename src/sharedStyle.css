@@ -34,3 +34,10 @@
 .header{
     -fx-font-size: 25px;
 }
+
+.errorPane{
+    -fx-border-color: red;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-background-color: #F6CECE;
+}
