@@ -2,7 +2,6 @@ package paymentWizard;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -30,20 +29,25 @@ public class paymentWizard extends AnchorPane {
 
     private static Image cvcHelpImage = new Image("images/CVCHelp.jpg");
     private static Image closeImage = new Image("images/close.png");
+    private static Image errorImage = new Image("images/error.png");
 
-    @FXML Circle indicatorCircle, indicatorCircle1, indicatorCircle2;
+    @FXML Circle indicatorCircle3, indicatorCircle, indicatorCircle1, indicatorCircle2;
     @FXML Button cancelButton, nextButton, backButton;
     @FXML StackPane contenPane;
-    @FXML AnchorPane deliveryPane, payPane, donePane;
+    @FXML AnchorPane deliveryPane, payPane, donePane, customerInfoPane;
     @FXML FlowPane reciptList;
     @FXML Label finalPriceLabel;
-    @FXML Label indicatorLabel, indicatorLabel1, indicatorLabel2;
+    @FXML Label indicatorLabel3, indicatorLabel, indicatorLabel1, indicatorLabel2;
     @FXML RadioButton expressRadioButton, cardPayRadioButton;
-    @FXML Label billingAddress, lastFoutLabel;
+    @FXML Label billingAddress, lastFourLabel;
     @FXML TextField cvcEntry;
     @FXML Button questionButton;
     @FXML AnchorPane cvcHelp;
     @FXML ImageView cvcHelpImageView, cvcHelpCloseImageView;
+    @FXML TextField firstNameEntry, lastNameEntry, phoneNumberEntry,
+            emailEntry, addressEntry, postalCodeEntry, mobilePhoneEntry;
+    @FXML AnchorPane cvcErrorPane;
+    @FXML ImageView errorImageView;
 
     Label[] indicatorLabels;
     Circle[] circles;
@@ -70,9 +74,11 @@ public class paymentWizard extends AnchorPane {
             throw new RuntimeException(exception);
         }
 
+        errorImageView.setImage(errorImage);
+
         currentPaneIndex = 0;
-        indicatorLabels = new Label[]{indicatorLabel, indicatorLabel1, indicatorLabel2};
-        circles = new Circle[]{indicatorCircle, indicatorCircle1, indicatorCircle2};
+        indicatorLabels = new Label[]{indicatorLabel3, indicatorLabel, indicatorLabel1, indicatorLabel2};
+        circles = new Circle[]{indicatorCircle3, indicatorCircle, indicatorCircle1, indicatorCircle2};
         cvcEntry.textProperty().addListener(((observable, oldValue, newValue) -> cvcCodeChange(observable,oldValue,newValue)));
         cardPayRadioButton.selectedProperty().addListener(new ChangeListener<Boolean>() {
             @Override
@@ -80,7 +86,8 @@ public class paymentWizard extends AnchorPane {
 
                 if(!newValue){
                     cvcEntry.setDisable(true);
-                    editNavButtons(event -> setUpDeliveryPage(),event->setUpDonePage(), 1);
+                    editNavButtons(event -> setUpDeliveryPage(),event->setUpDonePage(), 2);
+                    cvcErrorPane.setVisible(false);
                 }
                 else {
                     cvcEntry.setDisable(false);
@@ -97,31 +104,77 @@ public class paymentWizard extends AnchorPane {
         questionButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> cvcHelp.setVisible(true));
 
         cancelButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> returnByCancel());
+        setUpPersonalInfoPane();
+    }
+
+    private void setUpPersonalInfoPane(){
+        editNavButtons(null, event->bridgeFromInfoPane(),0);
+        contenPane.getChildren().clear();
+        contenPane.getChildren().add(customerInfoPane);
+        Customer c = handler.getCustomer();
+
+        firstNameEntry.setText(c.getFirstName());
+        lastNameEntry.setText(c.getLastName());
+        phoneNumberEntry.setText(c.getPhoneNumber());
+        mobilePhoneEntry.setText(c.getMobilePhoneNumber());
+        emailEntry.setText(c.getEmail());
+        addressEntry.setText(c.getAddress());
+        postalCodeEntry.setText(c.getPostCode());
+
+        backButton.setVisible(false);
+        nextButton.setVisible(true);
+        nextButton.setText("Nästa");
+        cancelButton.setVisible(true);
+    }
+
+    private void bridgeFromInfoPane() {
+        Customer c = handler.getCustomer();
+
+        c.setFirstName(firstNameEntry.getText());
+        c.setLastName(lastNameEntry.getText());
+        c.setPhoneNumber(phoneNumberEntry.getText());
+        c.setMobilePhoneNumber(mobilePhoneEntry.getText());
+        c.setEmail(emailEntry.getText());
+        c.setAddress(addressEntry.getText());
+        c.setPostCode(postalCodeEntry.getText());
+
         setUpDeliveryPage();
     }
 
     private void setUpDeliveryPage(){
-        editNavButtons(null, event -> setUpPaymentPage(), 0);
-        backButton.setVisible(false);
+        editNavButtons(event ->setUpPersonalInfoPane(), event -> setUpPaymentPage(), 1);
+        backButton.setVisible(true);
         contenPane.getChildren().clear();
         contenPane.getChildren().add(deliveryPane);
     }
 
     private void setUpPaymentPage(){
-        editNavButtons(event-> setUpDeliveryPage(), null, 1);
+        editNavButtons(event-> setUpDeliveryPage(), null, 2);
+        if(nextButtonEvent != null)
+            nextButton.removeEventHandler(MouseEvent.MOUSE_CLICKED, nextButtonEvent);
+        nextButtonEvent = event->showError();
+        nextButton.addEventHandler(MouseEvent.MOUSE_CLICKED, nextButtonEvent);
+
         contenPane.getChildren().clear();
         contenPane.getChildren().add(payPane);
         cvcEntry.setText("");
         if(!handler.getCreditCard().getCardNumber().isEmpty())
-            lastFoutLabel.setText(handler.getCreditCard().getCardNumber().substring(11));
+            lastFourLabel.setText(handler.getCreditCard().getCardNumber().substring(11));
 
-        finalPriceLabel.setText(String.valueOf(handler.getShoppingCart().getTotal() + (expressRadioButton.isSelected()?50:0)));
+        finalPriceLabel.setText(String.format("%.2f",handler.getShoppingCart().getTotal() + (expressRadioButton.isSelected()?50:0)));
         billingAddress.setText(handler.getCustomer().getAddress());
+
+        cvcErrorPane.setVisible(false);
+        backButton.setVisible(true);
         nextButton.setText("Betala");
     }
 
+    private void showError(){
+        cvcErrorPane.setVisible(true);
+    }
+
     private void setUpDonePage(){
-        editNavButtons(null , event ->successfulReturn(), 2);
+        editNavButtons(null , event ->successfulReturn(), 3);
         contenPane.getChildren().clear();
         contenPane.getChildren().add(donePane);
         reciptList.getChildren().clear();
@@ -129,17 +182,22 @@ public class paymentWizard extends AnchorPane {
             reciptList.getChildren().add(new ReciptItem(s.getProduct().getName(), (int) s.getAmount(), s.getTotal()));
 
         cancelButton.setVisible(false);
+        backButton.setVisible(false);
         nextButton.setText("Avsluta");
     }
 
     private void cvcCodeChange(Object a, String oldValue, String newValue){
-        if(newValue.length() < 4) {
-            editNavButtons(event -> setUpDeliveryPage(),null, 1);
+        if(newValue.length() < 3) {
+            editNavButtons(event -> setUpDeliveryPage(),null, 2);
+            if(nextButtonEvent != null)
+                nextButton.removeEventHandler(MouseEvent.MOUSE_CLICKED, nextButtonEvent);
+            nextButtonEvent = event->showError();
+            nextButton.addEventHandler(MouseEvent.MOUSE_CLICKED, nextButtonEvent);
             return;
         }
 
-        cvcEntry.setText(newValue.substring(0,4));
-        editNavButtons(event -> setUpDeliveryPage(),event->setUpDonePage(), 1);
+        cvcEntry.setText(newValue.substring(0,3));
+        editNavButtons(event -> setUpDeliveryPage(),event->setUpDonePage(), 2);
     }
 
     private void editNavButtons(EventHandler backEvent, EventHandler nextEvent, int pageIndex){

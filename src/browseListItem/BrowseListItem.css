@@ -23,6 +23,7 @@
 .itemNameLable:hover{
     -fx-underline: true;
     -fx-cursor: hand;
+    -fx-fill: #A5D057;
 }
 
 .priceLable

@@ -23,7 +23,7 @@ public class ReceiptListItem extends AnchorPane {
     private Order order;
     private static int id = 0;
     private boolean isExtended;
-    private static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd HH:MM");
+    private static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
     @FXML FlowPane itemList;
     @FXML Button showButton;

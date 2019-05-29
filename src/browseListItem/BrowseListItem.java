@@ -71,7 +71,7 @@ public class BrowseListItem extends AnchorPane {
         mainPane.setEffect(dropShadow);
 
         itemNameLabel.setText(product.getName());
-        priceLable.setText(String.valueOf(product.getPrice()));
+        priceLable.setText(String.format("%.2f",product.getPrice()));
         unitLable.setText(product.getUnit());
         itemImage.setImage(handler.getFXImage(product));
 

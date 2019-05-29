@@ -9,9 +9,9 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<fx:root fx:id="mainPane" maxWidth="900.0" prefHeight="68.0" prefWidth="900.0" styleClass="mainPane" stylesheets="@ReceiptListItem.css" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root fx:id="mainPane" maxWidth="957.0" prefHeight="68.0" prefWidth="957.0" styleClass="mainPane" stylesheets="@ReceiptListItem.css" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <GridPane layoutX="307.0" layoutY="-11.0" prefHeight="68.0" prefWidth="900.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <GridPane layoutX="307.0" layoutY="-11.0" prefHeight="68.0" prefWidth="877.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="216.0" minWidth="0.0" prefWidth="56.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="625.0" minWidth="10.0" prefWidth="270.0" />

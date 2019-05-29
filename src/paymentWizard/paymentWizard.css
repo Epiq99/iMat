@@ -74,3 +74,10 @@
 .radioButtonText{
     -fx-font-size: 25px;
 }
+
+.sequenceRectangle{
+    -fx-background-radius: 0px;
+    -fx-border-radius: 0px;
+    -fx-fill: white;
+    -fx-stroke: white;
+}
