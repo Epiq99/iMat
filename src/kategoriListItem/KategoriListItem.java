@@ -13,7 +13,7 @@ import se.chalmers.cse.dat216.project.ProductCategory;
 
 import java.io.IOException;
 
-public abstract class KategoriListItem extends AnchorPane {
+public abstract class KategoriListItem extends AnchorPane implements Comparable{
 
     IMatDataHandler handler = IMatDataHandler.getInstance();
 
@@ -39,7 +39,15 @@ public abstract class KategoriListItem extends AnchorPane {
         
         this.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> onClick());
     }
-    
+
+    @Override
+    public int compareTo(Object o) {
+        if(!(o instanceof KategoriListItem))
+            return 0;
+
+        return this.getCategoryName().compareTo(((KategoriListItem)o).katName);
+    }
+
     abstract public void onClick();
 
     public String getCategoryName(){return katName;}
