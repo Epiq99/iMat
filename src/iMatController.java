@@ -29,6 +29,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import kategoriListItem.KategoriListItem;
 import se.chalmers.cse.dat216.project.*;
 import browseListItem.BrowseListItem;
 import paymentWizard.paymentWizard;
@@ -169,7 +170,6 @@ public class iMatController implements Initializable, IFoodCategoryListner,
         setFoodCategories();
 
         browserPane.getChildren().clear();
-        browserPane.getChildren().add(new BrowseTitle("Favoriter"));
 
         if(handler.favorites().isEmpty()){
             browserPane.getChildren().add(new BrowseTitle("Du har inga favoriter"));
@@ -177,6 +177,7 @@ public class iMatController implements Initializable, IFoodCategoryListner,
             return;
         }
 
+        browserPane.getChildren().add(new BrowseTitle("Favoriter"));
         for(Product p: handler.favorites())
             browserPane.getChildren().add(itemPool.getBrowserListItem(p));
     }
@@ -186,16 +187,15 @@ public class iMatController implements Initializable, IFoodCategoryListner,
             return;
 
         kategoriTilePane.getChildren().clear();
-        kategoriTilePane.getChildren().add(new FoodCategoryListItem(new ProductCategory[]
-                {ProductCategory.MEAT},"Kött"));
 
         kategoriTilePane.getChildren().add(new FoodCategoryListItem(new ProductCategory[]
-                {ProductCategory.POD, ProductCategory.CABBAGE,
-                        ProductCategory.HERB, ProductCategory.ROOT_VEGETABLE,
-                        ProductCategory.POTATO_RICE},"Grönsaker"));
+                {ProductCategory.BREAD},"Bröd"));
 
         kategoriTilePane.getChildren().add(new FoodCategoryListItem(new ProductCategory[]
                 {ProductCategory.BERRY, ProductCategory.NUTS_AND_SEEDS},"Bär"));
+
+        kategoriTilePane.getChildren().add(new FoodCategoryListItem(new ProductCategory[]
+                {ProductCategory.COLD_DRINKS, ProductCategory.HOT_DRINKS},"Dryck"));
 
         kategoriTilePane.getChildren().add(new FoodCategoryListItem(new ProductCategory[]
                 {ProductCategory.FISH},"Fisk"));
@@ -206,16 +206,18 @@ public class iMatController implements Initializable, IFoodCategoryListner,
                         ProductCategory.MELONS},"Frukt"));
 
         kategoriTilePane.getChildren().add(new FoodCategoryListItem(new ProductCategory[]
-                {ProductCategory.DAIRIES},"Mjölkprodukter"));
-
-        kategoriTilePane.getChildren().add(new FoodCategoryListItem(new ProductCategory[]
-                {ProductCategory.COLD_DRINKS, ProductCategory.HOT_DRINKS},"Dryck"));
-
-        kategoriTilePane.getChildren().add(new FoodCategoryListItem(new ProductCategory[]
                 {ProductCategory.SWEET},"Godis"));
 
         kategoriTilePane.getChildren().add(new FoodCategoryListItem(new ProductCategory[]
-                {ProductCategory.BREAD},"Bröd"));
+                {ProductCategory.POD, ProductCategory.CABBAGE,
+                        ProductCategory.HERB, ProductCategory.ROOT_VEGETABLE,
+                        ProductCategory.POTATO_RICE},"Grönsaker"));
+
+        kategoriTilePane.getChildren().add(new FoodCategoryListItem(new ProductCategory[]
+                {ProductCategory.MEAT},"Kött"));
+
+        kategoriTilePane.getChildren().add(new FoodCategoryListItem(new ProductCategory[]
+                {ProductCategory.DAIRIES},"Mjölkprodukter"));
 
         kategoriTilePane.getChildren().add(new FoodCategoryListItem(new ProductCategory[]
                 {ProductCategory.FLOUR_SUGAR_SALT, ProductCategory.PASTA,
@@ -273,7 +275,6 @@ public class iMatController implements Initializable, IFoodCategoryListner,
         browserPane.getChildren().set(browserPane.getChildren().indexOf(item), openDetails);
 
         mainScrollPane.setVvalue(newVvalue);
-        //browserPane.getChildren().add(new FavoriteHelper(item.getProduct()));
     }
 
     @Override

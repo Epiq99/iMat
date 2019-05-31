@@ -61,7 +61,7 @@ public class CartPage extends AnchorPane implements ICartItemListener {
         for(ShoppingItem s: handler.getShoppingCart().getItems())
             itemFlowPane.getChildren().add(new CartListItem(s));
         
-        totalSumLabel.setText(String.valueOf(handler.getShoppingCart().getTotal()));
+        totalSumLabel.setText(String.format("%.2f", handler.getShoppingCart().getTotal()));
 
         if(handler.getShoppingCart().getItems().isEmpty() && !payButton.getStyleClass().contains("inactive-button")){
             payButton.getStyleClass().add("inactive-button");

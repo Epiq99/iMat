@@ -28,6 +28,7 @@ public class FavoriteHelper extends AnchorPane {
     private static final Image helpImage = new Image("images/favorit_help.png");
 
     @FXML ImageView helpImageView;
+    @FXML AnchorPane mainPane;
 
     public FavoriteHelper() {
 
@@ -40,6 +41,13 @@ public class FavoriteHelper extends AnchorPane {
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
+
+        DropShadow dropShadow = new DropShadow();
+        dropShadow.setColor(Color.BLACK);
+        dropShadow.setOffsetX(3);
+        dropShadow.setOffsetY(3);
+
+        mainPane.setEffect(dropShadow);
 
         helpImageView.setImage(helpImage);
     }
