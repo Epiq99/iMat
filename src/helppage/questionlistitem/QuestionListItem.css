@@ -9,7 +9,7 @@
 }
 
 .questionText{
-    -fx-font-size: 18px;
+    -fx-font-size: 22px;
 }
 
 .questionText:hover{
@@ -21,5 +21,5 @@
 }
 
 .answerLable{
-    -fx-font-size: 15px;
+    -fx-font-size: 18px;
 }

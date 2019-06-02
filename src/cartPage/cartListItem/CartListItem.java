@@ -53,9 +53,9 @@ public class CartListItem extends AnchorPane {
         minusImage.setImage(minusImageRes);
 
         itemNameLabel.setText(shoppingItem.getProduct().getName());
-        itemPriceLabel.setText(String.valueOf(shoppingItem.getProduct().getPrice()));
+        itemPriceLabel.setText(String.format("%.2f", shoppingItem.getProduct().getPrice()));
         itemUnitLabel.setText(shoppingItem.getProduct().getUnit());
-        sumLabel.setText(String.valueOf(shoppingItem.getTotal()));
+        sumLabel.setText(String.format("%.2f",shoppingItem.getTotal()));
         amountTextField.setText(String.valueOf((int)shoppingItem.getAmount()));
 
         plusImage.addEventHandler(MouseEvent.MOUSE_CLICKED, event-> plusImageClicked());
@@ -98,7 +98,7 @@ public class CartListItem extends AnchorPane {
     }
 
     private void updateSum(){
-        sumLabel.setText(String.valueOf(shoppingItem.getTotal()));
+        sumLabel.setText(String.format("%.2f", shoppingItem.getTotal()));
     }
 
     public static void addListener(ICartItemListener listener){

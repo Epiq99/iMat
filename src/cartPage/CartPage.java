@@ -63,13 +63,16 @@ public class CartPage extends AnchorPane implements ICartItemListener {
         
         totalSumLabel.setText(String.format("%.2f", handler.getShoppingCart().getTotal()));
 
-        if(handler.getShoppingCart().getItems().isEmpty() && !payButton.getStyleClass().contains("inactive-button")){
-            payButton.getStyleClass().add("inactive-button");
-            payButton.removeEventHandler(MouseEvent.MOUSE_CLICKED, payEvent);
-        } else {
+        if(!handler.getShoppingCart().getItems().isEmpty()){
             payButton.getStyleClass().remove("inactive-button");
             payButton.addEventHandler(MouseEvent.MOUSE_CLICKED, payEvent);
+            return;
         }
+
+        if(!payButton.getStyleClass().contains("inactive-button"))
+            payButton.getStyleClass().add("inactive-button");
+        payButton.removeEventHandler(MouseEvent.MOUSE_CLICKED, payEvent);
+
     }
 
     public static CartPage getInstance(){
@@ -87,7 +90,7 @@ public class CartPage extends AnchorPane implements ICartItemListener {
 
     @Override
     public void changeValues(CartListItem item) {
-        totalSumLabel.setText(String.valueOf(handler.getShoppingCart().getTotal()));
+        totalSumLabel.setText(String.format("%.2f",handler.getShoppingCart().getTotal()));
     }
 
     public static void addListener(ICartPageListener listener) {
