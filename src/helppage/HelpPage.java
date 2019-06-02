@@ -55,9 +55,9 @@ public class HelpPage extends AnchorPane {
                         " när du betalar så kommer du att betala med kort"));
 
         questions.add(new QuestionListItem("Hur handlar jag?",
-                "1. Välj dina varor. När du trycker på lägg till så läggs din vara till i varukorgen\n"+
-                "2. Gå till kassan. Om du trucker på varukorgen högst upp till höger så kommer du kunna ta dig till kassan\n" +
-                "3. Betala. Följ instruktionerna vid kassan."));
+                "1. Välj dina varor. Skriv antingen in önskat antal av vara eller tyck på plus-knappen.\n\n"+
+                "2. Tryck på varukorgen högst upp i högra hörnet och granska dina varor.\n\n" +
+                "3. Tryck på \"Till kassan\" och följ instruktionerna för att betala."));
 
         for(QuestionListItem q : questions)
             questionFlowPane.getChildren().add(q);

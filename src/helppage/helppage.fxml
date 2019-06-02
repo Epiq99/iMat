@@ -11,16 +11,16 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<fx:root fx:id="mainPane" prefHeight="568.0" prefWidth="1120.0" styleClass="mainPane" stylesheets="@HelpPage.css" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root fx:id="mainPane" prefHeight="635.0" prefWidth="1214.0" styleClass="mainPane" stylesheets="@HelpPage.css" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <GridPane layoutX="345.0" layoutY="217.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columnConstraints>
-          <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="555.0" minWidth="10.0" prefWidth="198.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="936.0" minWidth="10.0" prefWidth="922.0" />
+          <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="555.0" minWidth="10.0" prefWidth="169.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="1045.0" minWidth="10.0" prefWidth="1045.0" />
         </columnConstraints>
         <rowConstraints>
-          <RowConstraints maxHeight="180.0" minHeight="10.0" prefHeight="93.0" valignment="BOTTOM" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="441.0" minHeight="10.0" prefHeight="441.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="180.0" minHeight="10.0" prefHeight="138.0" valignment="BOTTOM" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="476.0" minHeight="10.0" prefHeight="465.0" vgrow="SOMETIMES" />
           <RowConstraints maxHeight="32.0" minHeight="10.0" prefHeight="26.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import java.net.URL?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -12,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<fx:root fx:id="mainPane" prefHeight="356.0" prefWidth="1331.0" styleClass="mainPane" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root fx:id="mainPane" prefHeight="356.0" prefWidth="1331.0" styleClass="mainPane" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <GridPane layoutX="157.0" layoutY="183.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columnConstraints>
@@ -88,10 +89,14 @@
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <Label fx:id="favoriteLable" styleClass="clickabel" text="  Favorit" GridPane.columnIndex="1">
+                              <Label fx:id="favoriteLable" text="  Favorit" GridPane.columnIndex="1">
                                  <font>
                                     <Font size="22.0" />
                                  </font>
+                                 <styleClass>
+                                    <String fx:value="clickabel" />
+                                    <String fx:value="favoriteLabel" />
+                                 </styleClass>
                               </Label>
                               <ImageView fx:id="favoriteImage" fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true" styleClass="clickabel">
                                  <image>

@@ -82,7 +82,7 @@ public class DetailedView extends AnchorPane {
 
         ecoImage.setImage(ecoImageRes);
         titleLabel.setText(product.getName());
-        priceLabel.setText(String.valueOf(product.getPrice()));
+        priceLabel.setText(String.format("%.2f", product.getPrice()));
         unitLabel.setText(product.getUnit());
         productImageView.setImage(handler.getFXImage(product));
         ecoImage.setVisible(product.isEcological());

@@ -41,8 +41,8 @@ public class QuestionListItem extends AnchorPane {
         answerText = new Text(answer);
         questionLable.setText(question);
         answerText.getStyleClass().add("answerLable");
+        answerText.setWrappingWidth(680);
 
-        answerText.setWrappingWidth(350);
         mainPane.setPrefHeight(20);
         mainPane.setMaxHeight(20);
 
