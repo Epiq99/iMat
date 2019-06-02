@@ -8,3 +8,6 @@ The backend, which is pre-compiled, is in the lib folder and has to be selected 
 All images and other resources needed for the backend can be found [here](https://chalmers.instructure.com/courses/4110/files/87456/download?wrap=1).
 
 Unzip the resources folder and copy the imat folder (in the unziped folder) to the .dat216 folder in your home directory.
+
+# Documentation
+Documentation about the backend can be found [here](http://www.cse.chalmers.se/research/group/idc/ituniv/courses/18/dkgg/p/backend/javadoc/).
