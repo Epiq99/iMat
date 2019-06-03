@@ -21,7 +21,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label fx:id="itemLabel" prefHeight="17.0" prefWidth="247.0" styleClass="labels" text="Label" GridPane.columnIndex="1" />
+            <Label fx:id="itemLabel" prefHeight="25.0" prefWidth="351.0" styleClass="labels" text="Label" GridPane.columnIndex="1" />
             <Label prefHeight="17.0" prefWidth="16.0" styleClass="labels" text="X" GridPane.columnIndex="2" />
             <Label fx:id="amountLabel" prefHeight="17.0" prefWidth="33.0" styleClass="labels" text="100" GridPane.columnIndex="3" />
             <Label fx:id="priceLabel" alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="101.0" styleClass="labels" text="X" GridPane.columnIndex="4" />

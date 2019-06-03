@@ -26,6 +26,6 @@ public class ReciptItem extends AnchorPane {
 
         itemLabel.setText(itemName);
         amountLabel.setText(String.valueOf(amount));
-        priceLabel.setText(String.valueOf(totalprice));
+        priceLabel.setText(String.format("%.2f",totalprice));
     }
 }

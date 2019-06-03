@@ -9,6 +9,7 @@ import java.util.Map;
 
 public class ListItemPool {
 
+    private static IMatDataHandler handler = IMatDataHandler.getInstance();
     private static ListItemPool self;
     private Map<Product,BrowseListItem> listItems;
 
@@ -39,4 +40,11 @@ public class ListItemPool {
         return item;
     }
 
+    static public void updateAfterOrder(){
+        if(self == null)
+            return;
+
+        for(ShoppingItem p: handler.getShoppingCart().getItems())
+            self.listItems.put(p.getProduct(),new BrowseListItem(new ShoppingItem(p.getProduct())));
+    }
 }

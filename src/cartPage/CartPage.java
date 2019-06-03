@@ -8,10 +8,7 @@ import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.control.TextFormatter;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -37,6 +34,7 @@ public class CartPage extends AnchorPane implements ICartItemListener {
     @FXML FlowPane itemFlowPane;
     @FXML Label totalSumLabel;
     @FXML Button payButton;
+    @FXML ScrollPane scrollPane;
 
     private CartPage() {
 
@@ -51,6 +49,9 @@ public class CartPage extends AnchorPane implements ICartItemListener {
         }
 
         CartListItem.addListener(this);
+
+        scrollPane.setHvalue(0);
+        scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
 
         payEvent = event->notifyOnCheckout();
         updateItemList();

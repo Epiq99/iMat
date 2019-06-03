@@ -81,7 +81,7 @@
                   </GridPane>
                </children>
             </GridPane>
-            <ScrollPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <ScrollPane fx:id="scrollPane" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <content>
                   <FlowPane fx:id="itemFlowPane" prefHeight="218.0" prefWidth="216.0" />
                </content>

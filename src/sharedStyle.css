@@ -25,6 +25,7 @@
 
 .inactive-button:hover{
     -fx-cursor: pointer;
+    -fx-background-color: gray;
 }
 
 .clickabel:hover{

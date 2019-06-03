@@ -467,7 +467,7 @@
                                        <children>
                                           <Label alignment="BOTTOM_CENTER" styleClass="text-Title" text="Köp genomfört" GridPane.columnIndex="1" />
                                           <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-Other" text="Tack för att du handlar med iMat" textAlignment="CENTER" wrappingWidth="350.609375" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                          <ScrollPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                          <ScrollPane fx:id="scrollPane" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                              <content>
                                                 <FlowPane fx:id="reciptList" prefHeight="33.0" prefWidth="328.0" />
                                              </content>

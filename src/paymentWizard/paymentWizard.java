@@ -1,15 +1,13 @@
 package paymentWizard;
 
+import browseListItem.ListItemPool;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -48,6 +46,7 @@ public class paymentWizard extends AnchorPane {
             emailEntry, addressEntry, postalCodeEntry, mobilePhoneEntry;
     @FXML AnchorPane cvcErrorPane;
     @FXML ImageView errorImageView;
+    @FXML ScrollPane scrollPane;
 
     Label[] indicatorLabels;
     Circle[] circles;
@@ -96,6 +95,9 @@ public class paymentWizard extends AnchorPane {
 
             }
         });
+
+        scrollPane.setHvalue(0);
+        scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
 
         cvcHelp.setVisible(false);
         cvcHelpImageView.setImage(cvcHelpImage);
@@ -155,6 +157,7 @@ public class paymentWizard extends AnchorPane {
         nextButtonEvent = event->showError();
         nextButton.addEventHandler(MouseEvent.MOUSE_CLICKED, nextButtonEvent);
 
+        cardPayRadioButton.setSelected(true);
         contenPane.getChildren().clear();
         contenPane.getChildren().add(payPane);
         cvcEntry.setText("");
@@ -241,7 +244,9 @@ public class paymentWizard extends AnchorPane {
     }
 
     private void successfulReturn(){
-        handler.placeOrder(true);
+        handler.placeOrder(false);
+        ListItemPool.updateAfterOrder();
+        handler.getShoppingCart().clear();
         notifyToReturn();
     }
 

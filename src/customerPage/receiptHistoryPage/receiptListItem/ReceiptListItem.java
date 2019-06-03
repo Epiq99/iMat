@@ -49,7 +49,7 @@ public class ReceiptListItem extends AnchorPane {
 
         orderNumberLabel.setText(String.valueOf(order.getOrderNumber()));
         dateLabel.setText(dateFormat.format(order.getDate()));
-        sumLabel.setText(String.valueOf(getSum(order.getItems())));
+        sumLabel.setText(String.format("%.2f",getSum(order.getItems())));
 
         if(id++%2==0)
             mainPane.setStyle("-fx-background-color: lightgray");
